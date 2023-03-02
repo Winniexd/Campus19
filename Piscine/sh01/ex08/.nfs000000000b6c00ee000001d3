@@ -1,0 +1,5 @@
+echo $FT_NBR1 + $FT_NBR2
+echo "tr 1: $(echo $FT_NBR1 + $FT_NBR2 | tr "\'\\\"\?\!" "01234")"
+echo "tr 2: $(echo $FT_NBR1 + $FT_NBR2 | tr "\'\\\"\?\!" "01234" | tr "mrdoc" "01234")"
+
+
