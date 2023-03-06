@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 22:53:55 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/06 22:58:33 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:05:37 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_solve_ten_queens(char solution[11], int row)
 
 	if (row == 10)
 	{
-		write(1, solution, 11);
+		write(1, solution, 10);
 		write(1, "\n", 1);
 		return ;
 	}
