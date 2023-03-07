@@ -6,22 +6,26 @@
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:37:06 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/07 11:28:22 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:19:38 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
+int     ft_is_prime(int nb)
 {
-	int	i;
+        int     i;
 
-	i = 2;
-	if (nb <= 1)
-		return (0);
-	while (i * i <= nb)
-	{
-		if (nb % i == 0)
-			return (0);
-		i++;
-	}
-	return (1);
+        if (nb <= 1)
+                return (0);
+        if (nb == 2)
+                return (1);
+        if (nb % 2 == 0)
+                return (0);
+        i = 3;
+        while (i * i <= nb)
+        {
+                if (nb % i == 0)
+                        return (0);
+                i += 2;
+        }
+        return (1);
 }

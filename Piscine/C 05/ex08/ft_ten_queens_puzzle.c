@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 22:53:55 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/06 23:05:37 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:38:10 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_is_safe(char solution[11], int col, int row)
 	return (1);
 }
 
-void	ft_solve_ten_queens(char solution[11], int row)
+void	ft_solve_ten_queens(char solution[11], int row, int *counter)
 {
 	int	col;
 
@@ -45,6 +45,7 @@ void	ft_solve_ten_queens(char solution[11], int row)
 	{
 		write(1, solution, 10);
 		write(1, "\n", 1);
+		(*counter)++;
 		return ;
 	}
 	col = 0;
@@ -53,23 +54,20 @@ void	ft_solve_ten_queens(char solution[11], int row)
 		if (ft_is_safe(solution, col, row))
 		{
 			solution[row] = col + '0';
-			ft_solve_ten_queens(solution, row + 1);
+			ft_solve_ten_queens(solution, row + 1, counter);
 			solution[row] = '\0';
 		}
 		col++;
 	}
 }
 
-void	ft_ten_queens_puzzle(void)
+int	ft_ten_queens_puzzle(void)
 {
 	char	solution[11];
+	int		counter;
 
+	counter = 0;
 	solution[10] = '\0';
-	ft_solve_ten_queens(solution, 0);
-}
-
-int	main(void)
-{
-	ft_ten_queens_puzzle();
-	return (0);
+	ft_solve_ten_queens(solution, 0, &counter);
+	return (counter);
 }
