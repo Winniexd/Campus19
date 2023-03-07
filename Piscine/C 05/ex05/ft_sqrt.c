@@ -6,22 +6,20 @@
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:23:35 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/02 14:31:50 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/06 11:20:12 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_sqrt(int nb)
 {
-        int                     i;
-        long long       res;
+	int	i;
 
-        res = 1;
-        i = 1;
-        while (res != temp)
-        {
-		
-                res = 1 / res * 1 / nb;
-                i++;
-        }
-        return (res);
+	i = 1;
+	if (nb < 0)
+		return (0);
+	while (i * i < nb)
+		i++;
+	if (i * i == nb)
+		return (i);
+	return (0);
 }

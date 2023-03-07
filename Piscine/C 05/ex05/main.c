@@ -6,7 +6,7 @@
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:30:08 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/02 14:31:02 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/06 11:19:26 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int	ft_sqrt(int nb);
 
 int	main(void)
 {
-	printf("%d", ft_sqrt(4));
+	printf("%d", ft_sqrt(7));
 	return 0;
 }
