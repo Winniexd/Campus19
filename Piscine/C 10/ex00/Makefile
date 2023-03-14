@@ -13,6 +13,6 @@ ft_display_file.o: $(SRC)
 	cc -Wall -Wextra -Werror -c $(SRC)
 
 clean:
-	rm -f ft_display_file.o ft_display_file
+	rm -f ft_display_file.o
 
 fclean: clean all

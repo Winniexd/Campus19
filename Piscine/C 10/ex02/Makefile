@@ -13,10 +13,10 @@ INC = -I$(INCDIR)
 
 .PHONY: all clean fclean
 
-all: ft_cat
+all: ft_tail
 
-ft_cat: $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o ft_cat
+ft_tail: $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o ft_tail
 
 $(SRCDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -g -c -o $@ $<
@@ -25,6 +25,6 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f ft_cat
+	rm -f ft_tail
 
 re: clean all
