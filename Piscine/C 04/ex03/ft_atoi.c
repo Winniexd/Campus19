@@ -6,7 +6,7 @@
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:03:28 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/02 11:57:16 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/10 09:40:40 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	ft_atoi(char *str)
 
 	sign = 1;
 	res = 0;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
-	if (*str == '-' || *str == '+')
+	while (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
-			sign = -1;
+			sign *= -1;
 		str++;
 	}
 	while (*str >= '0' && *str <= '9')
