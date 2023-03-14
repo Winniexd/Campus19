@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 08:47:11 by mdreesen          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/03/11 11:42:22 by mdreesen         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/01 16:22:58 by mdreesen         ###   ########.fr       */
->>>>>>> a86b22c6d44f1f310bfd753c54d8541c5032d12b
+/*   Created: 2023/03/06 16:16:19 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/03/11 11:37:43 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max)
 {
-	while (*s1 == *s2 && *s1)
+	int	i;
+	int	*arr;
+
+	if (!range)
+		return (-1);
+	if (min >= max)
 	{
-		s1++;
-		s2++;
+		*range = NULL;
+		return (0);
 	}
-	return (*s1 - *s2);
+	arr = (int *)malloc((max - min) * sizeof(int));
+	i = 0;
+	while (min < max)
+	{
+		arr[i] = min;
+		i++;
+		min++;
+	}
+	*range = arr;
+	return (i);
 }

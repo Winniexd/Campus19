@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 08:47:11 by mdreesen          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/03/11 11:42:22 by mdreesen         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/01 16:22:58 by mdreesen         ###   ########.fr       */
->>>>>>> a86b22c6d44f1f310bfd753c54d8541c5032d12b
+/*   Created: 2023/03/07 12:14:37 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/03/09 11:15:51 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	while (*s1 == *s2 && *s1)
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
-}
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
+
+# include <unistd.h>
+# define TRUE 1
+# define FALSE 0
+# define SUCCESS 0
+
+typedef int	t_bool;
+
+# define EVEN_MSG "I have an even number of arguments."
+# define ODD_MSG "I have an odd number of arguments."
+
+# define EVEN(nbr) (nbr % 2 == 0)
+
+#endif

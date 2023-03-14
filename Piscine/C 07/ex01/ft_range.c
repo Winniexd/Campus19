@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 08:47:11 by mdreesen          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/03/11 11:42:22 by mdreesen         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/01 16:22:58 by mdreesen         ###   ########.fr       */
->>>>>>> a86b22c6d44f1f310bfd753c54d8541c5032d12b
+/*   Created: 2023/03/06 16:02:26 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/03/11 11:33:13 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+#include <stdlib.h>
+
+int	ft_abs(int x)
 {
-	while (*s1 == *s2 && *s1)
+	if (x < 0)
+		return (-x);
+	else
+		return (x);
+}
+
+int	*ft_range(int min, int max)
+{
+	int	range;
+	int	i;
+	int	*array;
+
+	if (min >= max)
+		return ((void *)0);
+	range = ft_abs(max - min);
+	array = malloc(range * sizeof(int));
+	if (!array)
+		return ((void *)0);
+	i = 0;
+	while (i < range)
 	{
-		s1++;
-		s2++;
+		array[i] = min + i;
+		i++;
 	}
-	return (*s1 - *s2);
+	return (array);
 }

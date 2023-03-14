@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 08:47:11 by mdreesen          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/03/11 11:42:22 by mdreesen         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/01 16:22:58 by mdreesen         ###   ########.fr       */
->>>>>>> a86b22c6d44f1f310bfd753c54d8541c5032d12b
+/*   Created: 2023/03/07 12:14:28 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/03/07 12:14:30 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	while (*s1 == *s2 && *s1)
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
-}
+#ifndef FT_H
+# define FT_H
+
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
+
+#endif
