@@ -15,4 +15,7 @@ ft_display_file.o: $(SRC)
 clean:
 	rm -f ft_display_file.o
 
-fclean: clean all
+fclean: clean
+	rm -f ft_display_file
+
+re: fclean all

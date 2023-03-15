@@ -53,31 +53,31 @@ int	ft_atoi(char *str)
 	return (result * sign);
 }
 
-void	ft_tail(int *fd, int n, char *buf)
+void	ft_tail(int *fd, int n, char *buf, int len)
 {
 	int	i;
 	int	j;
 	int	k;
 
 	buf = malloc(sizeof(char) * n);
+	if (!buf)
+		return ;
 	i = 0;
-	j = 0;
-	k = 0;
+	len = 0;
 	while (read(*fd, &buf[i], 1) != 0)
 	{
+		if (len < n)
+			len++;
 		i = (i + 1) % n;
-		if (i == 0)
-			j = 1;
 	}
-	if (j == 1)
-		k = n;
+	j = i;
+	k = (i + len) % n;
+	if (j < k)
+		write(1, &buf[j], k - j);
 	else
-		k = i;
-	i = 0;
-	while (i < k)
 	{
-		write(1, &buf[(i + j) % n], 1);
-		i++;
+		write(1, &buf[j], n - j);
+		write(1, &buf[0], k);
 	}
 	free(buf);
 }
@@ -87,7 +87,9 @@ int	main(int ac, char **av)
 	int		i;
 	int		fd;
 	char	*buf;
+	int		len;
 
+	len = 0;
 	buf = NULL;
 	i = 3;
 	if (ac > 2)
@@ -97,7 +99,7 @@ int	main(int ac, char **av)
 			while (av[i])
 			{
 				fd = open(av[i], O_RDONLY);
-				ft_tail(&fd, ft_atoi(av[2]), buf);
+				ft_tail(&fd, ft_atoi(av[2]), buf, len);
 				i++;
 			}
 		}
