@@ -11,10 +11,14 @@
 /* ************************************************************************** */
 
 #ifndef FT_H
-#define FT_H
+# define FT_H
 
-#include <unistd.h>
+# include <unistd.h>
 
-void ft_hexdump(int *fd, char *buf);
+void	ft_hexdump(int *fd, char *buf, int offset);
+char	*ft_strdup(char *src);
+int		ft_strcmp(char *s1, char *s2);
+int		ft_strlen(char *str);
+void	ft_display_error(char *str);
 
 #endif
