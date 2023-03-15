@@ -6,7 +6,7 @@
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:45 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/15 15:15:14 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:54:47 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,63 +122,66 @@ void ft_print_char(char *buf, int len)
             write(1, ".", 1);
         i++;
     }
-    write(1, "|", 1);
+    write(1, "|\n", 2);
 }
 
 void ft_hexdump(int *fd, char *buf)
 {
     int offset;
     int len;
-    char *prev_buf;
+    char *prev_buff;
 
-    prev_buf = NULL;
+    prev_buff = malloc(16 * sizeof(char));
     offset = 0;
     while ((len = read(*fd, buf, 16)) > 0)
     {
-        if (prev_buf != NULL && ft_strcmp(prev_buf, buf) == 0)
+        if (ft_strcmp(prev_buff, buf))
         {
             ft_offset(offset);
             write(1, "  ", 2);
             ft_print_hex(buf, len);
             ft_print_char(buf, len);
-            write(1, "\n", 1);
-            offset += 16;
         }
         else
-        {
             write(1, "*\n", 2);
-            offset += 16;
+        offset += 16;
+        if (len < 16)
+        {
+            ft_offset(offset - 16 + len);
+            write(1, "\n", 1);
         }
-        free(prev_buf);
-        prev_buf = ft_strdup(buf);
+        prev_buff = ft_strdup(buf);
     }
-    free(prev_buf);
+}
+
+void ft_proces(int i, char **av)
+{
+    int fd;
+    char *buf;
+
+    buf = malloc(16 * sizeof(char));
+    fd = open(av[i], O_RDONLY);
+    if (fd == -1)
+    {
+        ft_display_error(av[i]);
+    }
+    else
+    {
+        ft_hexdump(&fd, buf);
+        close(fd);
+    }
 }
 
 int main(int ac, char **av)
 {
     int i;
-    int fd;
-    char *buf;
 
     i = 2;
-    buf = malloc(16 * sizeof(char));
-    if (ac == 1)
-        write(1, "File name missing.\n", 19);
     if (av[1][0] == '-' && av[1][1] == 'C')
     {
         while (i < ac)
         {
-            fd = open(av[i], O_RDONLY);
-            if (fd == -1)
-            {
-                ft_display_error(av[i]);
-            }
-            else
-            {
-                ft_hexdump(&fd, buf);
-                close(fd);
-            }
+            ft_proces(i, av);
             i++;
         }
     }

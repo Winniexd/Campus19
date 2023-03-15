@@ -6,7 +6,7 @@
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:57:54 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/15 15:14:41 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:50:29 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <unistd.h>
 
-void ft_offset(int offset);
 void ft_hexdump(int *fd, char *buf);
 
 #endif
