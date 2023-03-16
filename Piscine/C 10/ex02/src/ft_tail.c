@@ -28,6 +28,21 @@ void	ft_putstr(char *str)
 	}
 }
 
+void	display_file(int *fd, int n, int len)
+{
+	char	*buf;
+
+	buf = malloc(sizeof(char) * n);
+	if (!buf)
+		return ;
+	len = read(*fd, buf, n);
+	while (len)
+	{
+		write(1, buf, len);
+		len = read(*fd, buf, n);
+	}
+}
+
 int	ft_atoi(char *str)
 {
 	int	i;
@@ -82,29 +97,25 @@ void	ft_tail(int *fd, int n, char *buf, int len)
 	free(buf);
 }
 
-int	main(int ac, char **av)
+int	check_n_bigger_than_file(char *av, int n)
 {
-	int		i;
+	char	buf[4096];
+	int		bytes_read;
+	int		total_bytes_read;
 	int		fd;
-	char	*buf;
-	int		len;
 
-	len = 0;
-	buf = NULL;
-	i = 3;
-	if (ac > 2)
+	fd = open(av, O_RDONLY);
+	bytes_read = 0;
+	total_bytes_read = 0;
+	bytes_read = read(fd, buf, sizeof(buf));
+	while (bytes_read > 0)
 	{
-		if (av[1][0] == '-' && av[1][1] == 'c')
-		{
-			while (av[i])
-			{
-				fd = open(av[i], O_RDONLY);
-				ft_tail(&fd, ft_atoi(av[2]), buf, len);
-				i++;
-			}
-		}
+		total_bytes_read += bytes_read;
+		bytes_read = read(fd, buf, sizeof(buf));
+		if (total_bytes_read >= n)
+			return (1);
 	}
-	else
-		ft_putstr("usage: ft_tail [-c #] [file ...]\n");
+	if (bytes_read == 0 && total_bytes_read >= n)
+		return (1);
 	return (0);
 }

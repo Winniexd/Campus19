@@ -3,6 +3,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
+INCDIR = includes
 SRCDIR = src
 
 SRC = $(wildcard $(SRCDIR)/*.c)
@@ -19,7 +20,7 @@ ft_tail: $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o ft_tail
 
 $(SRCDIR)/%.o: $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) -g -c -o $@ $<
+	$(CC) $(CFLAGS) -I$(INCDIR) -g -c -o $@ $<
 
 clean:
 	rm -f $(OBJ)
