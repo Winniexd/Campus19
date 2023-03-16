@@ -18,5 +18,6 @@ void	ft_tail(int *fd, int n, char *buf, int len);
 void	display_file(int *fd, int n, int len);
 int		ft_atoi(char *str);
 void	ft_putstr(char *str);
+void	ft_display_error(int error, char *str);
 
 #endif

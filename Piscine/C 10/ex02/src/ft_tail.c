@@ -6,10 +6,11 @@
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:17:03 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/15 20:44:00 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:01:58 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft.h"
 #include <errno.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -31,67 +32,75 @@ void	ft_putstr(char *str)
 void	display_file(int *fd, int n, int len)
 {
 	char	*buf;
+	int		last_char_index;
 
 	buf = malloc(sizeof(char) * n);
 	if (!buf)
 		return ;
 	len = read(*fd, buf, n);
+	if (len == -1)
+	{
+		ft_putstr("tail: ");
+		ft_putstr(strerror(errno));
+		ft_putstr("\n");
+	}
 	while (len)
 	{
+		last_char_index = len - 1;
+		if (buf[last_char_index] != '\n')
+		{
+			buf[last_char_index + 1] = '\n';
+			len++;
+		}
 		write(1, buf, len);
 		len = read(*fd, buf, n);
 	}
+	free(buf);
 }
 
 int	ft_atoi(char *str)
 {
 	int	i;
-	int	sign;
 	int	result;
 
 	i = 0;
-	sign = 1;
 	result = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
 		i++;
-	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	return (result * sign);
+	return (result);
 }
 
 void	ft_tail(int *fd, int n, char *buf, int len)
 {
 	int	i;
-	int	j;
 	int	k;
 
-	buf = malloc(sizeof(char) * n);
 	if (!buf)
 		return ;
 	i = 0;
 	len = 0;
-	while (read(*fd, &buf[i], 1) != 0)
+	while (read(*fd, &buf[i], 1) > 0)
 	{
 		if (len < n)
 			len++;
 		i = (i + 1) % n;
 	}
-	j = i;
+	buf[len] = '\0';
 	k = (i + len) % n;
-	if (j < k)
-		write(1, &buf[j], k - j);
+	if (n > len)
+		ft_putstr(buf);
+	else if (i < k)
+		write(1, &buf[i], k - i);
 	else
 	{
-		write(1, &buf[j], n - j);
+		write(1, &buf[i], n - i);
 		write(1, &buf[0], k);
 	}
 	free(buf);
@@ -108,6 +117,8 @@ int	check_n_bigger_than_file(char *av, int n)
 	bytes_read = 0;
 	total_bytes_read = 0;
 	bytes_read = read(fd, buf, sizeof(buf));
+	if (bytes_read == -1)
+		return (-1);
 	while (bytes_read > 0)
 	{
 		total_bytes_read += bytes_read;

@@ -6,24 +6,19 @@
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:32:45 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/03/15 20:40:48 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:45:18 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-#include <errno.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include "../includes/ft.h"
 
 void	ft_display_error(char *str)
 {
-	write(1, "hexdump: ", 9);
-	write(1, str, strlen(str));
-	write(1, ": ", 2);
-	write(1, strerror(errno), strlen(strerror(errno)));
-	write(1, "\n", 1);
+	write(2, "hexdump: ", 9);
+	write(2, str, ft_strlen(str));
+	write(2, ": ", 2);
+	write(2, strerror(errno), ft_strlen(strerror(errno)));
+	write(2, "\n", 1);
 }
 
 void	ft_offset(int offset)
@@ -89,17 +84,11 @@ void	ft_hexdump(int *fd, char *buf, int offset)
 
 	prev_buff = malloc(16 * sizeof(char));
 	len = read(*fd, buf, 16);
-	while (len)
+	if (len == -1)
+		ft_display_error("hexdump: ");
+	while (len != -1 && len)
 	{
-		if (ft_strcmp(prev_buff, buf))
-		{
-			ft_offset(offset);
-			write(1, "  ", 2);
-			ft_print_hex(buf, len);
-			ft_print_char(buf, len);
-		}
-		else
-			write(1, "*\n", 2);
+		yolo(buf, len, prev_buff, offset);
 		offset += 16;
 		if (len < 16)
 		{

@@ -10,12 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-#include <errno.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include "../includes/ft.h"
+
+void	yolo(char *buf, int len, char *prev_buff, int offset)
+{
+	if (ft_strcmp(prev_buff, buf))
+	{
+		ft_offset(offset);
+		write(1, "  ", 2);
+		ft_print_hex(buf, len);
+		ft_print_char(buf, len);
+	}
+	else
+		write(1, "*\n", 2);
+}
 
 void	ft_proces(int i, char **av)
 {
