@@ -5,11 +5,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
 
-SRCDIR = srcs
-INCDIR = includes
-
-SRC = $(wildcard $(SRCDIR)/*.c)
-INC = -I$(INCDIR)
+SRC = $(wildcard *.c)
+INC = -I .
 
 OBJ = $(SRC:.c=.o)
 

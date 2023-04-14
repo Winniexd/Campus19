@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 11:14:43 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/07 11:55:48 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:44:29 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:44:32 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(char *str)
+int	ft_atoi(const char *str)
 {
-	int	i;
+	int				i;
+	int				sign;
+	unsigned int	nb;
 
 	i = 0;
-	while (str[i])
+	sign = 1;
+	nb = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (str[i] >= 32 && str[i] <= 126)
-			i++;
-		else
-			return (0);
+		nb = nb * 10 + str[i] - '0';
+		i++;
 	}
-	return (1);
+	return (nb * sign);
 }

@@ -32,11 +32,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*str;
 	int		i;
 	int		j;
-	int		k;
 
 	i = 0;
 	j = 0;
-	k = 0;
 	str = malloc(ft_strlen(s1) + 1);
 	if (!str)
 		return (NULL);

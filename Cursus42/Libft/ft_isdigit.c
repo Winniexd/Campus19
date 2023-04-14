@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 11:40:30 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/07 11:57:09 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:05:35 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:57:35 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(void *str, int c, int n)
+int	ft_isdigit(int c)
 {
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		if (((unsigned char *)str)[i] == (unsigned char)c)
-			return (&str[i]);
-		i++;
-	}
+	if (c >= '0' && c <= '9')
+		return (1);
 	return (0);
 }

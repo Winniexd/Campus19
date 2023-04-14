@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 11:44:29 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/07 11:44:32 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:14:43 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:55:48 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	ft_isprint(int c)
 {
-	int	sign;
-	int	res;
-
-	sign = 1;
-	res = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		res = res * 10 + *str - '0';
-		str++;
-	}
-	return (res * sign);
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

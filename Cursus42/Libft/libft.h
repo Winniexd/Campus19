@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 11:34:38 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/07 11:58:34 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 12:32:00 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 13:11:51 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_toupper(char *str)
-{
-	int	i;
+#ifndef LIBFT_H
+# define LIBFT_H
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;
-		i++;
-	}
-}
+# include <string.h>
+
+int		ft_atoi(char *str);
+int		ft_isdigit(int c);
+int		ft_isprint(int c);
+int		ft_isascii(int c);
+int		ft_isalnum(int c);
+int		ft_isalpha(int c);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
+int		ft_strlen(const char *str);
+char	*ft_strdup(const char *str);
+char	*ft_strcat(char *dest, char *src);
+
+#endif
