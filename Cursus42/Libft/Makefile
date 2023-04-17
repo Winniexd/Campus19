@@ -9,8 +9,13 @@ SRC = $(wildcard *.c)
 INC = -I .
 
 OBJ = $(SRC:.c=.o)
+OBJ_BONUS = $(wildcard *_bonus.o)
 
-.PHONY: all clean fclean re
+ifdef BONUS
+	OBJ += $(OBJ_BONUS)
+endif
+
+.PHONY: all bonus clean fclean re
 
 all: $(NAME)
 
@@ -19,6 +24,9 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+
+bonus:
+	$(MAKE) BONUS=1 all
 
 clean:
 	rm -f $(OBJ)

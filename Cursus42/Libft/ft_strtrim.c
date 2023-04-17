@@ -6,12 +6,11 @@
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:14:42 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/07 13:19:20 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:44:05 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	ft_isinset(char c, char const *set)
 {
@@ -29,25 +28,25 @@ static int	ft_isinset(char c, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
 	int		i;
 	int		j;
+	int		k;
+	char	*str;
 
 	i = 0;
-	j = 0;
-	str = malloc(ft_strlen(s1) + 1);
-	if (!str)
-		return (NULL);
+	j = ft_strlen(s1) - 1;
+	k = 0;
 	while (ft_isinset(s1[i], set) == 1)
 		i++;
-	while (s1[i] != '\0')
-	{
-		str[j] = s1[i];
-		j++;
-		i++;
-	}
-	while (ft_isinset(str[j - 1], set) == 1)
+	while (ft_isinset(s1[j], set) == 1)
 		j--;
-	str[j] = '\0';
+	if (j < i)
+		return (ft_strdup(""));
+	str = (char *)malloc(sizeof(char) * (j - i + 2));
+	if (str == NULL)
+		return (NULL);
+	while (i <= j)
+		str[k++] = s1[i++];
+	str[k] = '\0';
 	return (str);
 }

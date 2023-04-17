@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_memcmp(void *s1, void *s2, int n)
+#include "libft.h"
+
+int	ft_memcmp(void *s1, void *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n)
