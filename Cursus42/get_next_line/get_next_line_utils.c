@@ -13,9 +13,9 @@
 #include "get_next_line.h"
 #include <stdlib.h>
 
-int	ft_strlen(const char *str)
+int ft_strlen(const char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (str[i])
@@ -23,11 +23,11 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char *ft_strjoin(char *s1, char *s2)
 {
-	char	*str;
-	int		i;
-	int		j;
+	char *str;
+	int i;
+	int j;
 
 	i = 0;
 	j = 0;
@@ -46,12 +46,13 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	str[i] = '\0';
+	free(s1);
 	return (str);
 }
 
-char	*ft_strchr(char *str, char c)
+char *ft_strchr(char *str, char c)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (str[i])
@@ -63,13 +64,15 @@ char	*ft_strchr(char *str, char c)
 	return (0);
 }
 
-char	*ft_strdup(char *s1)
+char *ft_strdup(char *s1)
 {
-	int		i;
-	char	*str;
+	int i;
+	char *str;
 
 	i = 0;
 	str = (char *)malloc(ft_strlen(s1) + 1);
+	if (!str)
+		return (NULL);
 	while (s1[i])
 	{
 		str[i] = s1[i];
@@ -79,10 +82,10 @@ char	*ft_strdup(char *s1)
 	return (str);
 }
 
-char	*ft_strncat(char *dest, char *src, int nb)
+char *ft_strncat(char *dest, char *src, int nb)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 0;
 	j = 0;

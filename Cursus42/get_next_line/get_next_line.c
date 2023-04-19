@@ -17,8 +17,10 @@
 #include <unistd.h>
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 10
+#define BUFFER_SIZE 1
 #endif
+
+static char *prev_buffer;
 
 char *get_next_line_helper(int ret, char *buffer, char *prev_buffer,
 						   char *line)
@@ -26,6 +28,7 @@ char *get_next_line_helper(int ret, char *buffer, char *prev_buffer,
 	if (ret == 0)
 	{
 		free(buffer);
+		free(prev_buffer);
 		return (line);
 	}
 	free(prev_buffer);
@@ -37,39 +40,48 @@ char *get_next_line_helper(int ret, char *buffer, char *prev_buffer,
 char *get_next_line(int fd)
 {
 	char *line;
-	static char *prev_buffer = NULL;
 	char *buffer;
 	int ret;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (prev_buffer == NULL)
-		prev_buffer = malloc(sizeof(char) * BUFFER_SIZE);
 	buffer = malloc(sizeof(char) * BUFFER_SIZE);
-	if (!buffer || !prev_buffer)
+	if (!buffer)
 		return (NULL);
 	line = malloc(sizeof(char) * BUFFER_SIZE);
 	if (!line)
+	{
+		free(buffer);
 		return (NULL);
-	line[0] = '\0';
-	if (prev_buffer[0] != '\0')
-		line = ft_strjoin(line, prev_buffer);
+	}
 	ret = read(fd, buffer, BUFFER_SIZE);
-	if (ret == -1)
+	if (ret == -1 || ret == 0)
+	{
+		free(buffer);
+		free(line);
+		return (NULL);
+	}
+	if (buffer[0] == '\n')
 	{
 		free(buffer);
 		free(prev_buffer);
 		free(line);
-		return (NULL);
+		line = ft_strdup("");
+		if (!line)
+			return (NULL);
+		return (line);
 	}
+	line[0] = '\0';
+	if (prev_buffer && prev_buffer[0] != '\0')
+		line = ft_strjoin(line, prev_buffer);
 	while (ret > 0)
 	{
-		if (ft_strchr(buffer, '\n'))
+		if (ft_strchr(buffer, '\n') || ft_strchr(buffer, '\0'))
 		{
 			line = ft_strjoin(line, buffer);
 			free(prev_buffer);
 			prev_buffer = NULL;
-			return (line);
+			return (get_next_line_helper(ret, buffer, prev_buffer, line));
 		}
 		line = ft_strjoin(line, buffer);
 		ret = read(fd, buffer, BUFFER_SIZE);
