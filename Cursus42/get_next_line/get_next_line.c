@@ -16,10 +16,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define BUFFER_SIZE 1
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 10
+#endif
 
-char	*get_next_line_helper(int ret, char *buffer, char *prev_buffer,
-		char *line)
+char *get_next_line_helper(int ret, char *buffer, char *prev_buffer,
+						   char *line)
 {
 	if (ret == 0)
 	{
@@ -32,20 +34,34 @@ char	*get_next_line_helper(int ret, char *buffer, char *prev_buffer,
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	char		*line;
-	static char	*prev_buffer;
-	char		*buffer;
-	int			ret;
+	char *line;
+	static char *prev_buffer = NULL;
+	char *buffer;
+	int ret;
 
-	prev_buffer = malloc(sizeof(char) * BUFFER_SIZE);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	if (prev_buffer == NULL)
+		prev_buffer = malloc(sizeof(char) * BUFFER_SIZE);
 	buffer = malloc(sizeof(char) * BUFFER_SIZE);
+	if (!buffer || !prev_buffer)
+		return (NULL);
 	line = malloc(sizeof(char) * BUFFER_SIZE);
+	if (!line)
+		return (NULL);
 	line[0] = '\0';
 	if (prev_buffer[0] != '\0')
 		line = ft_strjoin(line, prev_buffer);
 	ret = read(fd, buffer, BUFFER_SIZE);
+	if (ret == -1)
+	{
+		free(buffer);
+		free(prev_buffer);
+		free(line);
+		return (NULL);
+	}
 	while (ret > 0)
 	{
 		if (ft_strchr(buffer, '\n'))
