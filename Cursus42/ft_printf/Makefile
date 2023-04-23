@@ -2,11 +2,9 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
 NAME=libftprintf.a
-
-SRCDIR=srcs
 INCDIR=includes
 
-SRC=$(wildcard $(SRCDIR)/*.c)
+SRC=$(wildcard *.c)
 OBJ=$(SRC:.c=.o)
 INC=-I $(INCDIR)
 
@@ -16,7 +14,7 @@ $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INC) -c -g -o $@ $<
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
 	rm -f $(OBJ)

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/*
 char	*ft_strchr(const char *str, int c)
 {
 	int	i;
@@ -27,3 +27,4 @@ char	*ft_strchr(const char *str, int c)
 		return ((char *)str + i);
 	return (NULL);
 }
+*/

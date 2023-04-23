@@ -1,24 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <mdreesen@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 11:37:21 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/18 11:37:22 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/23 16:10:43 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/23 16:11:00 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+char	*ft_strchr(const char *s)
 {
-    va_list	args;
-    int		ret;
+	while (*s)
+	{
+		if (*s == '%')
+			return ((char *)s);
+		s++;
+	}
+	if (!s)
+		return ((char *)s);
+	return (NULL);
+}
 
-    va_start(args, format);
-    ret = ft_vprintf(format, args);
-    va_end(args);
-    return (ret);
+void	ft_putnbr(int num)
+{
+	if (num == INT_MIN)
+	{
+		ft_putstr("-2147483648");
+		return ;
+	}
+	if (num < 0)
+	{
+		ft_putchar('-');
+		num *= -1;
+	}
+	if (num >= 10)
+		ft_putnbr(num / 10);
+	ft_putchar(num % 10 + '0');
 }

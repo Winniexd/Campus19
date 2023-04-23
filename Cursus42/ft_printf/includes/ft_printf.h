@@ -13,7 +13,24 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include "Libft/libft.h"
+# include <limits.h>
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "Libft/libft.h"
+
+typedef struct s_data
+{
+	int	len;
+	int	written;
+}		t_data;
+
+int		ft_printf(const char *format, ...);
+void	ft_putstr(char *str);
+int		ft_numlen(int num);
+void	ft_putnbr_base(int nbr, char *base);
+void	ft_putnbr(int num);
+void	ft_putchar(char c);
+char	*ft_strchr(const char *s);
+
+#endif

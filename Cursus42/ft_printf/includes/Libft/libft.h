@@ -34,7 +34,7 @@ int					ft_strlcpy(char *dest, char const *src, size_t size);
 int					ft_memcmp(void *s1, void *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strdup(const char *str);
-char				*ft_strchr(const char *str, int c);
+//char				*ft_strchr(const char *str, int c);
 char				*ft_itoa(int n);
 char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
