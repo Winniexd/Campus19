@@ -17,74 +17,46 @@
 #include <unistd.h>
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 1
+#define BUFFER_SIZE 4
 #endif
 
-static char *prev_buffer;
 
-char *get_next_line_helper(int ret, char *buffer, char *prev_buffer,
-						   char *line)
+
+char *get_next_line_helper(int ret, char *buffer, char *prev_buffer, char *line)
 {
-	if (ret == 0)
-	{
-		free(buffer);
-		free(prev_buffer);
-		return (line);
-	}
-	free(prev_buffer);
-	prev_buffer = ft_strdup(buffer);
-	free(buffer);
-	return (line);
+    free(prev_buffer);
+
+    if (ret != 0)
+    {
+        prev_buffer = ft_strdup(buffer);
+    }
+
+    free(buffer);
+    return (line);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	char *line;
+	static char *prev_buffer;
 	char *buffer;
+	char *line;
 	int ret;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc(sizeof(char) * BUFFER_SIZE);
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	line = malloc(sizeof(char) * BUFFER_SIZE);
-	if (!line)
+	ret = 1;
+	while (ret != 0 && !ft_strchr(prev_buffer, '\n'))
 	{
-		free(buffer);
-		return (NULL);
-	}
-	ret = read(fd, buffer, BUFFER_SIZE);
-	if (ret == -1 || ret == 0)
-	{
-		free(buffer);
-		free(line);
-		return (NULL);
-	}
-	if (buffer[0] == '\n')
-	{
-		free(buffer);
-		free(prev_buffer);
-		free(line);
-		line = ft_strdup("");
-		if (!line)
-			return (NULL);
-		return (line);
-	}
-	line[0] = '\0';
-	if (prev_buffer && prev_buffer[0] != '\0')
-		line = ft_strjoin(line, prev_buffer);
-	while (ret > 0)
-	{
-		if (ft_strchr(buffer, '\n') || ft_strchr(buffer, '\0'))
-		{
-			line = ft_strjoin(line, buffer);
-			free(prev_buffer);
-			prev_buffer = NULL;
-			return (get_next_line_helper(ret, buffer, prev_buffer, line));
-		}
-		line = ft_strjoin(line, buffer);
 		ret = read(fd, buffer, BUFFER_SIZE);
+		if (ret == -1)
+			return (NULL);
+		buffer[ret] = '\0';
+		prev_buffer = ft_strjoin(prev_buffer, buffer);
 	}
+	line = ft_substr(prev_buffer, 0, ft_strchr(prev_buffer, '\n') - prev_buffer);
+	prev_buffer = ft_substr(prev_buffer, ft_strchr(prev_buffer, '\n') - prev_buffer + 1, ft_strlen(prev_buffer));
 	return (get_next_line_helper(ret, buffer, prev_buffer, line));
 }
