@@ -29,6 +29,12 @@ const char	*ft_parse_helper2(const char *format, t_data *data, va_list args)
 		ft_putchar(c);
 		data->len++;
 	}
+	else if (*format == 'X')
+	{
+		num = va_arg(args, int);
+		ft_putnbr_base(num, "0123456789ABCDEF");
+		data->len += ft_numlen(num);
+	}
 	else
 		return (NULL);
 	format++;
@@ -37,22 +43,24 @@ const char	*ft_parse_helper2(const char *format, t_data *data, va_list args)
 
 const char	*ft_parse_helper(const char *format, t_data *data, va_list args)
 {
-	int		num;
+	int	num;
 
-	if (*format == 'X')
+	num = va_arg(args, int);
+	if (*format == 'p')
 	{
-		num = va_arg(args, int);
-		ft_putnbr_base(num, "0123456789ABCDEF");
-		data->len += ft_numlen(num);
+		if (num == 0)
+		{
+			ft_putstr("(nil)");
+			data->len += 5;
+		}
+		else
+		{
+			ft_putstr("0x");
+			ft_putnbr_base(num, "0123456789abcdef");
+			data->len += ft_numlen(num) + 2;
+		}
 	}
-	else if (*format == 'p')
-	{
-		num = va_arg(args, int);
-		ft_putstr("0x");
-		ft_putnbr_base(num, "0123456789abcdef");
-		data->len += ft_numlen(num) + 2;
-	}
-	else if (*format == 'x' || *format == 'c')
+	else if (*format == 'x' || *format == 'c' || *format == 'X')
 		ft_parse_helper2(format, data, args);
 	else
 		return (NULL);
@@ -124,9 +132,9 @@ int	ft_printf(const char *format, ...)
 		{
 			write(1, "(null)", 6);
 			va_end(args);
-			return (data.written);
+			return (data.len);
 		}
 	}
 	va_end(args);
-	return (data.written);
+	return (data.len);
 }
