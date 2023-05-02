@@ -12,20 +12,20 @@
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *str)
+void ft_putstr(char *str)
 {
 	while (*str)
 		write(1, str++, 1);
 }
 
-void	ft_putchar(char c)
+void ft_putchar(const char c)
 {
 	write(1, &c, 1);
 }
 
-size_t	ft_strlen(const char *s)
+size_t ft_strlen(const char *s)
 {
-	size_t	len;
+	size_t len;
 
 	len = 0;
 	while (s[len])
@@ -33,13 +33,18 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-int	ft_numlen(int num)
+int ft_numlen(int num)
 {
-	int	len;
+	int len;
 
 	len = 0;
 	if (num == 0)
 		return (1);
+	if (num < 0)
+	{
+		len++;
+		num *= -1;
+	}
 	while (num)
 	{
 		num /= 10;
@@ -48,17 +53,22 @@ int	ft_numlen(int num)
 	return (len);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int ft_putnbr_base(unsigned int nbr, char *base)
 {
-	int	base_len;
+	unsigned int len;
+	unsigned int base_len;
 
+	len = 0;
 	base_len = ft_strlen(base);
-	if (nbr < 0)
-	{
-		ft_putchar('-');
-		nbr *= -1;
-	}
 	if (nbr >= base_len)
-		ft_putnbr_base(nbr / base_len, base);
-	ft_putchar(base[nbr % base_len]);
+	{
+		len += ft_putnbr_base(nbr / base_len, base);
+		len += ft_putnbr_base(nbr % base_len, base);
+	}
+	else
+	{
+		ft_putchar(base[nbr]);
+		len++;
+	}
+	return (len);
 }

@@ -12,93 +12,33 @@
 
 #include "ft_printf.h"
 
-const char	*ft_parse_helper2(const char *format, t_data *data, va_list args)
+const char *ft_handle_flags(const char *format, t_data *data, va_list args)
 {
-	int		num;
-	char	c;
 
-	if (*format == 'x')
-	{
-		num = va_arg(args, int);
-		ft_putnbr_base(num, "0123456789abcdef");
-		data->len += ft_numlen(num);
-	}
-	else if (*format == 'c')
-	{
-		c = va_arg(args, int);
-		ft_putchar(c);
-		data->len++;
-	}
-	else if (*format == 'X')
-	{
-		num = va_arg(args, int);
-		ft_putnbr_base(num, "0123456789ABCDEF");
-		data->len += ft_numlen(num);
-	}
-	else
-		return (NULL);
-	format++;
-	return (format);
-}
-
-const char	*ft_parse_helper(const char *format, t_data *data, va_list args)
-{
-	int	num;
-
-	num = va_arg(args, int);
 	if (*format == 'p')
-	{
-		if (num == 0)
-		{
-			ft_putstr("(nil)");
-			data->len += 5;
-		}
-		else
-		{
-			ft_putstr("0x");
-			ft_putnbr_base(num, "0123456789abcdef");
-			data->len += ft_numlen(num) + 2;
-		}
-	}
-	else if (*format == 'x' || *format == 'c' || *format == 'X')
-		ft_parse_helper2(format, data, args);
-	else
-		return (NULL);
-	format++;
-	return (format);
-}
-
-const char	*ft_parse(const char *format, t_data *data, va_list args)
-{
-	int		num;
-	char	*str;
-
-	if (*format == 'd')
-	{
-		num = va_arg(args, int);
-		ft_putnbr(num);
-		data->len += ft_numlen(num);
-	}
+		handle_p(data, args);
+	else if (*format == 'x')
+		handle_x(data, args);
+	else if (*format == 'X')
+		handle_X(data, args);
+	else if (*format == 'd' || *format == 'i')
+		handle_int(data, args);
+	else if (*format == 'u')
+		handle_unsigned_int(data, args);
+	else if (*format == '%')
+		handle_percent(data);
+	else if (*format == 'c')
+		handle_char(data, args);
 	else if (*format == 's')
-	{
-		str = va_arg(args, char *);
-		if (!str)
-			str = "(null)";
-		data->len += ft_strlen(str);
-		ft_putstr(str);
-	}
-	else if (*format == 'x' || *format == 'X' || *format == 'p'
-		|| *format == 'c')
-		ft_parse_helper(format, data, args);
+		handle_string(data, args);
 	else
 		return (NULL);
-	format++;
-	return (format);
+	return (format + 1);
 }
 
-const char	*ft_write_text(const char *format, t_data *data)
+const char *ft_write_text(const char *format, t_data *data)
 {
-	char	*next;
+	char *next;
 
 	next = ft_strchr(format);
 	if (next)
@@ -110,10 +50,10 @@ const char	*ft_write_text(const char *format, t_data *data)
 	return (format + data->written);
 }
 
-int	ft_printf(const char *format, ...)
+int ft_printf(const char *format, ...)
 {
-	va_list	args;
-	t_data	data;
+	va_list args;
+	t_data data;
 
 	data.len = 0;
 	data.written = 0;
@@ -122,7 +62,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			format = ft_parse(format + 1, &data, args);
+			format = ft_handle_flags(format + 1, &data, args);
 		}
 		else
 		{
