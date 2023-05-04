@@ -13,9 +13,9 @@
 #include "get_next_line.h"
 #include <stdlib.h>
 
-int ft_strlen(const char *str)
+size_t ft_strlen(const char *str)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	while (str[i])
@@ -99,4 +99,28 @@ char *ft_strncat(char *dest, char *src, int nb)
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+
+char *ft_substr(char *s, unsigned int start, size_t len)
+{
+	char *str;
+	size_t i;
+
+	i = 0;
+	if (!s || !(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	if (start > ft_strlen(s))
+	{
+		str[0] = '\0';
+		return (str);
+	}
+	while (i < len && s[start])
+	{
+		str[i] = s[start];
+		i++;
+		start++;
+	}
+	str[i] = '\0';
+	free(s);
+	return (str);
 }
