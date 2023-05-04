@@ -12,15 +12,14 @@
 
 #include "ft_printf.h"
 
-const char *ft_handle_flags(const char *format, t_data *data, va_list args)
+const char	*ft_handle_flags(const char *format, t_data *data, va_list args)
 {
-
 	if (*format == 'p')
 		handle_p(data, args);
 	else if (*format == 'x')
 		handle_x(data, args);
 	else if (*format == 'X')
-		handle_X(data, args);
+		handle_cx(data, args);
 	else if (*format == 'd' || *format == 'i')
 		handle_int(data, args);
 	else if (*format == 'u')
@@ -36,9 +35,9 @@ const char *ft_handle_flags(const char *format, t_data *data, va_list args)
 	return (format + 1);
 }
 
-const char *ft_write_text(const char *format, t_data *data)
+const char	*ft_write_text(const char *format, t_data *data)
 {
-	char *next;
+	char	*next;
 
 	next = ft_strchr(format);
 	if (next)
@@ -50,10 +49,10 @@ const char *ft_write_text(const char *format, t_data *data)
 	return (format + data->written);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	t_data data;
+	va_list	args;
+	t_data	data;
 
 	data.len = 0;
 	data.written = 0;

@@ -12,28 +12,28 @@
 
 #include "ft_printf.h"
 
-void handle_percent(t_data *data)
+void	handle_percent(t_data *data)
 {
-    ft_putchar('%');
-    data->len++;
+	ft_putchar('%');
+	data->len++;
 }
 
-void handle_char(t_data *data, va_list args)
+void	handle_char(t_data *data, va_list args)
 {
-    char c;
+	char	c;
 
-    c = va_arg(args, int);
-    ft_putchar(c);
-    data->len++;
+	c = va_arg(args, int);
+	ft_putchar(c);
+	data->len++;
 }
 
-void handle_string(t_data *data, va_list args)
+void	handle_string(t_data *data, va_list args)
 {
-    char *str;
+	char	*str;
 
-    str = va_arg(args, char *);
-    if (str == NULL)
-        str = "(null)";
-    ft_putstr(str);
-    data->len += ft_strlen(str);
+	str = va_arg(args, char *);
+	if (str == NULL)
+		str = "(null)";
+	ft_putstr(str);
+	data->len += ft_strlen(str);
 }

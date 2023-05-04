@@ -12,63 +12,81 @@
 
 #include "ft_printf.h"
 
-char *ft_strjoin(char const *s1, char const *s2)
+int	ft_print_pointer(unsigned long nbr, char *base)
 {
-    char *str;
-    size_t i;
-    size_t j;
+	int	len;
 
-    i = 0;
-    j = 0;
-    if (s1 == NULL || s2 == NULL)
-        return (NULL);
-    str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-    if (str == NULL)
-        return (NULL);
-    while (s1[i] != '\0')
-    {
-        str[i] = s1[i];
-        i++;
-    }
-    while (s2[j] != '\0')
-    {
-        str[i + j] = s2[j];
-        j++;
-    }
-    str[i + j] = '\0';
-    return (str);
+	len = 0;
+	if (nbr >= (unsigned long)ft_strlen(base))
+	{
+		len += ft_print_pointer(nbr / (unsigned long)ft_strlen(base), base);
+		len += ft_print_pointer(nbr % (unsigned long)ft_strlen(base), base);
+	}
+	else
+	{
+		ft_putchar(base[nbr]);
+		len++;
+	}
+	return (len);
 }
 
-void handle_x(t_data *data, va_list args)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-    unsigned int nbr;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-    nbr = va_arg(args, unsigned int);
-    data->len += ft_putnbr_base(nbr, "0123456789abcdef");
+	i = 0;
+	j = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (str == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	str[i + j] = '\0';
+	return (str);
 }
 
-void handle_X(t_data *data, va_list args)
+void	handle_x(t_data *data, va_list args)
 {
-    unsigned int nbr;
+	unsigned int	nbr;
 
-    nbr = va_arg(args, unsigned int);
-    data->len += ft_putnbr_base(nbr, "0123456789ABCDEF");
+	nbr = va_arg(args, unsigned int);
+	data->len += ft_putnbr_base(nbr, "0123456789abcdef");
 }
 
-void handle_p(t_data *data, va_list args)
+void	handle_cx(t_data *data, va_list args)
 {
-    unsigned long nbr;
+	unsigned int	nbr;
 
-    nbr = va_arg(args, unsigned long);
-    if (nbr == 0)
-    {
-        ft_putstr("(nil)");
-        data->len += 5;
-    }
-    else
-    {
-        ft_putstr("0x");
-        data->len += 2;
-        data->len += ft_putnbr_base(nbr, "0123456789abcdef");
-    }
+	nbr = va_arg(args, unsigned int);
+	data->len += ft_putnbr_base(nbr, "0123456789ABCDEF");
+}
+
+void	handle_p(t_data *data, va_list args)
+{
+	unsigned long	nbr;
+
+	nbr = va_arg(args, unsigned long);
+	if (nbr == 0)
+	{
+		ft_putstr("(nil)");
+		data->len += 5;
+	}
+	else
+	{
+		ft_putstr("0x");
+		data->len += 2;
+		data->len += ft_print_pointer(nbr, "0123456789abcdef");
+	}
 }
