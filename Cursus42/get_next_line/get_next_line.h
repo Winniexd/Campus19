@@ -26,5 +26,7 @@ char *ft_strdup(char *s1);
 char *ft_strncat(char *dest, char *src, int n);
 char *ft_substr(char *s, unsigned int start, size_t len);
 size_t ft_strlen(const char *str);
+void *ft_calloc(size_t count, size_t size);
+void ft_free(char **str);
 
 #endif

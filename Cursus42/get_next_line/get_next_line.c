@@ -11,68 +11,86 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 4
+#define BUFFER_SIZE 1
 #endif
 
-void ft_free(char *str)
+void *ft_memset(void *b, int c, size_t len)
 {
-	if (str)
+	unsigned char *str;
+
+	str = (unsigned char *)b;
+	while (len--)
 	{
-		free(str);
-		str = NULL;
+		*str = (unsigned char)c;
+		if (len)
+			str++;
 	}
+	return (b);
+}
+
+void ft_free(char **str)
+{
+	if (*str)
+	{
+		free(*str);
+		*str = NULL;
+	}
+}
+
+char *ft_read_line(char *buff, char **prev_buff)
+{
+	char *line;
+	char *temp;
+	int i;
+
+	i = 0;
+	while (buff[i] != '\n' && buff[i] != '\0')
+		i++;
+	if (buff[i] == '\n')
+	{
+		line = ft_substr(buff, 0, i + 1);
+		temp = ft_strdup(&buff[i + 1]);
+		ft_free(prev_buff);
+		*prev_buff = temp;
+	}
+	else
+	{
+		line = ft_strdup(buff);
+		ft_free(prev_buff);
+	}
+	return (line);
 }
 
 char *get_next_line(int fd)
 {
-	static char *prev_buffer;
-	char *buffer;
+	static char *prev_buff;
+	char *buff;
 	char *line;
 	int ret;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
-	ret = read(fd, buffer, BUFFER_SIZE);
-	if (ret == -1 || !buffer || ret == 0)
+	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	ret = read(fd, buff, BUFFER_SIZE);
+	if (fd < 0 || ret < 0 || BUFFER_SIZE < 1)
 	{
-		ft_free(buffer);
+		ft_free(&buff);
+		return (NULL);
+	}
+	if (ret == 0 && !prev_buff)
+	{
+		ft_free(&buff);
 		return (NULL);
 	}
 	while (ret > 0)
 	{
-		buffer[ret] = '\0';
-		if (prev_buffer)
-		{
-			line = ft_strjoin(prev_buffer, buffer);
-			ft_free(prev_buffer);
-			prev_buffer = NULL;
-		}
-		else
-			line = ft_strdup(buffer);
-		if (ret == 0 || ret <= BUFFER_SIZE)
-		{
-			ft_free(buffer);
-			return (line);
-		}
-		if (ft_strchr(line, '\n'))
-		{
-			prev_buffer = ft_strdup(ft_strchr(line, '\n') + 1);
-			*(ft_strchr(line, '\n')) = '\0';
-			ft_free(buffer);
-			return (line);
-		}
-		ret = read(fd, buffer, BUFFER_SIZE);
-		ft_free(line);
+		line = ft_read_line(buff, &prev_buff);
+		if (ft_strchr(buff, '\n'))
+			break;
+		ret = read(fd, buff, BUFFER_SIZE);
 	}
-	ft_free(buffer);
-	return (NULL);
+	ft_memset(&buff, 0, BUFFER_SIZE + 1);
+	if (ret == 0 && !prev_buff)
+		return (NULL);
+	return (line);
 }
