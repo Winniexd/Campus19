@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -57,6 +58,7 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
+size_t				f_strlen(const char *s);
 
 // Bonus functions
 t_list				*ft_lstnew(void *content);

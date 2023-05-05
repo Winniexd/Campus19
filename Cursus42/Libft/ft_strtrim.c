@@ -34,7 +34,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*str;
 
 	i = 0;
-	j = ft_strlen(s1) - 1;
+	j = f_strlen(s1) - 1;
 	k = 0;
 	while (ft_isinset(s1[i], set) == 1)
 		i++;
