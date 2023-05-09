@@ -85,3 +85,17 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+char	*ft_strdup(char *s1)
+{
+	size_t	len;
+	char	*result;
+
+	len = ft_strlen(s1);
+	result = (char *)malloc(len + 1);
+	if (!result)
+		return (NULL);
+	ft_memcpy(result, s1, len);
+	result[len] = '\0';
+	return (result);
+}

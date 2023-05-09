@@ -32,7 +32,7 @@ char	*ft_parse(char *start)
 	line = (char *)malloc(len + 1);
 	if (!line)
 		return (NULL);
-	memcpy(line, start, len);
+	ft_memcpy(line, start, len);
 	line[len] = '\0';
 	return (line);
 }
@@ -57,7 +57,7 @@ char	*ft_move_start(char *start)
 		free(start);
 		return (NULL);
 	}
-	new_buff = strdup(end + 1);
+	new_buff = ft_strdup(end + 1);
 	free(start);
 	return (new_buff);
 }
