@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdlib.h>
 
 size_t	ft_strlen(const char *str)
 {
@@ -48,40 +47,41 @@ char	*ft_strchr(char *s, int c)
 
 char	*ft_strjoin(char *start, char *buff)
 {
-	char	*ptr;
+	size_t	start_len;
+	size_t	buff_len;
+	char	*result;
 
-	if (!start)
-	{
-		start = (char *)malloc(1 * sizeof(char));
-		start[0] = '\0';
-	}
-	if (!start || !buff)
+	start_len = 0;
+	buff_len = 0;
+	if (start)
+		start_len = ft_strlen(start);
+	if (buff)
+		buff_len = ft_strlen(buff);
+	result = (char *)malloc(start_len + buff_len + 1);
+	if (!result)
 		return (NULL);
-	ptr = (char *)malloc(1 + ft_strlen(start) + ft_strlen(buff) * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	ptr = ft_join(ptr, start, buff);
+	if (start)
+		ft_memcpy(result, start, start_len);
+	if (buff)
+		ft_memcpy(result + start_len, buff, buff_len);
+	result[start_len + buff_len] = '\0';
 	free(start);
-	return (ptr);
+	return (result);
 }
 
-char	*ft_join(char *dest, char *s1, char *s2)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
-	size_t	j;
 
+	if (!dest && !src)
+		return (NULL);
+	if (n == 0)
+		return (dest);
 	i = 0;
-	while (s1 && s1[i])
+	while (i < n)
 	{
-		dest[i] = s1[i];
+		((char *)dest)[i] = ((char *)src)[i];
 		i++;
 	}
-	j = 0;
-	while (s2 && s2[j])
-	{
-		dest[i + j] = s2[j];
-		j++;
-	}
-	dest[i + j] = '\0';
 	return (dest);
 }

@@ -16,38 +16,32 @@
 # define BUFFER_SIZE 1
 #endif
 
-char	*ft_line_read(char *start)
+char	*ft_parse(char *start)
 {
-	int		i;
+	char	*end;
+	size_t	len;
 	char	*line;
 
-	if (!start || !start[0])
+	if (!start || !*start)
 		return (NULL);
-	i = 0;
-	while (start[i] && start[i] != '\n')
-		i++;
-	if (start[i] == '\n')
-		i++;
-	line = (char *)malloc(1 + i * sizeof(char));
+	end = ft_strchr(start, '\n');
+	if (end != NULL)
+		len = (size_t)(end - start + 1);
+	else
+		len = ft_strlen(start);
+	line = (char *)malloc(len + 1);
 	if (!line)
 		return (NULL);
-	i = 0;
-	while (start[i] && start[i] != '\n')
-	{
-		line[i] = start[i];
-		i++;
-	}
-	if (start[i] == '\n')
-		line[i++] = '\n';
-	line[i] = '\0';
+	memcpy(line, start, len);
+	line[len] = '\0';
 	return (line);
 }
 
 char	*ft_move_start(char *start)
 {
-	char	*new_buff;
 	int		i;
-	int		j;
+	char	*end;
+	char	*new_buff;
 
 	i = 0;
 	while (start[i] && start[i] != '\n')
@@ -57,17 +51,13 @@ char	*ft_move_start(char *start)
 		free(start);
 		return (NULL);
 	}
-	i += (start[i] == '\n');
-	new_buff = (char *)malloc(1 + ft_strlen(start) - i);
-	if (!new_buff)
-		return (NULL);
-	j = 0;
-	while (start[i + j])
+	end = ft_strchr(start, '\n');
+	if (!end)
 	{
-		new_buff[j] = start[i + j];
-		j++;
+		free(start);
+		return (NULL);
 	}
-	new_buff[j] = '\0';
+	new_buff = strdup(end + 1);
 	free(start);
 	return (new_buff);
 }
@@ -96,7 +86,7 @@ char	*get_next_line(int fd)
 		start_line = ft_strjoin(start_line, line);
 	}
 	free(line);
-	line = ft_line_read(start_line);
+	line = ft_parse(start_line);
 	start_line = ft_move_start(start_line);
 	return (line);
 }

@@ -28,5 +28,8 @@ size_t	ft_strlen(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_free(char **str);
 char	*ft_join(char *ptr, char *start, char *buff);
+char	*ft_parse(char *start);
+char	*ft_move_start(char *start);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif
