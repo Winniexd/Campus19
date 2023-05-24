@@ -78,7 +78,15 @@ void	handle_p(t_data *data, va_list args)
 	unsigned long	nbr;
 
 	nbr = va_arg(args, unsigned long);
-	ft_putstr("0x");
-	data->len += 2;
-	data->len += ft_print_pointer(nbr, "0123456789abcdef");
+	if (nbr == 0)
+	{
+		ft_putstr("(nil)");
+		data->len += 5;
+	}
+	else
+	{
+		ft_putstr("0x");
+		data->len += 2;
+		data->len += ft_print_pointer(nbr, "0123456789abcdef");
+	}
 }
