@@ -62,11 +62,10 @@ char	*ft_move_start(char *start)
 	return (new_buff);
 }
 
-char	*get_next_line(int fd)
+char	*norminette_is_dumb(int fd, char *start_line)
 {
-	char		*line;
-	int			ret;
-	static char	*start_line;
+	int		ret;
+	char	*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -79,6 +78,8 @@ char	*get_next_line(int fd)
 		ret = read(fd, line, BUFFER_SIZE);
 		if (ret == -1)
 		{
+			free(start_line);
+			start_line = NULL;
 			free(line);
 			return (NULL);
 		}
@@ -86,6 +87,17 @@ char	*get_next_line(int fd)
 		start_line = ft_strjoin(start_line, line);
 	}
 	free(line);
+	return (start_line);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*line;
+	static char	*start_line;
+
+	start_line = norminette_is_dumb(fd, start_line);
+	if (!start_line)
+		return (NULL);
 	line = ft_parse(start_line);
 	start_line = ft_move_start(start_line);
 	return (line);
