@@ -42,7 +42,7 @@ t_stack *ft_create_stack(int size);
 void    ft_free_stack(t_stack *stack);
 int     ft_is_sorted(t_stack *stack);
 int     ft_fill_stack_a(t_stack *stack_a, int argc, char **argv);
-int     ft_check_error(int argc, char **argv);
+int     ft_check_duplicates(int argc, char **argv);
 void    ft_sort(t_stack *stack_a, t_stack *stack_b);
 void    ft_putstr(char *str);
 

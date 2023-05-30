@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror -g
 NAME=push_swap
 
 SRC= \
@@ -11,7 +11,7 @@ SRC= \
 	ft_fill_stack.c \
 	ft_sort.c \
 	push_swap_utils.c \
-	check_error.c \
+	check_duplicates.c \
 	create_stack.c \
 	ft_free_stack.c \
 
@@ -24,7 +24,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C Libft
-	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) -g $(INC) $(OBJ) $(LIBFT) -o $(NAME)
 
 clean:
 	@rm -f $(OBJ)

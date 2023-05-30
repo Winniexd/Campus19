@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int		ft_check_error(int argc, char **argv)
+int		ft_check_duplicates(int argc, char **argv)
 {
     int i;
     int j;
@@ -20,16 +20,11 @@ int		ft_check_error(int argc, char **argv)
     i = 1;
     while (i < argc)
     {
-        j = 0;
-        if (argv[i][j] == '-')
-            j++;
-        while (argv[i][j])
+        j = 1;
+        while (j < argc)
         {
-            if (ft_isdigit(argv[i][j]) == 0)
-            {
-                ft_putstr("Error\n");
+            if (ft_atoi(argv[i]) == ft_atoi(argv[j]) && i != j)
                 return (0);
-            }
             j++;
         }
         i++;
