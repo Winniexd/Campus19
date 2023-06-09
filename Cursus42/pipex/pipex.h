@@ -20,6 +20,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <errno.h>
+#include "./Libft/libft.h"
 
 typedef struct s_command
 {
@@ -31,5 +32,6 @@ typedef struct s_command
 
 void    pipex(int file1, int file2, char **argv, char **envp);
 void    command_init(int file, t_command *command);
+char    *find_path(char *cmd, char **envp);
 
 #endif

@@ -12,23 +12,63 @@
 
 #include "pipex.h"
 
+void    exec_cmd(char *cmd, char **envp)
+{
+    char **cmd_split;
+    char *path_cmd;
+
+    cmd_split = ft_split(cmd, ' ');
+    path_cmd = find_path(cmd_split[0], envp);
+    if (path_cmd == NULL)
+        exit(-1);
+    if (execve(path_cmd, cmd_split, envp) == -1)
+        exit(-1);
+    free(path_cmd);
+    free(cmd_split);
+    exit(0);
+}
+
+void    child(int *end, char **argv, char **envp)
+{
+    int fd;
+
+    fd = open(argv[1], O_RDONLY);
+    if (fd == -1)
+        exit(-1);
+    dup2(end[0], 1);
+    dup2(fd, 0);
+    close(end[0]);
+    exec_cmd(argv[2], envp);
+}
+
+void    parent(int *end, char **argv, char **envp)
+{
+    int fd;
+
+    fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+    if (fd == -1)
+        exit(-1);
+    dup2(end[1], 0);
+    dup2(fd, 1);
+    close(end[1]);
+    exec_cmd(argv[3], envp);
+}
+
 int main(int argc, char **argv, char **envp)
 {
-    int file1;
-    int file2;
+    int end[2];
+    int pid;
 
     if (argc != 5)
-        return (0);
-    if (check_exist(argv[2]) || check_exist(argv[3]))
-        return (-1);
-    file1 = open(argv[1], O_RDONLY);
-    file2 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
-    if (file1 < 0)
-        ft_puterrno(strerror(errno), argv[1]);
-    if (file2 < 0)
-        ft_puterrno(strerror(errno), argv[4]);
-    pipex(file1, file2, argv, envp);
-    if (close(file1) < 0 || close(file2) < 0)
-        return (ft_puterrno(strerror(errno), 0));
+        return (1);
+    if (pipe(end) == -1)
+        return (2);
+    pid = fork();
+    if (pid == -1)
+        return (3);
+    if (pid == 0)
+        child(end, argv, envp);
+    else
+        parent(end, argv, envp);
     return (0);
 }

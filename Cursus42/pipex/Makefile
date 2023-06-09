@@ -1,10 +1,8 @@
 
 NAME=pipex
 
-SRC=pipex.c \
-	pipex_utils.c \
+SRC=pipex_utils.c \
 	main.c \
-	command_init.c \
 
 OBJ=$(SRC:.c=.o)
 CFLAGS= -Wall -Werror -Wextra -g
