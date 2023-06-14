@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 11:18:50 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/05/24 11:18:51 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:43:12 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:56:16 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
-    t_node *stack_a;
+	size_t	i;
+	size_t	j;
 
-    if (argc < 2 || (argc == 2 && ft_strlen(argv[1]) == 0))
-        return (0);
-    else if (argc == 2)
-        argv = ft_split(argv[1], ' ');
-    ft_create_stack(&stack_a, argv + 1, argc - 1);
-    ft_sort_three(stack_a);
+	i = 0;
+	j = 0;
+	if (to_find[0] == '\0')
+		return ((char *)str);
+	while (str[i] != '\0' && i < n)
+	{
+		while (str[i + j] == to_find[j] && i + j < n)
+		{
+			if (to_find[j + 1] == '\0')
+				return ((char *)str + i);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (NULL);
 }

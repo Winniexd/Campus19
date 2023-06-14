@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 11:18:50 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/05/24 11:18:51 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 13:01:40 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 13:06:03 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_putendl_fd(char *s, int fd)
 {
-    t_node *stack_a;
-
-    if (argc < 2 || (argc == 2 && ft_strlen(argv[1]) == 0))
-        return (0);
-    else if (argc == 2)
-        argv = ft_split(argv[1], ' ');
-    ft_create_stack(&stack_a, argv + 1, argc - 1);
-    ft_sort_three(stack_a);
+	write(fd, s, f_strlen(s));
+	write(fd, "\n", 1);
 }

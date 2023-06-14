@@ -12,66 +12,29 @@
 
 #include "push_swap.h"
 
-int ft_is_sorted(t_stack *stack)
+void	ft_sort_three(t_node *stack)
 {
-    int i;
+    int a;
+    int b;
+    int c;
 
-    i = 0;
-    while (i < stack->size - 1)
+    a = stack->value;
+    b = stack->next->value;
+    c = stack->next->next->value;
+    if (a > b && b < c && a < c)
+        ft_swap(stack);
+    else if (a > b && b > c && a > c)
     {
-        if (stack->tab[i] > stack->tab[i + 1])
-            return (0);
-        i++;
+        ft_swap(stack);
+        ft_rotate(stack);
     }
-    return (1);
-}
-
-int ft_search_min(t_stack *stack_a)
-{
-    int i;
-    int min;
-
-    i = 0;
-    min = stack_a->tab[0];
-    if (stack_a->size == 1)
-        return (min);
-    while (i < stack_a->size)
+    else if (a > b && b < c && a > c)
+        ft_reverse_rotate(stack);
+    else if (a < b && b > c && a < c)
     {
-        if (stack_a->tab[i] < min)
-        {
-            min = stack_a->tab[i];
-        }
-        i++;
+        ft_swap(stack);
+        ft_reverse_rotate(stack);
     }
-    return (min);
-}
-
-void ft_push_min(t_stack *stack_a, t_stack *stack_b)
-{
-    int min;
-    
-    min = ft_search_min(stack_a);
-    while (stack_a->tab[0] != min)
-    {
-        ft_rotate_a(stack_a);
-    }
-    ft_push_b(stack_a, stack_b);
-}
-
-void ft_sort(t_stack *stack_a, t_stack *stack_b)
-{
-    int i;
-
-    i = 0;
-    if (ft_is_sorted(stack_a) == 1)
-        return ;
-    while (stack_a->size)
-    {
-        ft_push_min(stack_a, stack_b);
-    }
-    while (i < stack_b->size)
-    {
-        ft_push_a(stack_a, stack_b);
-        i++;
-    }
+    else if (a < b && b > c && a > c)
+        ft_rotate(stack);
 }

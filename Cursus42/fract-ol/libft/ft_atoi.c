@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 11:18:50 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/05/24 11:18:51 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:44:29 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:44:32 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
-
-int main(int argc, char **argv)
+int	ft_atoi(const char *str)
 {
-    t_node *stack_a;
+	int				i;
+	int				sign;
+	unsigned int	nb;
 
-    if (argc < 2 || (argc == 2 && ft_strlen(argv[1]) == 0))
-        return (0);
-    else if (argc == 2)
-        argv = ft_split(argv[1], ' ');
-    ft_create_stack(&stack_a, argv + 1, argc - 1);
-    ft_sort_three(stack_a);
+	i = 0;
+	sign = 1;
+	nb = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + str[i] - '0';
+		i++;
+	}
+	return (nb * sign);
 }

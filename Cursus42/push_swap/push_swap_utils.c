@@ -28,3 +28,17 @@ void    ft_putstr(char *str)
         i++;
     }
 }
+
+int ft_is_sorted(t_node *stack)
+{
+    t_node *tmp;
+
+    tmp = stack;
+    while (tmp->next)
+    {
+        if (tmp->value > tmp->next->value)
+            return (0);
+        tmp = tmp->next;
+    }
+    return (1);
+}

@@ -24,7 +24,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C Libft
-	$(CC) $(CFLAGS) -g $(INC) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
 
 clean:
 	@rm -f $(OBJ)

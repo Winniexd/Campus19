@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 11:18:50 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/05/24 11:18:51 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:44:42 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:54:30 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_calloc(size_t count, size_t size)
 {
-    t_node *stack_a;
+	void	*ptr;
 
-    if (argc < 2 || (argc == 2 && ft_strlen(argv[1]) == 0))
-        return (0);
-    else if (argc == 2)
-        argv = ft_split(argv[1], ' ');
-    ft_create_stack(&stack_a, argv + 1, argc - 1);
-    ft_sort_three(stack_a);
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }

@@ -12,16 +12,51 @@
 
 #include "push_swap.h"
 
-t_stack		*ft_create_stack(int size)
+void ft_create_node(t_node **stack, int number)
 {
-    t_stack *stack;
+    t_node *node;
+    t_node *prev_node;
 
-    stack = (t_stack *)malloc(sizeof(t_stack));
     if (stack == NULL)
-        return (NULL);
-    stack->tab = (int *)malloc(sizeof(int) * size);
-    if (stack->tab == NULL)
-        return (NULL);
-    stack->size = size;
-    return (stack);
+        return;
+    node = (t_node *)malloc(sizeof(t_node));
+    if (node == NULL)
+        return;
+    node->next = NULL;
+    node->value = number;
+    if (*stack == NULL)
+    {
+        *stack = node;
+        node->prev = NULL;
+    }
+    else
+    {
+        prev_node = *stack;
+        while (prev_node->next != NULL)
+            prev_node = prev_node->next;
+        prev_node->next = node;
+        node->prev = prev_node;
+    }
+}
+
+void   ft_create_stack(t_node **stack, char **argv, int argc)
+{
+    int i;
+    int number;
+
+    i = 0;
+    while (argv[i])
+    {
+        number = ft_atoi(argv[i]);
+        if (ft_check_duplicates(argc, argv) == 0)
+        {
+            ft_free_error(stack, argv, argc);
+            ft_putstr("Error\n");
+            exit(0);
+        }
+        ft_create_node(stack, number);
+        i++;
+    }
+    if (argc == 1)
+        ft_free_error(stack, argv, argc);
 }
