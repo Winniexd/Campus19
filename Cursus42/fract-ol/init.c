@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:25:15 by winniexd          #+#    #+#             */
-/*   Updated: 2023/06/15 00:12:49 by winniexd         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:17:08 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,10 @@ void	init_fractol(t_fractol *f, char **av)
 {
 	if (ft_strcmp(av[1], "mandelbrot") == 0 && !av[2])
 		init_mandelbrot(f);
-    /*
-	else if (ft_strcmp(av[1], "julia") == 0)
-	{
-		if (av[2] && av[3])
-			preset_julia(f, ft_atof(av[2]), ft_atof(av[3]));
-		else
-			init_julia(f);
-	}
 	else if (ft_strcmp(av[1], "burningship") == 0 && !av[2])
-		init_ship(f);
-    */
+		init_burningship(f);
+	else if (ft_strcmp(av[1], "julia") == 0)
+		init_julia(f, av);
 	else
 		destroy_window(f);
 	draw_fractal(f);

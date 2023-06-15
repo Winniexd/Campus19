@@ -8,6 +8,8 @@ SRC=draw.c \
 	hooks.c \
 	init.c \
 	mandelbrot.c \
+	burningship.c \
+	julia.c \
 
 OBJ=$(SRC:.c=.o)
 

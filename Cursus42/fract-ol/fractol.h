@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:21:19 by winniexd          #+#    #+#             */
-/*   Updated: 2023/06/15 00:11:15 by winniexd         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:48:29 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,22 @@ int destroy_window(t_fractol *f);
 int key_hook(int key, t_fractol *f);
 int mouse_hook(int button, int x, int y, t_fractol *f);
 int mouse_move(int x, int y, t_fractol *f);
+
 void	init_fractol(t_fractol *f, char **av);
 void    init_mlx(t_fractol *f, char **argv);
+
 void    init_mandelbrot(t_fractol *f);
-void    init_julia(t_fractol *f, char **argv);
-void    init_burningship(t_fractol *f);
-void    find_julia_pixel(t_fractol *f);
-void    find_burningship_pixel(t_fractol *f);
 void    draw_mandelbrot(t_fractol *f);
+
+void    init_julia(t_fractol *f, char **argv);
+void    find_julia_pixel(t_fractol *f);
 void    draw_julia(t_fractol *f);
+
+void    init_burningship(t_fractol *f);
+void    find_burningship_pixel(t_fractol *f);
 void    draw_burningship(t_fractol *f);
+
 void    draw_fractal(t_fractol *f);
+void    pxl_color(t_fractol *f, int color);
 
 #endif

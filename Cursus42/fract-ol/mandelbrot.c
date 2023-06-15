@@ -6,19 +6,11 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:30:52 by winniexd          #+#    #+#             */
-/*   Updated: 2023/06/15 00:22:49 by winniexd         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:26:28 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void	pxl_input(t_fractol *f, int color)
-{
-	char	*dst;
-
-	dst = f->addr + (f->y * f->line_length + f->x * (f->bpp / 8));
-	*(unsigned int *)dst = color;
-}
 
 void	init_mandelbrot(t_fractol *f)
 {
@@ -31,28 +23,25 @@ void	init_mandelbrot(t_fractol *f)
 
 static void	find_mandelbrot_pixel(t_fractol *f)
 {
-	double	z_next;
-	double	z_tmp;
-	int		i;
+	int		n;
+	double	zr;
+	double	zi;
+	double	tmp;
 
-	f->re_c = f->x / f->zoom + f->center_x;
-	f->im_c = -(f->y / f->zoom + f->center_y);
-	f->re_z = 0.0;
-	f->im_z = 0.0;
-	i = 0;
-	z_next = 0.0;
-	while (z_next < 4 && i < f->iter)
+	zr = 0;
+	zi = 0;
+	n = 0;
+	while (n < f->iter && (zr * zr + zi * zi) < 4.0)
 	{
-		z_tmp = f->re_z;
-		f->re_z = f->re_z * f->re_z - f->im_z * f->im_z + f->re_c;
-		f->im_z = 2 * f->im_z * z_tmp - f->im_c;
-		z_next = f->re_z * f->re_z + f->im_z * f->im_z;
-		i++;
+		tmp = 2 * zr * zi + -(f->y / f->zoom + f->center_y);
+		zr = zr * zr - zi * zi + f->x / f->zoom + f->center_x;
+		zi = tmp;
+		n++;
 	}
-	if (i == f->iter)
-		pxl_input(f, 0);
+	if (n == f->iter)
+		pxl_color(f, 0);
 	else
-		pxl_input(f, f->color & ~f->mask * i);
+		pxl_color(f, f->color & ~f->mask * n);
 }
 
 void	draw_mandelbrot(t_fractol *f)

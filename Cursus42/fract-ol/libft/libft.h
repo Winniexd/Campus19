@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 12:32:00 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/06/14 23:57:42 by winniexd         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:13:05 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int					ft_strlcpy(char *dest, char const *src, size_t size);
 int					ft_memcmp(void *s1, void *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
+double				ft_atof(const char *str);
 char				*ft_strdup(const char *str);
 char				*ft_strchr(const char *str, int c);
 char				*ft_itoa(int n);

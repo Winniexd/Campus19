@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:49:04 by winniexd          #+#    #+#             */
-/*   Updated: 2023/06/15 00:19:06 by winniexd         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:07:46 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,81 +26,16 @@ void	zoom_out(int x, int y, t_fractol *f)
 	f->zoom /= 1.5;
 }
 
-/*
-static void	key_hook_color(int key, t_fractol *f)
+void print_values(t_fractol *f)
 {
-	if (key == KEY_ONE)
-		f->color = 0x00FF0000;
-	else if (key == KEY_TWO)
-		f->color = 0x0000FF00;
-	else if (key == KEY_TREE)
-		f->color = 0x000000FF;
-	else if (key == KEY_FOUR)
-		f->color = 0x00FFFFFF;
-	else if (key == KEY_FIVE)
-		f->color = 0x00FFFF00;
-	else if (key == KEY_SIX)
-		f->color = 0x0000FFFF;
-	else if (key == KEY_SEVEN)
-		f->color = 0x00FF00FF;
-	else if (key == KEY_EIGHT)
-		f->color = 0x0000FFF0;
-	else if (key == KEY_NINE)
-		f->color = 0x00FF7F7f;
+	printf("f->center_x = %f\n", f->center_x);
+	printf("f->center_y = %f\n", f->center_y);
+	printf("f->zoom = %f\n", f->zoom);
+	printf("f->iter = %d\n", f->iter);
+	printf("f->color = %d\n", f->color);
+	printf("f->fractype = %d\n", f->fractype);
+	printf("f->mask = %d\n", f->mask);
 }
-*/
-/*
-static void	key_hook_function(int key, t_fractol *f)
-{
-	if (key == KEY_F1)
-		preset_julia(f, 0.285, 0.01);
-	else if (key == KEY_F2)
-		preset_julia(f, -0.4, 0.6);
-	else if (key == KEY_F3)
-		preset_julia(f, -0.70176, -0.3842);
-	else if (key == KEY_F4)
-		preset_julia(f, -0.835, -0.2321);
-	else if (key == KEY_F5)
-		preset_julia(f, -0.8, 0.156);
-	else if (key == KEY_F6)
-		preset_julia(f, -0.7269, 0.1889);
-	else if (key == KEY_F7)
-		preset_julia(f, 0.0, -0.8);
-	else if (key == KEY_F8)
-		preset_julia(f, -0.63, 0.67);
-	else if (key == KEY_F9)
-		preset_julia(f, 0.35, 0.05);
-	else if (key == KEY_F10)
-		preset_julia(f, -0.76, 0.12);
-	else if (key == KEY_F11)
-		preset_julia(f, -0.1222, 0.7444);
-	else if (key == KEY_F12)
-		preset_julia(f, -1.0, 0.0);
-}
-*/
-/*
-static void	key_hook_switch(int key, t_fractol *f)
-{
-	if (key == KEY_ZERO)
-	{
-		if (f->mask == 0x00000000)
-			f->mask = 0x000F0F0F;
-		else if (f->mask == 0x000F0F0F)
-			f->mask = 0x00F0F0F0;
-		else
-			f->mask = 0x00000000;
-	}
-	else if (key == KEY_SPC)
-	{
-		if (f->fractype == 0)
-			init_julia(f);
-		else if (f->fractype == 1)
-			init_ship(f);
-		else
-			init_mandel(f);
-	}
-}
-*/
 
 int	key_hook(int key, t_fractol *f)
 {
@@ -125,6 +60,7 @@ int	key_hook(int key, t_fractol *f)
 	//key_hook_switch(key, f);
 	//key_hook_function(key, f);
 	//key_hook_color(key, f);
+	print_values(f);
 	draw_fractal(f);
 	return (0);
 }
