@@ -28,7 +28,7 @@ void	init_mlx(t_fractol	*f, char **argv)
 	f->mlx = mlx_init();
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, argv[1]);
 	f->mask = 0x00F0F0F0;
-	f->color = 0x000000FF;
+	f->color = 0x00DC143C;
 }
 
 void	init_fractol(t_fractol *f, char **av)
