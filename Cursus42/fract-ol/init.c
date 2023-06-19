@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:25:15 by winniexd          #+#    #+#             */
-/*   Updated: 2023/06/15 14:17:08 by winniexd         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:49:25 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_mlx(t_fractol	*f, char **argv)
 	f->mlx = mlx_init();
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, argv[1]);
 	f->mask = 0x00F0F0F0;
-	f->color = 0x00DC143C;
+	f->color = 0x000000FF;
 }
 
 void	init_fractol(t_fractol *f, char **av)
@@ -37,7 +37,7 @@ void	init_fractol(t_fractol *f, char **av)
 		init_mandelbrot(f);
 	else if (ft_strcmp(av[1], "burningship") == 0 && !av[2])
 		init_burningship(f);
-	else if (ft_strcmp(av[1], "julia") == 0)
+	else if (ft_strcmp(av[1], "julia") == 0 && (av[2] && av[3]))
 		init_julia(f, av);
 	else
 		destroy_window(f);
