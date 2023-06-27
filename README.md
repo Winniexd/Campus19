@@ -1,15 +1,22 @@
 <h1><u>Projects Status:</u></h1>
 <br>
-<ul>
-  <li>libft: <b>Finished</b></li>
-  <li>Born2BeRoot: <b>Finished</b></li>
-  <li>GetNextLine: <b>Finished</b></li>
-  <li>ft_printf: <b>Finished</b></li>
-  <li>Fract-ol: <b>Finished</b></li>
-  <li>Minitalk: <b>Finished</b></li>
-  <li>Pipex: <b>In Progress</b></li>
-  <li>Push_Swap: <b>In Progress</b></li>
-</ul>
+
+- [X] Libft
+- [X] ft_printf
+- [X] Born2BeRoot
+- [X] GetNextLine
+- [X] Fract-ol
+- [X] Minitalk
+- [ ] Pipex
+- [ ] Push_Swap
+<br>
+
+**If there is a makefile present, just run the command "make" and run the excecutable(s) accordingly.
+If make is not yet installed on your machine, just rune the command shown below to install.**
+```bash
+sudo apt-get update -y && sudo apt-get upgrade -y
+sudo apt install make
+```
 <br>
 
 ![](https://github.com/Winniexd/Campus19/blob/master/chika.gif)
