@@ -46,7 +46,7 @@ void	send_char(char c, int pid)
             kill(pid, SIGUSR1);
         else
             kill(pid, SIGUSR2);
-        c = c >> 1;
+        c >>= 1;
         usleep(100);
         i++;
     }
@@ -58,7 +58,10 @@ int	main(int argc, char **argv)
     int	i;
 
     if (argc != 3)
+    {
+        ft_printf("%sError: wrong number of arguments%s\n", RED, RESET);
         return (0);
+    }
     pid = ft_atoi(argv[1]);
     i = 0;
     while (argv[2][i])
@@ -66,6 +69,6 @@ int	main(int argc, char **argv)
         send_char(argv[2][i], pid);
         i++;
     }
-    send_char('\0', pid);
+    send_char(argv[2][i], pid);
     return (0);
 }
