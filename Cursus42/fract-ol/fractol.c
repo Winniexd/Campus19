@@ -3,35 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:19:45 by winniexd          #+#    #+#             */
-/*   Updated: 2023/06/15 00:11:30 by winniexd         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:13:35 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	main(int ac, char **argv)
+int	main(int argc, char **argv)
 {
 	t_fractol	*fractol;
 
 	fractol = (t_fractol *)ft_calloc(1, sizeof(t_fractol));
 	if (!fractol)
 		return (-1);
-	if (ac == 2 || ac == 4)
-	{
-		init_mlx(fractol, argv);
-		init_fractol(fractol, argv);
-		mlx_mouse_hook(fractol->win, mouse_hook, fractol);
-		mlx_hook(fractol->win, 17, 1L << 2, &destroy_window, fractol);
-		mlx_key_hook(fractol->win, key_hook, fractol);
-		mlx_loop(fractol->mlx);
-	}
-	else if (ac == 3 && ft_strcmp(argv[1], "julia") == 0)
-		ft_printf("Usage: ./fractol julia <float> <float>\n");
-	else
-		ft_printf("Usage: ./fractol [fractal]\n");
+	if (argc != 4 && argv[1] && ft_strcmp(argv[1], "julia") == 0)
+		return (ft_printf("Usage: ./fractol julia <float> <float>\n"));
+	else if (argc != 2 && argv[1] && ft_strcmp(argv[1], "julia") == 1)
+		return (ft_printf("Usage: ./fractol [fractal]\n"));
+	init_mlx(fractol, argv);
+	init_fractol(fractol, argv);
+	mlx_hook(fractol->win, 17, 1L << 2, &destroy_window, fractol);
+	mlx_key_hook(fractol->win, key_hook, fractol);
+	mlx_mouse_hook(fractol->win, mouse_hook, fractol);
+	mlx_loop(fractol->mlx);
 	free(fractol);
 	return (0);
 }

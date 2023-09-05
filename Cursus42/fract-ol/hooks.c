@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:49:04 by winniexd          #+#    #+#             */
-/*   Updated: 2023/06/19 16:04:32 by winniexd         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:12:39 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	mouse_hook(int button, int x, int y, t_fractol *f)
 	{
 		f->re_c = (x - (double)WIDTH / 2) / (f->zoom);
 		f->im_c = (y - (double)HEIGHT / 2) / (f->zoom);
-	}
+	}	
 	draw_fractal(f);
 	return (0);
 }

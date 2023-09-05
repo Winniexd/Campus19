@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:25:15 by winniexd          #+#    #+#             */
-/*   Updated: 2023/06/19 15:49:25 by winniexd         ###   ########.fr       */
+/*   Updated: 2023/09/05 14:08:50 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int destroy_window(t_fractol *f)
+int	destroy_window(t_fractol *f)
 {
-    mlx_clear_window(f->mlx, f->win);
-    mlx_destroy_window(f->mlx, f->win);
-    mlx_destroy_display(f->mlx);
-    mlx_loop_end(f->mlx);
-    free(f->mlx);
-    free(f);
-    exit(1);
+	mlx_clear_window(f->mlx, f->win);
+	mlx_destroy_window(f->mlx, f->win);
+	mlx_destroy_display(f->mlx);
+	mlx_loop_end(f->mlx);
+	free(f->mlx);
+	free(f);
+	exit(1);
 }
 
-void	init_mlx(t_fractol	*f, char **argv)
+void	init_mlx(t_fractol *f, char **argv)
 {
 	f->mlx = mlx_init();
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, argv[1]);
