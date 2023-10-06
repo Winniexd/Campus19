@@ -6,13 +6,11 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 00:49:59 by matias            #+#    #+#             */
-/*   Updated: 2023/09/05 15:10:51 by matias           ###   ########.fr       */
+/*   Updated: 2023/09/22 03:05:12 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-// using signals and not sigaction
 
 void	handler(int signum)
 {

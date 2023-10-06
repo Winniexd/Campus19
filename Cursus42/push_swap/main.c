@@ -3,24 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 11:18:50 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/05/24 11:18:51 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/09/12 16:17:27 by matias            #+#    #+#             */
+/*   Updated: 2023/09/12 16:23:26 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int main(int argc, char **argv)
 {
-    t_node *stack_a;
-
-    if (argc < 2 || (argc == 2 && ft_strlen(argv[1]) == 0))
+    t_ps *ps;
+    
+    ps = malloc(sizeof(t_ps));
+    if (!ps)
         return (0);
-    else if (argc == 2)
-        argv = ft_split(argv[1], ' ');
-    ft_create_stack(&stack_a, argv + 1, argc - 1);
-    ft_sort_three(stack_a);
+    ft_create_stack(&ps->stack_a, argv, argc);
 }
