@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ps_list_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 16:17:27 by matias            #+#    #+#             */
-/*   Updated: 2023/09/12 16:23:26 by matias           ###   ########.fr       */
+/*   Created: 2023/10/07 14:57:13 by marvin            #+#    #+#             */
+/*   Updated: 2023/10/07 14:57:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int ps_create_stack(t_node **head, char **argv, int argc)
 {
-    t_ps *ps;
-    
-    ps = malloc(sizeof(t_ps));
-    if (!ps)
+    int i;
+
+    i = 1;
+    while (i < argc)
+    {
+        if (!ps_lstadd_back(head, ft_atoi(argv[i])))
+            return (0);
+        i++;
+    }
+    if (ps_has_dups(head) || ps_lstsize(*head) != argc - 1)
         return (0);
-    ps_create_stack(&ps->stack_a, argv, argc);
+    return (1);
 }

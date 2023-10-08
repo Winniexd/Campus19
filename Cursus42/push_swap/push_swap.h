@@ -32,7 +32,9 @@ typedef struct s_ps
     t_node *stack_b;
 } t_ps;
 
-void ps_lstadd_back(t_ps **lst, int nbr);
-int ft_create_stack(t_node **stack_a, char **argv, int argc);
+int ps_lstadd_back(t_node **head, int nbr);
+size_t ps_lstsize(t_node *head);
+int ps_is_sorted(t_node *head);
+int ps_has_dups(t_node **head);
 
 #endif
