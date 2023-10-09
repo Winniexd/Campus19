@@ -30,6 +30,7 @@ typedef struct s_ps
 {
     t_node *stack_a;
     t_node *stack_b;
+    size_t  size;
 } t_ps;
 
 int ps_lstadd_back(t_node **head, int nbr);

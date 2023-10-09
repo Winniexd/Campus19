@@ -19,5 +19,12 @@ int main(int argc, char **argv)
     ps = malloc(sizeof(t_ps));
     if (!ps)
         return (0);
-    ps_create_stack(&ps->stack_a, argv, argc);
+    if (!ps_create_stack(&ps->stack_a, argv, argc))
+    {
+        ft_putstr_fd("Error\n", 1);
+        return (0);
+    }
+    ps->size = ps_lstsize(&ps->stack_a);
+    ps_sort(ps);
+    return (0);
 }

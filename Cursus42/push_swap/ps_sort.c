@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ps_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 11:31:35 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/14 15:50:12 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/10/09 14:49:42 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/10/09 14:58:30 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "push_swap.h"
 
-int	ft_toupper(int c)
+void    ps_sort_three(t_ps *ps)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
+    
 }
