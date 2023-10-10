@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sort.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 14:49:42 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/10/10 11:48:34 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/17 14:28:11 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/17 15:41:07 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-/*
-void    ps_sort_three(t_ps *ps)
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-    
+	if (lst == NULL || new == NULL)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
-*/

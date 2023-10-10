@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_moves.c                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 15:01:15 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/10/10 11:48:08 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:15:14 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:55:58 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void ps_rotate(t_node **head)
+size_t	ft_strlen(const char *str)
 {
-    *head = (*head)->next;
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
 
-void ps_reverse_rotate(t_node **head)
+size_t	f_strlen(const char *str)
 {
-    *head = (*head)->prev;
+	size_t	i;
+
+	i = 0;
+	if (!str)
+	{
+		return (0);
+	}
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
-
-/*
-void ps_swap(t_node **head)
-{}
-
-void ps_push(t_node **src_head, t_node **dst_head)
-{}
-*/

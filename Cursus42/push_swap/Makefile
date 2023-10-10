@@ -4,34 +4,29 @@ NAME=push_swap
 
 SRC= \
 	main.c \
-	ft_swap.c \
-	ft_push.c \
-	ft_rotate.c \
-	ft_reverse_rotate.c \
-	ft_fill_stack.c \
-	ft_sort.c \
-	push_swap_utils.c \
-	check_duplicates.c \
-	create_stack.c \
-	ft_free_stack.c \
+	ps_list_init.c \
+	ps_list_utils.c \
+	ps_moves.c \
+	ps_sort.c \
+	ps_utils.c \
 
 OBJ=$(SRC:.c=.o)
 INCLUDES=push_swap.h
-LIBFT=Libft/libft.a
-INC=-I Libft -I .
+LIBFT=libft/libft.a
+INC=-I libft -I .
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C Libft
+	@make -C libft
 	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
 
 clean:
 	@rm -f $(OBJ)
-	@make clean -C Libft
+	@make clean -C libft
 
 fclean: clean
 	@rm -f $(NAME)
-	@make fclean -C Libft
+	@make fclean -C libft
 
 re: fclean all

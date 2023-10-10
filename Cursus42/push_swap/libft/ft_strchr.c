@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sort.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 14:49:42 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/10/10 11:48:34 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:36:18 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/06/13 15:14:02 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-/*
-void    ps_sort_three(t_ps *ps)
+#include "libft.h"
+
+char	*ft_strchr(const char *str, int c)
 {
-    
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == (char)c)
+			return ((char *)str + i);
+		i++;
+	}
+	if (str[i] == (char)c)
+		return ((char *)str + i);
+	return (NULL);
 }
-*/

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sort.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 14:49:42 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/10/10 11:48:34 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:38:29 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:38:32 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-/*
-void    ps_sort_three(t_ps *ps)
+int	ft_strncmp(const char *s1, const char *s2, int n)
 {
-    
+	int	i;
+
+	i = 0;
+	while (*s1 == *s2 && *s1 && i < n)
+	{
+		s1++;
+		s2++;
+		i++;
+	}
+	if (i == n)
+		return (0);
+	else
+		return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
-*/

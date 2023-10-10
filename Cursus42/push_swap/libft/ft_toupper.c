@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 13:00:16 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/07 13:04:52 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:31:35 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/14 15:50:12 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-int	ft_putstr_fd(char *s, int fd)
+int	ft_toupper(int c)
 {
-	write(fd, s, f_strlen(s));
-	return (-1);
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
 }

@@ -1,30 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_list_init.c                                     :+:      :+:    :+:   */
+/*   ps_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 14:57:13 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/10 14:44:26 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/10/10 14:08:04 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/10/10 14:47:33 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ps_create_stack(t_node **head_a, char **argv, int argc)
+int ps_valid(const char *s)
 {
     int i;
-
-    i = 1;
-    while (i < argc)
+    int minus;
+    
+    minus = 1;
+    i = 0;
+    while (s[i])
     {
-        if (!ps_valid(argv[i]) || !ps_lstadd_back(head_a, ft_atoi(argv[i])))
-            return (0);
+        if (s[i] == '-' && minus)
+        {
+            minus = 0;
+            i++;
+        }
+        if (!ft_isdigit(s[i]))
+            return(0);
         i++;
     }
-    if (ps_has_dups(*head_a) || ps_lstsize(*head_a) != argc - 1)
-        return (0);
-    ps_assign_pos(*head_a);
     return (1);
+}
+
+void ps_assign_pos(t_node *head)
+{
+    int pos;
+    t_node *tmp;
+
+    pos = 1;
+    head->pos = 0;
+    tmp = head->next;
+    while (tmp != head)
+    {
+        tmp->pos = pos++;
+        tmp = tmp->next;
+    }
 }

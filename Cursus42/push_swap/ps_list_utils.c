@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_list_utils.c                             :+:      :+:    :+:   */
+/*   ps_list_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:33:45 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/07 14:33:45 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/10 14:23:49 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int ps_lstadd_back(t_node **head, int nbr)
     return (1);
 }
 
-size_t ps_lstsize(t_node *head)
+int ps_lstsize(t_node *head)
 {
-    size_t size;
+    int size;
     t_node *tmp;
 
     size = 0;
@@ -53,16 +53,16 @@ size_t ps_lstsize(t_node *head)
     return (size + 1);
 }
 
-int ps_has_dups(t_node **head)
+int ps_has_dups(t_node *head)
 {
     t_node *tmp;
     t_node *tmp2;
 
-    tmp = *head;
-    while (tmp->next != *head)
+    tmp = head;
+    while (tmp->next != head)
     {
         tmp2 = tmp->next;
-        while (tmp2 != *head)
+        while (tmp2 != head)
         {
             if (tmp->value == tmp2->value)
                 return (1);

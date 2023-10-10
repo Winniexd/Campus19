@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_moves.c                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 15:01:15 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/10/10 11:48:08 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:42:38 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:57:48 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void ps_rotate(t_node **head)
+int	ft_memcmp(void *s1, void *s2, size_t n)
 {
-    *head = (*head)->next;
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		i++;
+	}
+	return (0);
 }
-
-void ps_reverse_rotate(t_node **head)
-{
-    *head = (*head)->prev;
-}
-
-/*
-void ps_swap(t_node **head)
-{}
-
-void ps_push(t_node **src_head, t_node **dst_head)
-{}
-*/
