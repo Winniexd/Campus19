@@ -11,9 +11,19 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void    ps_sort_three(t_ps *ps)
+
+void ps_sort(t_ps *ps)
 {
-    
+    if (ps->size == 2)
+        ps_sort_two(ps);
+    else if (ps->size == 3)
+        ps_sort_three(ps);
+        /*
+    else if (ps->size == 4)
+        ps_sort_four(ps);
+    else if (ps->size == 5)
+        ps_sort_five(ps);
+    else
+        ps_sort_big(ps);
+        */
 }
-*/

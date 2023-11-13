@@ -19,7 +19,7 @@ int ps_lstadd_back(t_node **head, int nbr)
     new = malloc(sizeof(t_node));
     if (!new)
         return (0);
-    new->value = nbr;
+    new->val = nbr;
     if (!(*head))
     {
         new->next = new;
@@ -64,7 +64,7 @@ int ps_has_dups(t_node *head)
         tmp2 = tmp->next;
         while (tmp2 != head)
         {
-            if (tmp->value == tmp2->value)
+            if (tmp->val == tmp2->val)
                 return (1);
             tmp2 = tmp2->next;
         }
@@ -80,9 +80,33 @@ int ps_is_sorted(t_node *head)
     tmp = head;
     while (tmp->next != head)
     {
-        if (tmp->value > tmp->next->value)
+        if (tmp->val > tmp->next->val)
             return (0);
         tmp = tmp->next;
     }
     return (1);
+}
+
+void ps_add_front(t_node **head, int nbr)
+{
+    t_node *new;
+
+    new = malloc(sizeof(t_node));
+    if (!new)
+        return ;
+    new->val = nbr;
+    if (!(*head))
+    {
+        new->next = new;
+        new->prev = new;
+        *head = new;
+    }
+    else
+    {
+        new->next = *head;
+        new->prev = (*head)->prev;
+        (*head)->prev->next = new;
+        (*head)->prev = new;
+        *head = new;
+    }
 }

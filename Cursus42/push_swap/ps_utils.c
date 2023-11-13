@@ -33,17 +33,34 @@ int ps_valid(const char *s)
     return (1);
 }
 
-void ps_assign_pos(t_node *head)
+int ps_return_smallest(t_node *head)
 {
-    int pos;
     t_node *tmp;
-
-    pos = 1;
-    head->pos = 0;
+    int smallest;
+    
     tmp = head->next;
+    smallest = tmp->val;
     while (tmp != head)
     {
-        tmp->pos = pos++;
+        if (tmp->val < smallest)
+            smallest = tmp->val;
         tmp = tmp->next;
     }
+    return (smallest);
+}
+
+int ps_return_biggest(t_node *head)
+{
+    t_node *tmp;
+    int biggest;
+    
+    tmp = head->next;
+    biggest = tmp->val;
+    while (tmp != head)
+    {
+        if (tmp->val > biggest)
+            biggest = tmp->val;
+        tmp = tmp->next;
+    }
+    return (biggest);
 }

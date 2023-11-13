@@ -6,9 +6,13 @@ SRC= \
 	main.c \
 	ps_list_init.c \
 	ps_list_utils.c \
-	ps_moves.c \
 	ps_sort.c \
 	ps_utils.c \
+	ps_sort_three.c \
+	ps_swap.c \
+	ps_push.c \
+	ps_rotate.c \
+	ps_reverse_rotate.c \
 
 OBJ=$(SRC:.c=.o)
 INCLUDES=push_swap.h
