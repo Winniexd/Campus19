@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_moves.c                                         :+:      :+:    :+:   */
+/*   ps_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:01:15 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/10/10 11:48:08 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:37:50 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 void ps_swap(t_node **head)
 {
-    t_node *tmp;
-
-    tmp = *head;
-    *head = (*head)->next;
-    tmp->next = (*head)->next;
-    (*head)->next = tmp;
+    if ((*head)->next->next == *head)
+        ps_rotate(head);
+    else
+    {
+        (*head)->prev->next = (*head)->next;
+        (*head)->next->prev = (*head)->prev;
+        (*head)->next = (*head)->next->next;
+        (*head)->next->prev = *head;
+        (*head)->prev->next->next = *head;
+        (*head)->prev = (*head)->prev->next;
+        *head = (*head)->prev;
+    }
 }
 
 void ps_swap_a(t_ps *ps)

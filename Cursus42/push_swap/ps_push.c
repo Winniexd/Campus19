@@ -3,23 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ps_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:02:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/13 17:02:48 by marvin           ###   ########.fr       */
+/*   Updated: 2023/11/18 14:41:34 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ps_push(t_node **src_head, t_node **dst_head)
+void	ps_push_2(t_node **head_dest, t_node **head_src, t_node *temp)
 {
-    t_node *tmp;
+	if (*head_dest)
+	{
+		(*head_src)->next = *head_dest;
+		(*head_src)->prev = (*head_dest)->prev;
+		(*head_src)->prev->next = *head_src;
+		(*head_src)->next->prev = *head_src;
+	}
+	else
+	{
+		(*head_src)->next = *head_src;
+		(*head_src)->prev = *head_src;
+	}
+	*head_dest = *head_src;
+	*head_src = temp;
+}
 
-    tmp = *src_head;
-    *src_head = (*src_head)->next;
-    tmp->next = *dst_head;
-    *dst_head = tmp;
+int	ps_push(t_node **head_dest, t_node **head_src)
+{
+	t_node	*temp;
+
+	temp = 0;
+	if (!(*head_src))
+		return (0);
+	if (*head_src != (*head_src)->next)
+	{
+		(*head_src)->prev->next = (*head_src)->next;
+		(*head_src)->next->prev = (*head_src)->prev;
+		temp = (*head_src)->prev->next;
+	}
+	else
+		temp = 0;
+	ps_push_2(head_dest, head_src, temp);
+	return (1);
 }
 
 void ps_push_a(t_ps *ps)

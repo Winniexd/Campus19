@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:11:01 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/10/10 14:48:29 by mdreesen         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:41:43 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void ps_swap(t_node **head);
 void ps_swap_a(t_ps *ps);
 void ps_swap_b(t_ps *ps);
 void ps_swap_s(t_ps *ps);
-void ps_push(t_node **src_head, t_node **dst_head);
+int ps_push(t_node **src_head, t_node **dst_head);
 void ps_push_a(t_ps *ps);
 void ps_push_b(t_ps *ps);
 void ps_rotate(t_node **head);
