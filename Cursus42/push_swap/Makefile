@@ -8,7 +8,7 @@ SRC= \
 	ps_list_utils.c \
 	ps_sort.c \
 	ps_utils.c \
-	ps_sort_three.c \
+	ps_sort_small.c \
 	ps_swap.c \
 	ps_push.c \
 	ps_rotate.c \
