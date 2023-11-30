@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:11:01 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/11/18 14:41:43 by matias           ###   ########.fr       */
+/*   Updated: 2023/11/29 15:35:44 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct s_node
 {
     int val;
+    int pos;
     struct s_node *next;
     struct s_node *prev;
 } t_node;
@@ -66,5 +67,6 @@ void ps_sort_three(t_ps *ps);
 void ps_sort_four(t_ps *ps);
 void ps_sort_five(t_ps *ps);
 void ps_sort_big(t_ps *ps);
+void ps_bubblesort(t_node **head);
 
 #endif
