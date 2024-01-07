@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_list_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:33:45 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/10 14:23:49 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/01/07 14:49:50 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int ps_lstadd_back(t_node **head, int nbr)
     if (!new)
         return (0);
     new->val = nbr;
+    new->pos = 0;
     if (!(*head))
     {
         new->next = new;

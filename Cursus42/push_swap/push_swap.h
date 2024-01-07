@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:11:01 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/11/29 15:35:44 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/07 16:05:34 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int ps_is_sorted(t_node *head);
 int ps_has_dups(t_node *head);
 int ps_create_stack(t_node **head_a, char **argv, int argc);
 int ps_valid(const char *s);
-void ps_assign_pos(t_node *head);
+void ps_assign_pos(t_node **head);
+int ps_return_biggest(t_node *head);
 
 // Moves
 void ps_swap(t_node **head);

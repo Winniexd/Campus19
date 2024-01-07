@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:57:13 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/29 16:40:24 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/07 15:57:57 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int ps_create_stack(t_node **head_a, char **argv, int argc)
     }
     if (ps_has_dups(*head_a) || ps_lstsize(*head_a) != argc - 1)
         return (0);
-    ps_assign_pos(*head_a);
+    ps_assign_pos(head_a);
     return (1);
 }
