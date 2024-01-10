@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 14:08:04 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/10/10 14:47:33 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:56:36 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int ps_valid(const char *s)
     return (1);
 }
 
-int ps_return_smallest(t_node *head)
+int ps_return_smallest(t_node **head)
 {
     t_node *tmp;
     int smallest;
     
-    tmp = head->next;
+    tmp = (*head)->next;
     smallest = tmp->val;
-    while (tmp != head)
+    while (tmp != *head)
     {
         if (tmp->val < smallest)
             smallest = tmp->val;

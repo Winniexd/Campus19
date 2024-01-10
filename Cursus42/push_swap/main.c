@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:17:27 by matias            #+#    #+#             */
-/*   Updated: 2024/01/07 16:07:15 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/10 14:58:03 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     }
     ps->size = ps_lstsize(ps->stack_a);
     ps_sort(ps);
-    display_stacks(ps->stack_a);
+    //display_stacks(ps->stack_a);
     //printf("size: %d\n", ps->size);
     
     return (0);

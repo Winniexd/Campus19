@@ -14,6 +14,7 @@ SRC= \
 	ps_rotate.c \
 	ps_reverse_rotate.c \
 	ps_assign_pos.c \
+	ps_radix_sort.c \
 
 OBJ=$(SRC:.c=.o)
 INCLUDES=push_swap.h

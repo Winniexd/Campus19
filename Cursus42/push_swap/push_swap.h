@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:11:01 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/01/07 16:05:34 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/10 14:56:47 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int ps_create_stack(t_node **head_a, char **argv, int argc);
 int ps_valid(const char *s);
 void ps_assign_pos(t_node **head);
 int ps_return_biggest(t_node *head);
+int ps_return_smallest(t_node **head);
+void ps_radix_sort(t_ps *ps);
 
 // Moves
 void ps_swap(t_node **head);
@@ -50,8 +52,8 @@ void ps_swap_a(t_ps *ps);
 void ps_swap_b(t_ps *ps);
 void ps_swap_s(t_ps *ps);
 int ps_push(t_node **src_head, t_node **dst_head);
-void ps_push_a(t_ps *ps);
-void ps_push_b(t_ps *ps);
+void ps_push_a(t_node **head_a, t_node **head_b);
+void ps_push_b(t_node **head_a, t_node **head_b);
 void ps_rotate(t_node **head);
 void ps_rotate_a(t_ps *ps);
 void ps_rotate_b(t_ps *ps);

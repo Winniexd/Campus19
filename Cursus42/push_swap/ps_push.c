@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:02:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/18 14:41:34 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/09 15:42:18 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ int	ps_push(t_node **head_dest, t_node **head_src)
 	return (1);
 }
 
-void ps_push_a(t_ps *ps)
+void ps_push_a(t_node **head_a, t_node **head_b)
 {
-    ps_push(&ps->stack_b, &ps->stack_a);
+    ps_push(head_a, head_b);
     write(1, "pa\n", 3);
 }
 
-void ps_push_b(t_ps *ps)
+void ps_push_b(t_node **head_a, t_node **head_b)
 {
-    ps_push(&ps->stack_a, &ps->stack_b);
+    ps_push(head_b, head_a);
     write(1, "pb\n", 3);
 }
