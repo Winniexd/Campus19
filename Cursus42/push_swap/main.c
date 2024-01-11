@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:17:27 by matias            #+#    #+#             */
-/*   Updated: 2024/01/10 14:58:03 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/11 14:00:48 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int main(int argc, char **argv)
 {
     t_ps *ps;
     
+    if (argc < 2)
+        return (0);
     ps = malloc(sizeof(t_ps));
     if (!ps)
         return (0);

@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 14:57:38 by matias            #+#    #+#             */
-/*   Updated: 2024/01/10 14:54:56 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/11 14:53:05 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void ps_radix_sort_b(t_ps *ps)
 {
     int size;
-    int smallest;
+    int biggest;
 
     size = ps_lstsize(ps->stack_b);
     while (size--)
     {
-        smallest = ps_return_smallest(&ps->stack_b);
-        while (ps->stack_b->val != smallest)
+        biggest = ps_return_biggest(&ps->stack_b);
+        while (ps->stack_b->val != biggest)
         {
             ps_rotate_b(ps);
         }
@@ -40,7 +40,7 @@ void ps_radix_sort(t_ps *ps)
     while (size > 1 && bit_size++)
         size /= 2;
     i = 0;
-    while (i <= bit_size)
+    while (i < bit_size)
     {
         size = ps->size;
         while (size-- && !ps_is_sorted(ps->stack_a))
