@@ -60,7 +60,7 @@ int	mouse_hook(int button, int x, int y, t_fractol *f)
 	{
 		f->re_c = (x - (double)WIDTH / 2) / (f->zoom);
 		f->im_c = (y - (double)HEIGHT / 2) / (f->zoom);
-	}	
+	}
 	draw_fractal(f);
 	return (0);
 }
