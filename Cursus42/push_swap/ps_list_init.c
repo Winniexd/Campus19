@@ -12,19 +12,19 @@
 
 #include "push_swap.h"
 
-int ps_create_stack(t_node **head_a, char **argv, int argc)
+int	ps_create_stack(t_node **head_a, char **argv, int argc)
 {
-    int i;
+	int	i;
 
-    i = 1;
-    while (i < argc)
-    {
-        if (!ps_valid(argv[i]) || !ps_lstadd_back(head_a, ft_atoi(argv[i])))
-            return (0);
-        i++;
-    }
-    if (ps_has_dups(*head_a) || ps_lstsize(*head_a) != argc - 1)
-        return (0);
-    ps_assign_pos(head_a);
-    return (1);
+	i = 1;
+	while (i < argc)
+	{
+		if (!ps_valid(argv[i]) || !ps_lstadd_back(head_a, ft_atoi(argv[i])))
+			return (0);
+		i++;
+	}
+	if (ps_has_dups(*head_a) || ps_lstsize(*head_a) != argc - 1)
+		return (0);
+	ps_assign_pos(head_a);
+	return (1);
 }

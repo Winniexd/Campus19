@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void ps_sort(t_ps *ps)
+void	ps_sort(t_ps *ps)
 {
-    if (ps->size == 2)
-        ps_sort_two(ps);
-    else if (ps->size == 3)
-        ps_sort_three(ps);
-    else
-      ps_radix_sort(ps);
+	if (ps->size == 2)
+		ps_sort_two(ps);
+	else if (ps->size == 3)
+		ps_sort_three(ps);
+	else
+		ps_radix_sort(ps);
 }

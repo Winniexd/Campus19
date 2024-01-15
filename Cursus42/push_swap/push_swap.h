@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:11:01 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/01/11 14:53:42 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/15 13:35:00 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int ps_valid(const char *s);
 void ps_assign_pos(t_node **head);
 int ps_return_biggest(t_node **head);
 int ps_return_smallest(t_node **head);
-void ps_radix_sort(t_ps *ps);
+void ps_free_stacks(t_node *head_a, t_node *head_b);
 
 // Moves
 void ps_swap(t_node **head);
@@ -69,7 +69,6 @@ void ps_sort_two(t_ps *ps);
 void ps_sort_three(t_ps *ps);
 void ps_sort_four(t_ps *ps);
 void ps_sort_five(t_ps *ps);
-void ps_sort_big(t_ps *ps);
-void ps_bubblesort(t_node **head);
+void ps_radix_sort(t_ps *ps);
 
 #endif

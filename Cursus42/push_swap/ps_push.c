@@ -49,14 +49,14 @@ int	ps_push(t_node **head_dest, t_node **head_src)
 	return (1);
 }
 
-void ps_push_a(t_node **head_a, t_node **head_b)
+void	ps_push_a(t_node **head_a, t_node **head_b)
 {
-    ps_push(head_a, head_b);
-    write(1, "pa\n", 3);
+	ps_push(head_a, head_b);
+	write(1, "pa\n", 3);
 }
 
-void ps_push_b(t_node **head_a, t_node **head_b)
+void	ps_push_b(t_node **head_a, t_node **head_b)
 {
-    ps_push(head_b, head_a);
-    write(1, "pb\n", 3);
+	ps_push(head_b, head_a);
+	write(1, "pb\n", 3);
 }

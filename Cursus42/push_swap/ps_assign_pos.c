@@ -12,42 +12,46 @@
 
 #include "push_swap.h"
 
-int ps_find_next_smallest(t_node **head)
+int	ps_find_next_smallest(t_node **head)
 {
-    int smallest = INT_MAX;
-    t_node *tmp = *head;
+	int		smallest;
+	t_node	*tmp;
 
-    while (1)
-    {
-        if (tmp->val < smallest && tmp->pos == 0)
-            smallest = tmp->val;
-        tmp = tmp->next;
-        if (tmp == *head)
-            break;
-    }
-
-    return (smallest);
+	smallest = INT_MAX;
+	tmp = *head;
+	while (1)
+	{
+		if (tmp->val < smallest && tmp->pos == 0)
+			smallest = tmp->val;
+		tmp = tmp->next;
+		if (tmp == *head)
+			break ;
+	}
+	return (smallest);
 }
 
-void ps_assign_pos(t_node **head)
+void	ps_assign_pos(t_node **head)
 {
-    int i = 1;
-    int size = ps_lstsize(*head);
-    t_node *tmp = *head;
+	int		i;
+	int		size;
+	t_node	*tmp;
+	int		smallest;
 
-    while (i <= size)
-    {
-        int smallest = ps_find_next_smallest(head);
-        
-        while (1)
-        {
-            if (tmp->val == smallest && tmp->pos == 0)
-                tmp->pos = i;
-            tmp = tmp->next;
-            if (tmp == *head)
-                break;
-        }
-        tmp = *head;
-        i++;
-    } 
+	i = 1;
+	size = ps_lstsize(*head);
+	tmp = *head;
+	while (i <= size)
+	{
+		smallest = ps_find_next_smallest(head);
+		while (1)
+		{
+			if (tmp->val == smallest && tmp->pos == 0)
+				tmp->pos = i;
+			tmp = tmp->next;
+			if (tmp == *head)
+				break ;
+		}
+		tmp = *head;
+		i++;
+	}
 }
