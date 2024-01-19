@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 14:08:04 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/01/15 13:48:24 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/19 15:09:58 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ps_return_smallest(t_node **head)
 	int		smallest;
 
 	tmp = (*head)->next;
-	smallest = tmp->val;
+	smallest = (*head)->val;
 	while (tmp != *head)
 	{
 		if (tmp->val < smallest)
@@ -55,7 +55,7 @@ int	ps_return_biggest(t_node **head)
 	int		biggest;
 
 	tmp = (*head)->next;
-	biggest = tmp->val;
+	biggest = (*head)->val;
 	while (tmp != *head)
 	{
 		if (tmp->val > biggest)

@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:17:27 by matias            #+#    #+#             */
-/*   Updated: 2024/01/15 13:50:00 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/15 21:42:35 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!ps_create_stack(&ps->stack_a, argv, argc))
 	{
+		free(ps);
 		ft_putstr_fd("Error\n", 1);
 		return (0);
 	}
