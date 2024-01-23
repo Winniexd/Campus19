@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:11:01 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/01/15 13:35:00 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/23 16:49:32 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define PUSH_SWAP_H
 
 #include "libft/libft.h"
+#include "get_next_line/get_next_line.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>

@@ -1,0 +1,101 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/12 15:33:39 by mdreesen          #+#    #+#             */
+/*   Updated: 2024/01/23 16:56:51 by matias           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+
+size_t	gnl_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*gnl_strchr(char *s, int c)
+{
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	if (c == 0)
+	{
+		i = gnl_strlen((char *)s);
+		return (&s[i]);
+	}
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return (&s[i]);
+		i++;
+	}
+	return (NULL);
+}
+
+char	*gnl_strjoin(char *start, char *buff)
+{
+	size_t	start_len;
+	size_t	buff_len;
+	char	*result;
+
+	start_len = 0;
+	buff_len = 0;
+	if (start)
+		start_len = gnl_strlen(start);
+	if (buff)
+		buff_len = gnl_strlen(buff);
+	result = (char *)malloc(start_len + buff_len + 1);
+	if (!result)
+		return (NULL);
+	if (start)
+		gnl_memcpy(result, start, start_len);
+	if (buff)
+		gnl_memcpy(result + start_len, buff, buff_len);
+	result[start_len + buff_len] = '\0';
+	free(start);
+	return (result);
+}
+
+void	*gnl_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+
+	if (!dest && !src)
+		return (NULL);
+	if (n == 0)
+		return (dest);
+	i = 0;
+	while (i < n)
+	{
+		((char *)dest)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dest);
+}
+
+char	*gnl_strdup(char *s1)
+{
+	size_t	len;
+	char	*result;
+
+	len = gnl_strlen(s1);
+	result = (char *)malloc(len + 1);
+	if (!result)
+		return (NULL);
+	gnl_memcpy(result, s1, len);
+	result[len] = '\0';
+	return (result);
+}
