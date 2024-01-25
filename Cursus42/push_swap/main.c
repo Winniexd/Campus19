@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:17:27 by matias            #+#    #+#             */
-/*   Updated: 2024/01/23 16:36:30 by matias           ###   ########.fr       */
+/*   Updated: 2024/01/25 15:17:08 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
+	if (argc == 2)
+		argv = ft_split(argv[1], ' ');
 	ps = malloc(sizeof(t_ps));
 	if (!ps)
 		return (0);
