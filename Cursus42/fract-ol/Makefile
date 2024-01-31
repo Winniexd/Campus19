@@ -17,16 +17,15 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C libft
-	@make -C minilibx-linux
+	@make -C minilibx_opengl
 	@make -C ft_printf
-	@$(GCC) $(CFLAGS) -o $(NAME) $(OBJ) -Llibft -lft -Lft_printf -L/usr/lib -lftprintf -Lminilibx-linux -lmlx -lXext -lX11 -lm
-
+	@$(GCC) $(CFLAGS) -o $(NAME) $(OBJ) -Llibft -Lft_printf -lftprintf -lft -lmlx -Lminilibx_opengl -lmlx -framework OpenGL -framework AppKit
 %.o: %.c
-	@$(GCC) $(CFLAGS) -c $< -o $@
+	@$(GCC) $(CFLAGS) -Ift_printf -Ilibft -Imlx -c $< -o $@
 
 clean:
 	@make clean -C libft
-	@make clean -C minilibx-linux
+	@make clean -C minilibx_opengl
 	@make clean -C ft_printf
 	@rm -f $(OBJ)
 

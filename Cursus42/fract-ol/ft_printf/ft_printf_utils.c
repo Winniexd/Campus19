@@ -23,16 +23,6 @@ void	ft_putchar(const char c)
 	write(1, &c, 1);
 }
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
 int	ft_numlen(int num)
 {
 	int	len;

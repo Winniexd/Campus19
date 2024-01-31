@@ -16,8 +16,6 @@ int	destroy_window(t_fractol *f)
 {
 	mlx_clear_window(f->mlx, f->win);
 	mlx_destroy_window(f->mlx, f->win);
-	mlx_destroy_display(f->mlx);
-	mlx_loop_end(f->mlx);
 	free(f->mlx);
 	free(f);
 	exit(1);
