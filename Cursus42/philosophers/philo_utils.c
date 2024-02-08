@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:57:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/07 14:24:46 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:31:23 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,17 @@ int	ft_atoi(const char *str)
 	return (nb * sign);
 }
 
-long long	get_timestamp(void)
+long long	timestamp(void)
 {
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+void	print_action(t_philosopher *philo, char *action)
+{
+	printf("%lldms", timestamp() - philo->data->start_time);
+	printf("philo %d", philo->id);
+	printf("%s\n", action);
 }

@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:29:23 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/07 14:32:17 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:28:29 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ typedef struct s_philosopher
 	int				id;
 	int				left_fork_id;
 	int				right_fork_id;
+	int				times_ate;
+	long long		last_meal;
 	pthread_t		thread_id;
+	struct s_data	*data;
 }					t_philosopher;
 
 typedef struct s_data
@@ -35,14 +38,18 @@ typedef struct s_data
 	int				time_sleep;
 	int				time_eat;
 	int				times_to_eat;
+	int				died;
 	long long		start_time;
 	pthread_mutex_t	forks[250];
-	t_philosopher	philosophers[250];
+	t_philosopher	philos[250];
 }					t_data;
 
 int					init_philosophers(char **argv, t_data *data);
 int					run_simulation(t_data *data);
 int					ft_atoi(const char *str);
 long long			timestamp(void);
+void				philo_sleep(t_philosopher *philo);
+void				philo_print(t_data *data, int philo_id, char *action);
+void				print_action(t_philosopher *philo, char *action);
 
 #endif

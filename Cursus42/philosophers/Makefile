@@ -3,14 +3,14 @@ CFLAGS = -Wall -Wextra -Werror -g
 NAME = philo
 SRC = 	main.c \
 		init_philo.c \
-		philo_utils.c
+		philo_utils.c \
+		run_simulation.c
 OBJ = $(SRC:.c=.o)
-INC = philosophers.h
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(INC) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -pthread -o $(NAME)
 
 clean:
 	rm -f $(OBJ)

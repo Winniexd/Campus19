@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:32:40 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/07 13:17:55 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:29:19 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	init_mutex(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->philo_count)
+	while (i++ < data->philo_count)
 	{
 		if (pthread_mutex_init(&(data->forks[i]), NULL))
 			return (0);
@@ -30,11 +30,13 @@ void	init_philos(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i++ < data->philo_count)
+	while (i < data->philo_count)
 	{
-		data->philosophers[i].id = i + 1;
-		data->philosophers[i].left_fork_id = i;
-		data->philosophers[i].right_fork_id = (i + 1) % data->philo_count;
+		data->philos[i].id = i + 1;
+		data->philos[i].left_fork_id = i;
+		data->philos[i].right_fork_id = (i + 1) % data->philo_count;
+		data->philos[i].data = data;
+		i++;
 	}
 }
 
@@ -46,6 +48,7 @@ int	init_philosophers(char **argv, t_data *data)
 	data->time_sleep = ft_atoi(argv[4]);
 	if (argv[5])
 		data->times_to_eat = ft_atoi(argv[5]);
+	data->died = 0;
 	if (!init_mutex(data))
 		return (0);
 	init_philos(data);
