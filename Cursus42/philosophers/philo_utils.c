@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:57:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/08 15:31:23 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:03:38 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,48 @@ long long	timestamp(void)
 
 void	print_action(t_philosopher *philo, char *action)
 {
-	printf("%lldms", timestamp() - philo->data->start_time);
-	printf("philo %d", philo->id);
+	pthread_mutex_lock(&(philo->data->writing));
+	printf("%lldms ", timestamp() - philo->data->start_time);
+	printf("%d ", philo->id);
 	printf("%s\n", action);
+	pthread_mutex_unlock(&(philo->data->writing));
+}
+
+int	check_args(char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+void	safe_exit(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->philo_count)
+	{
+		pthread_detach(data->philos[i].thread_id);
+		i++;
+	}
+	i = 0;
+	while (i < data->philo_count)
+	{
+		pthread_mutex_destroy(&(data->forks[i]));
+		i++;
+	}
+	pthread_mutex_destroy(&(data->writing));
 }

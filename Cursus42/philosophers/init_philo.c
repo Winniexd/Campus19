@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:32:40 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/08 15:29:19 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:06:47 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	init_mutex(t_data *data)
 	{
 		if (pthread_mutex_init(&(data->forks[i]), NULL))
 			return (0);
+	}
+	if (pthread_mutex_init(&(data->writing), NULL))
+	{
+		return (0);
 	}
 	return (1);
 }
@@ -47,7 +51,7 @@ int	init_philosophers(char **argv, t_data *data)
 	data->time_eat = ft_atoi(argv[3]);
 	data->time_sleep = ft_atoi(argv[4]);
 	if (argv[5])
-		data->times_to_eat = ft_atoi(argv[5]);
+		data->to_eat = ft_atoi(argv[5]);
 	data->died = 0;
 	if (!init_mutex(data))
 		return (0);
