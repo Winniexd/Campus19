@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:08:08 by matias            #+#    #+#             */
-/*   Updated: 2024/01/23 17:24:42 by matias           ###   ########.fr       */
+/*   Updated: 2024/02/13 11:30:31 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
+	if (argc == 2)
+		argv = ft_split(argv[1], ' ');
 	ps = malloc(sizeof(t_ps));
 	if (!ps)
 		return (0);

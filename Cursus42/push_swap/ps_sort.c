@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:49:42 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/01/19 14:27:57 by matias           ###   ########.fr       */
+/*   Updated: 2024/02/13 10:42:13 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ps_sort(t_ps *ps)
 {
+	if (ps_is_sorted(ps->stack_a))
+		return ;
 	if (ps->size == 2)
 		ps_sort_two(ps);
 	else if (ps->size == 3)

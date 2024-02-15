@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 12:32:00 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/06/15 14:13:05 by winniexd         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:51:32 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int					ft_atoi(char *str);
+int					ft_atoi(const char *str);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
 int					ft_isascii(int c);
