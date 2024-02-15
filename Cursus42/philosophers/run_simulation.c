@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:20:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/12 11:04:17 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:07:42 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	monitor_deaths(t_data *data)
 				print_action(&(data->philos[i]), "died");
 				break ;
 			}
-			usleep(100);
 			i++;
 		}
 	}
