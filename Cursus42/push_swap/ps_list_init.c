@@ -21,7 +21,7 @@ int	ps_create_stack(t_node **head_a, char **argv, int argc)
 		i = 0;
 	while (argv[i])
 	{
-		if (!ps_valid(argv[i]) || !ps_lstadd_back(head_a, ft_atoi(argv[i])))
+		if (!ps_valid(argv[i]) || !ps_lstadd_back(head_a, ps_atoi(argv[i])))
 			return (0);
 		i++;
 	}
