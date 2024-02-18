@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:53:47 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/17 17:25:57 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:06:20 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define PHONEBOOK_H
 
 #include <iostream>
+#include <iomanip>
 
 class Contact {
 	private:
@@ -24,14 +25,19 @@ class Contact {
 		std::string DarkestSecret;
 		int index;
 	public:
-		void Init(int i);
 		std::string GetInfo(std::string str);
+		std::string PrintLen(std::string str);
+		void View(void);
+		void Add(int i);
+		void Display(void);
 };
 
 class PhoneBook {
     private:
         Contact	Contacts[8];
+		int	amount;
 	public:
+		PhoneBook();
 		void Start(void);
 		void AddContact(void);
 		void Search(void);

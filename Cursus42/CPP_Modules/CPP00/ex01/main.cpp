@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 14:17:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/17 15:43:58 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/18 10:53:11 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(void) {
         if (!input.compare("ADD"))
             p.AddContact();
         else if (!input.compare("SEARCH")) {
-			p.Start();
+			p.Search();
 		}
 		std::cin >> input;
     }
