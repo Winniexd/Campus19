@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RandomChump.cpp                                    :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 12:12:18 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/18 13:33:22 by mdreesen         ###   ########.fr       */
+/*   Created: 2024/02/18 16:42:34 by mdreesen          #+#    #+#             */
+/*   Updated: 2024/02/18 17:02:35 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
 
-void randomChump( std::string name ) {
-    Zombie zombie(name);
-    zombie.announce();
-}
+class Harl {
+    private:
+        void debug(void);
+        void info(void);
+        void warning(void);
+        void error(void);
+    public:
+    	void complain(std::string level);
+};
+
+typedef void (Harl::*func) (void);

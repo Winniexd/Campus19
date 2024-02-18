@@ -1,10 +1,7 @@
-NAME=zombie
+NAME=brain
 FLAGS= -Wall -Wextra -Werror -std=c++98
 
-SRC= main.cpp \
-	NewZombie.cpp \
-	RandomChump.cpp \
-	Zombie.cpp
+SRC= main.cpp
 
 OBJ=$(SRC:.cpp=.o)
 
