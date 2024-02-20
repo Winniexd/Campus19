@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 12:44:55 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/17 15:42:35 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:47:50 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int	check_valid(char const *s, char c)
 {
 	char	**str;
 
-	if (!s)
+	if (!s || !ft_count_words(s, c))
 		return (1);
 	str = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (!str)
+	if (!str || ft_count_words(s, c) == 0)
 	{
 		free(str);
 		return (1);
