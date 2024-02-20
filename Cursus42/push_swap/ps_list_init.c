@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_list_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:57:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/02/20 11:11:17 by matias           ###   ########.fr       */
+/*   Updated: 2024/02/20 11:47:54 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ int	ps_create_stack(t_node **head_a, char **argv, int argc)
 		if (ps_lstsize(*head_a) != argc - 1)
 			return (0);
 	if (argc == 2)
-	{
-		free(argv);
-		while (*argv)
-			free(*argv++);
-	}
+		while (*argv) {
+			free(*argv);
+			argv++;
+		}
 	if (ps_has_dups(*head_a))
 		return (0);
 	ps_assign_pos(head_a);
