@@ -6,23 +6,23 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:17:27 by matias            #+#    #+#             */
-/*   Updated: 2024/02/20 11:10:09 by matias           ###   ########.fr       */
+/*   Updated: 2024/02/20 12:08:51 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	display_stacks(t_node *head)
+void	ps_free_argv(char **argv)
 {
-	t_node	*tmp;
+	char **tmp;
 
-	tmp = head->next;
-	printf("%d\n", head->pos);
-	while (tmp != head)
+	tmp = argv;
+	while (*argv)
 	{
-		printf("%d\n", tmp->pos);
-		tmp = tmp->next;
+		free(*argv);
+		argv++;
 	}
+	free(tmp);
 }
 
 int	main(int argc, char **argv)
@@ -48,6 +48,8 @@ int	main(int argc, char **argv)
 	ps->size = ps_lstsize(ps->stack_a);
 	ps_sort(ps);
 	ps_free_stacks(ps->stack_a, ps->stack_b);
+	if (argc == 2)
+		ps_free_argv(argv);
 	free(ps);
 	return (0);
 }
