@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:13:50 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/18 13:04:19 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:58:34 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 PhoneBook::PhoneBook() {
     amount = 0;
+    std::cout << "Default PhoneBook constructor called." << std::endl;
+}
+
+PhoneBook::~PhoneBook() {
+    std::cout << "Default destructor called." << std::endl;
 }
 
 void PhoneBook::Start(void) {

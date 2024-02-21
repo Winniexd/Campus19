@@ -6,11 +6,19 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:12:04 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/18 12:51:59 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:58:42 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+
+Contact::Contact() {
+    std::cout << "Default Contact constructor called." << std::endl;
+}
+
+Contact::~Contact() {
+    std::cout << "Default destructor called." << std::endl;
+}
 
 std::string Contact::GetInfo(std::string str) {
 

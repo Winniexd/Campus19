@@ -1,4 +1,4 @@
-NAME=violence
+NAME=mysed
 FLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC= main.cpp \
@@ -9,9 +9,9 @@ all: $(OBJ)
 	c++ $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-	rm $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
