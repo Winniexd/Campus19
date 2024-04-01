@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:21:19 by winniexd          #+#    #+#             */
-/*   Updated: 2023/06/15 13:48:29 by winniexd         ###   ########.fr       */
+/*   Updated: 2024/04/01 17:52:00 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
 # include <fcntl.h>
@@ -29,19 +28,19 @@
 # define JULIA 2
 # define BURNING_SHIP 3
 
-# define ESC 53
-# define UP 126
-# define DOWN 125
-# define LEFT 123
-# define RIGHT 124
-# define PLUS 24
-# define MINUS 27
-# define W 13
-# define A 0
-# define S 1
-# define D 2
-# define Z 6
-# define X 7
+# define ESC 65307
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
+# define PLUS 65451
+# define MINUS 65453
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define Z 122
+# define X 120
 
 typedef struct s_fractol
 {
