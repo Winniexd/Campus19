@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:49:04 by winniexd          #+#    #+#             */
-/*   Updated: 2023/09/05 14:12:39 by matias           ###   ########.fr       */
+/*   Updated: 2024/04/02 14:31:50 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,17 @@ int	key_hook(int key, t_fractol *f)
 	return (0);
 }
 
+int	motion_hook(int x, int y, t_fractol *f)
+{
+	if (f->freeze == 0)
+	{
+		f->re_c = (x - (double)WIDTH / 2) / (f->zoom);
+		f->im_c = (y - (double)HEIGHT / 2) / (f->zoom);
+		draw_fractal(f);
+	}
+	return (0);
+}
+
 int	mouse_hook(int button, int x, int y, t_fractol *f)
 {
 	if (button == 4)
@@ -58,8 +69,10 @@ int	mouse_hook(int button, int x, int y, t_fractol *f)
 		zoom_out(x, y, f);
 	else if (button == 1)
 	{
-		f->re_c = (x - (double)WIDTH / 2) / (f->zoom);
-		f->im_c = (y - (double)HEIGHT / 2) / (f->zoom);
+		if (f->freeze == 0)
+			f->freeze = 1;
+		else
+			f->freeze = 0;
 	}
 	draw_fractal(f);
 	return (0);

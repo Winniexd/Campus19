@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:08:00 by winniexd          #+#    #+#             */
-/*   Updated: 2023/09/05 14:08:44 by matias           ###   ########.fr       */
+/*   Updated: 2024/04/02 15:43:42 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_julia(t_fractol *f, char **argv)
 	f->center_y = -2.0;
 	f->zoom = 300;
 	f->iter = 100;
+	f->freeze = 1;
 	if (argv[2] && argv[3])
 	{
 		f->re_c = ft_atof(argv[2]);
