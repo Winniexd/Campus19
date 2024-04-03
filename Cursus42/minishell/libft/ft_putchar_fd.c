@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 13:33:33 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/03 10:28:11 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 12:56:35 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 13:05:06 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-#define BUILTINS_H
+#include "libft.h"
 
-#include "../minishell.h"
-
-void    cd(char *path);
-void	echo(char *str);
-void	pwd(void);
-void	export();
-void	unset();
-void	env();
-void	exit();
-
-#endif
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

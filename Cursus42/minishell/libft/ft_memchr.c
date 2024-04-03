@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 13:07:19 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/03 10:41:37 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:40:30 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:57:09 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(void)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-    pwd();
-    return(0);
+	size_t			i;
+	unsigned char	*str2;
+
+	i = 0;
+	str2 = (unsigned char *)str;
+	while (i < n)
+	{
+		if (str2[i] == (unsigned char)c)
+			return (str2 + i);
+		i++;
+	}
+	return (NULL);
 }

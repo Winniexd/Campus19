@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 13:33:33 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/03 10:28:11 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:44:42 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:54:30 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-#define BUILTINS_H
+#include "libft.h"
 
-#include "../minishell.h"
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
 
-void    cd(char *path);
-void	echo(char *str);
-void	pwd(void);
-void	export();
-void	unset();
-void	env();
-void	exit();
-
-#endif
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}

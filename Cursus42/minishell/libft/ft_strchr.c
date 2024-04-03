@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 13:33:33 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/03 10:28:11 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:36:18 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/06/13 15:14:02 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-#define BUILTINS_H
+#include "libft.h"
 
-#include "../minishell.h"
+char	*ft_strchr(const char *str, int c)
+{
+	int	i;
 
-void    cd(char *path);
-void	echo(char *str);
-void	pwd(void);
-void	export();
-void	unset();
-void	env();
-void	exit();
-
-#endif
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == (char)c)
+			return ((char *)str + i);
+		i++;
+	}
+	if (str[i] == (char)c)
+		return ((char *)str + i);
+	return (NULL);
+}

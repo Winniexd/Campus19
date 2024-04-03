@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 13:33:33 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/03 10:28:11 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/17 14:34:58 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/17 15:48:28 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-#define BUILTINS_H
+#include "libft.h"
 
-#include "../minishell.h"
-
-void    cd(char *path);
-void	echo(char *str);
-void	pwd(void);
-void	export();
-void	unset();
-void	env();
-void	exit();
-
-#endif
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (lst == NULL || f == NULL)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}

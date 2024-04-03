@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 13:33:33 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/03 10:28:11 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/07 11:36:53 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/07 11:57:23 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-#define BUILTINS_H
+char	*ft_strrchr(char *str, char c)
+{
+	int	i;
 
-#include "../minishell.h"
-
-void    cd(char *path);
-void	echo(char *str);
-void	pwd(void);
-void	export();
-void	unset();
-void	env();
-void	exit();
-
-#endif
+	i = 0;
+	while (str[i])
+		i++;
+	while (i >= 0)
+	{
+		if (str[i] == c)
+			return (&str[i]);
+		i--;
+	}
+	return (0);
+}

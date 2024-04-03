@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 13:07:19 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/03 10:41:37 by mdreesen         ###   ########.fr       */
+/*   Created: 2023/04/17 14:34:20 by mdreesen          #+#    #+#             */
+/*   Updated: 2023/04/17 15:48:01 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(void)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-    pwd();
-    return(0);
+	t_list	*next;
+
+	if (lst == NULL || del == NULL)
+		return ;
+	while (*lst)
+	{
+		next = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = next;
+	}
+	*lst = NULL;
 }
