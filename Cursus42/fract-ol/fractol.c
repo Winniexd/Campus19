@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:19:45 by winniexd          #+#    #+#             */
-/*   Updated: 2024/04/02 14:29:40 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/08 12:48:03 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ int	main(int argc, char **argv)
 {
 	t_fractol	*fractol;
 
-	if (argc != 2 && (argc != 4 && ft_strcmp(argv[1], "julia") == 1))
-		return (ft_print_error("Usage: ./fractol [fractal]\n", 1));
 	if (argc != 4 && argv[1] && ft_strcmp(argv[1], "julia") == 0)
-		return (ft_print_error("Usage: ./fractol julia <float> <float>\n", 2));
+		return (ft_print_error("Usage: ./fractol julia <float> <float>", 1));
+	if (argc != 2 && argc != 4)
+		return (ft_print_error("Usage: ./fractol [fractal]", 2));
+	if (ft_strcmp(argv[1], "mandelbrot") && ft_strcmp(argv[1], "burningship")
+		&& ft_strcmp(argv[1], "julia"))
+		return (ft_print_error("Invalid fractal", 3));
 	fractol = (t_fractol *)ft_calloc(1, sizeof(t_fractol));
 	if (!fractol)
 		return (1);

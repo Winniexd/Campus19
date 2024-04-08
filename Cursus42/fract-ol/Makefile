@@ -18,7 +18,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C libft
 	@make -C minilibx-linux
-	$(GCC) $(CFLAGS) -o $(NAME) $(OBJ) -Llibft -lft -Lft_printf -L/usr/lib -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+	$(GCC) $(CFLAGS) -o $(NAME) $(OBJ) -Llibft -lft -L/usr/lib -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 %.o: %.c
 	@$(GCC) $(CFLAGS) -c $< -o $@
 

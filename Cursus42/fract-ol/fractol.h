@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:21:19 by winniexd          #+#    #+#             */
-/*   Updated: 2024/04/02 14:11:33 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/08 12:38:35 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int			destroy_window(t_fractol *f);
 int			key_hook(int key, t_fractol *f);
 int			mouse_hook(int button, int x, int y, t_fractol *f);
 int			motion_hook(int x, int y, t_fractol *f);
+int			ft_print_error(char *str, int code);
 
 void		init_fractol(t_fractol *f, char **av);
 void		init_mlx(t_fractol *f, char **argv);
