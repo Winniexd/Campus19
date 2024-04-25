@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:29:23 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/12 11:03:54 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:22:57 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_data
 	long long		start_time;
 	pthread_mutex_t	forks[250];
 	pthread_mutex_t	writing;
+	pthread_mutex_t	eating;
 	t_philosopher	philos[250];
 }					t_data;
 

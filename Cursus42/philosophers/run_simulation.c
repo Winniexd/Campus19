@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:20:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/12 11:07:42 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:08:15 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,20 @@ void	monitor_deaths(t_data *data)
 		i = 0;
 		while (i < data->philo_count && !(data->died))
 		{
-			if (data->philos[i].last_meal && data->philos[i].last_meal
-				- timestamp() > data->time_die)
+			pthread_mutex_lock(&(data->eating));
+			if (timestamp() - data->philos[i].last_meal > data->time_die)
 			{
 				data->died = 1;
 				print_action(&(data->philos[i]), "died");
-				break ;
 			}
+			pthread_mutex_unlock(&(data->eating));
 			i++;
 		}
+		i = 0;
+		while (data->to_eat && data->philos[i].times_ate == data->to_eat)
+			i++;
+		if (data->to_eat && i == data->philo_count)
+			break ;
 	}
 }
 
@@ -45,9 +50,11 @@ void	philo_eat(t_philosopher *philo)
 	print_action(philo, "has taken a fork");
 	pthread_mutex_lock(&(philo->data->forks[philo->right_fork_id]));
 	print_action(philo, "has taken a fork");
+	pthread_mutex_lock(&(philo->data->eating));
 	print_action(philo, "is eating");
-	usleep(philo->data->time_eat * 1000);
 	philo->last_meal = timestamp();
+	pthread_mutex_unlock(&(philo->data->eating));
+	usleep(philo->data->time_eat * 1000);
 	philo->times_ate++;
 	pthread_mutex_unlock(&(philo->data->forks[philo->left_fork_id]));
 	pthread_mutex_unlock(&(philo->data->forks[philo->right_fork_id]));
@@ -81,6 +88,7 @@ int	run_simulation(t_data *data)
 	{
 		pthread_create(&(data->philos[i].thread_id), NULL, &philo_routine,
 			&(data->philos[i]));
+		data->philos[i].last_meal = timestamp();
 		i++;
 	}
 	monitor_deaths(data);
