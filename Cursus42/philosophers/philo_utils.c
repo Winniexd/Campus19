@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:57:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/12 11:03:38 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:15:15 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,5 @@ void	safe_exit(t_data *data)
 		i++;
 	}
 	pthread_mutex_destroy(&(data->writing));
+    pthread_mutex_destroy(&(data->eating));
 }
