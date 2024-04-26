@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:20:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/25 13:08:15 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:32:01 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	*philo_routine(void *philosopher)
 	while (!(philo->data->died))
 	{
 		if (philo->id % 2)
-			usleep(1000);
+			usleep(10000);
 		philo_eat(philo);
 		if (philo->data->to_eat && philo->data->to_eat == philo->times_ate)
 			break ;
