@@ -6,19 +6,18 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:50:40 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/27 15:15:35 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:41:04 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fixed.hpp"
 
-Fixed::Fixed(const int nb) {
+Fixed::Fixed(void) : f(0){
     this->f = nb;
     std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float fl) {
-    this->f = fl;
     std::cout << "Float constructor called" << std::endl;
 }
 
@@ -26,7 +25,7 @@ Fixed::~Fixed() {
     std::cout << "Destructor called" << std::endl;
 }
 
-Fixed &Fixed::operator=(Fixed &f) {
+Fixed &Fixed::operator=(const Fixed &f) {
     std::cout << "Copy assignment operator called" << std::endl;
     return *this;
 }
@@ -39,7 +38,7 @@ int Fixed::toInt(void) const {
     return this->f >> bits;
 }
 
-Fixed::Fixed(Fixed &f) {
+Fixed::Fixed(const Fixed &f) {
     std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -52,7 +51,7 @@ void Fixed::setRawBits(int const raw) {
     this->f = raw;
 }
 
-std::ostream& operator<<(Fixed &f, std::ostream &out) {
+std::ostream& operator<<(std::ostream &out, Fixed const &f) {
     out << f.toFloat();
     return out;
 }
