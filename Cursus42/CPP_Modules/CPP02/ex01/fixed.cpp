@@ -6,19 +6,22 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:50:40 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/27 15:41:04 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/27 16:24:35 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fixed.hpp"
 
 Fixed::Fixed(void) : f(0){
-    this->f = nb;
-    std::cout << "Int constructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float fl) {
+Fixed::Fixed(const float fl) : f(std::roundf(fl * (1 << bits))) {
     std::cout << "Float constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int i) : f(i << bits) {
+    std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::~Fixed() {
