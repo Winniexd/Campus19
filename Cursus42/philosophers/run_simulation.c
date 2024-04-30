@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:20:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/26 16:18:25 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/30 10:35:54 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	monitor_deaths(t_data *data)
 				print_action(&(data->philos[i]), "died");
 			}
 			pthread_mutex_unlock(&(data->eating));
+            usleep(100);
 			i++;
 		}
 		i = 0;
@@ -65,10 +66,10 @@ void	*philo_routine(void *philosopher)
 	t_philosopher	*philo;
 
 	philo = (t_philosopher *)philosopher;
+	if (philo->id % 2)
+		usleep(10000);
 	while (!(philo->data->died))
 	{
-		if (philo->id % 2)
-			usleep(5000);
 		philo_eat(philo);
 		if (philo->data->to_eat && philo->data->to_eat == philo->times_ate)
 			break ;
