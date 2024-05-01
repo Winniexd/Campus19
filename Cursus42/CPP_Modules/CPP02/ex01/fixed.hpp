@@ -6,16 +6,14 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:28:56 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/27 16:25:15 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/04/30 11:39:50 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <cmath>
-
 class Fixed {
     private :
-        int f;
+        int fixed;
         static const int bits = 8;
     public :
         Fixed(void);
