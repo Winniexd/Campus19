@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 12:58:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/05/01 14:56:11 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:17:50 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,25 @@ class Animal {
     protected:
         std::string type;
     public:
-        void makeSound(void);
-        std::string getType();
+        std::string getType() const;
+        Animal(std::string type);
+        Animal();
+        virtual ~Animal();
+        virtual void makeSound(void) const;
 };
 
 class Dog: public Animal {
+    public:
+        Dog();
+        ~Dog();
+        void makeSound(void) const;
 };
 
 class Cat: public Animal {
-    
+    public:
+        Cat();
+        ~Cat();
+        void makeSound(void) const;
 };
 
 #endif
