@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:57:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/26 13:33:42 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/05/03 11:13:57 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	safe_exit(t_data *data)
 	i = 0;
 	while (i < data->philo_count)
 	{
-		pthread_detach(data->philos[i].thread_id);
+		pthread_join(data->philos[i].thread_id, NULL);
 		i++;
 	}
 	i = 0;

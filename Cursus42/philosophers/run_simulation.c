@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:20:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/30 10:39:11 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/05/03 11:20:01 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	monitor_deaths(t_data *data)
 			i++;
 		}
 		i = 0;
-		while (data->to_eat && data->philos[i].times_ate == data->to_eat)
+		while (data->to_eat > 0 && data->philos[i].times_ate == data->to_eat)
 			i++;
-		if (data->to_eat && i == data->philo_count)
+		if (data->to_eat > 0 && i == data->philo_count)
 			break ;
 	}
 }
@@ -71,7 +71,7 @@ void	*philo_routine(void *philosopher)
 	while (!(philo->data->died))
 	{
 		philo_eat(philo);
-		if (philo->data->to_eat && philo->data->to_eat == philo->times_ate)
+		if (philo->data->to_eat > 0 && philo->data->to_eat == philo->times_ate)
 			break ;
 		philo_sleep(philo);
 		print_action(philo, "is thinking");

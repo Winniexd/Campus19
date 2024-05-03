@@ -7,6 +7,8 @@
 - [X] GetNextLine
 - [X] Fract-ol
 - [X] Minitalk
-- [ ] Push_Swap
+- [X] Push_Swap
+- [X] Philosophers
+- [X] Minishell
 
 ![](https://github.com/Winniexd/Campus19/blob/master/chika.gif)
