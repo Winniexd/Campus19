@@ -14,4 +14,4 @@
 <br>
 <h1><u>Mental Status:</u></h1>
 <br>
-![](https://github.com/Winniexd/Campus19/blob/master/dead_inside.png)
+<img src="https://github.com/Winniexd/Campus19/blob/master/dead_inside.png?raw=true">
