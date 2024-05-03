@@ -11,4 +11,7 @@
 - [X] Philosophers
 - [X] Minishell
 
-![](https://github.com/Winniexd/Campus19/blob/master/chika.gif)
+<br>
+<h1><u>Mental Status:</u></h1>
+<br>
+![](https://github.com/Winniexd/Campus19/blob/master/dead_inside.png)
