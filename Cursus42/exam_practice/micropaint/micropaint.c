@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   micropaint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 18:58:45 by matias            #+#    #+#             */
-/*   Updated: 2024/05/17 13:42:12 by matias           ###   ########.fr       */
+/*   Updated: 2024/05/21 16:35:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ int write_error(char *str)
 
 int check_in_r(t_rect *r, float x, float y)
 {
-    return 0;
+    if (x < r->x || r->x + r->width < x || y < r->y || r->y + r->height < y)
+        return 0;
+    if ((x - r->x < 1.00000000 || r->x + r->width - x < 1.00000000) 
+        || (y - r->y < 1.00000000 || r->y + r->height - y < 1.00000000))
+            return 1;
+    return 2;
 }
 
 void get_pxl(t_rect *r, t_mpaint *p, int x, int y)
@@ -30,6 +35,8 @@ void get_pxl(t_rect *r, t_mpaint *p, int x, int y)
         int in_r;
         
         in_r = check_in_r(r, (float)x, (float)y);
+        if ((in_r == 2 && r->type == 'R') || in_r == 1)
+            p->grid[x + y * p->width] = r->c;
 }
 
 int get_rect(FILE *stream, t_mpaint *p)
