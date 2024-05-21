@@ -6,13 +6,13 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 18:58:45 by matias            #+#    #+#             */
-/*   Updated: 2024/05/16 20:29:18 by matias           ###   ########.fr       */
+/*   Updated: 2024/05/17 13:42:12 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "micropaint.h"
 
-int write_fd2(char *str)
+int write_error(char *str)
 {
     while (*str)
         write(1, str++, 1);
@@ -20,9 +20,16 @@ int write_fd2(char *str)
     return 1;
 }
 
-void get_pxl(t_rect *r, t_mpaint *p, int i, int j)
+int check_in_r(t_rect *r, float x, float y)
 {
-    
+    return 0;
+}
+
+void get_pxl(t_rect *r, t_mpaint *p, int x, int y)
+{
+        int in_r;
+        
+        in_r = check_in_r(r, (float)x, (float)y);
 }
 
 int get_rect(FILE *stream, t_mpaint *p)
@@ -33,17 +40,18 @@ int get_rect(FILE *stream, t_mpaint *p)
     r = malloc(sizeof(t_rect));
     if (!r)
         return 1;
-    ret = fscanf(stream, "%c %f %f %f %f %c", &r->type, &r->x, &r->y, &r->width, &r->height, &r->c);
-    if (ret == 6)
+    ret = fscanf(stream, "%c %f %f %f %f %c\n", &r->type, &r->x, &r->y, &r->width, &r->height, &r->c);
+    while (ret == 6)
     {
         if (r->x <= 0.00000000 || r->y < 0.00000000 || (r->type != 'r' && r->type != 'R'))
-            return 1;
-        for (int i = 0; i < p->width; i++)
-            for (int j = 0; j < p->height; j++)
-                get_pxl(r, p, i, j);
-        return 0;
+            return free(r), 1;
+        for (int x = 0; x < p->width; x++)
+            for (int y = 0; y < p->height; y++)
+                get_pxl(r, p, x, y);
+        ret = fscanf(stream, "%c %f %f %f %f %c\n", &r->type, &r->x, &r->y, &r->width, &r->height, &r->c);
     }
-    return 1;
+    free(r);
+    return 0;
 }
 
 int parse_data(FILE *stream, t_mpaint *p)
@@ -69,11 +77,11 @@ int main(int argc, char **argv)
     FILE *stream;
     t_mpaint *p;
     if (argc != 2)
-        return write_fd2("Error: arguments");
+        return write_error("Error: arguments");
     p = malloc(sizeof(t_mpaint));
     stream = fopen(argv[1], "r");
     if (!stream || parse_data(stream, p) || get_rect(stream, p))
-        return write_fd2("Error: Operation file corrupted");
+        return write_error("Error: Operation file corrupted");
         
     for (int i = 0; i < p->height * p->width; i++)
     {
@@ -81,7 +89,6 @@ int main(int argc, char **argv)
         if (!((i + 1) % p->width) && i > 0)
             write(1, "\n", 1);
     }
-    
     fclose(stream);
     free(p);
     return 0;
