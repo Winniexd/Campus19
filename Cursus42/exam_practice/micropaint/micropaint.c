@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   micropaint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 18:58:45 by matias            #+#    #+#             */
-/*   Updated: 2024/05/24 04:09:49 by matias           ###   ########.fr       */
+/*   Updated: 2024/05/24 13:23:22 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int main(int argc, char **argv)
             write(1, "\n", 1);
     }
     fclose(stream);
+    free(p->grid);
     free(p);
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 02:24:15 by matias            #+#    #+#             */
-/*   Updated: 2024/05/24 12:55:30 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/05/24 13:23:59 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,8 @@ int main(int argc, char **argv) {
         if (!((i + 1) % p->width) && i > 0)
             write(1, "\n", 1);
     }
+    fclose(stream);
+    free(p->grid);
     free(p);
+    return 0;
 }
