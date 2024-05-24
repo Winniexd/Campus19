@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   micropaint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 18:58:45 by matias            #+#    #+#             */
-/*   Updated: 2024/05/21 16:35:31 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/24 04:09:49 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,17 @@ int get_rect(FILE *stream, t_mpaint *p)
     ret = fscanf(stream, "%c %f %f %f %f %c\n", &r->type, &r->x, &r->y, &r->width, &r->height, &r->c);
     while (ret == 6)
     {
-        if (r->x <= 0.00000000 || r->y < 0.00000000 || (r->type != 'r' && r->type != 'R'))
-            return free(r), 1;
+        if (r->width <= 0.00000000 || r->height <= 0.00000000 || (r->type != 'r' && r->type != 'R'))
+            return 1;
         for (int x = 0; x < p->width; x++)
             for (int y = 0; y < p->height; y++)
                 get_pxl(r, p, x, y);
         ret = fscanf(stream, "%c %f %f %f %f %c\n", &r->type, &r->x, &r->y, &r->width, &r->height, &r->c);
     }
+    if (ret == -1)
+        return free(r), 0;
     free(r);
-    return 0;
+    return 1;
 }
 
 int parse_data(FILE *stream, t_mpaint *p)
