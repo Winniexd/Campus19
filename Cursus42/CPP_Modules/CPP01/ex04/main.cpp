@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:04:45 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/20 15:18:09 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/05/27 21:05:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,40 @@
 #include <string>
 #include <fstream>
 
-void mysed(std::fstream *file, std::string s1, std::string s2) {
-	
-}
-
-int main(int argc, char **argv) {
-    if (argc < 3) {
-        std::cout << "Usage: ./mysed <infile> <s1> <s2>" << std::endl;
-        return (1);
-    }
-    std::fstream file;
-	std::string s1 = argv[2];
-	std::string s2 = argv[3];
-    file.open(argv[1], std::ios::in);
+int mysed(std::string fileName, std::string s1, std::string s2) {
+    std::ifstream file;
+    std::string line;
+    std::string outstr;
+    
+   file.open(fileName, std::ios::in);
     if (!file) {
         std::cout << "Unable to open file" << std::endl;
         return (2);
     }
-    mysed(&file, s1, s2);
+    std::ofstream outfile(fileName);
+    if (!outfile)
+        return 1;
+    while (getline(file, line)) {
+        outstr += line;
+        if (!file.eof())
+            outstr += "\n";
+    }
+    size_t p = outstr.find(s1);
+    while (p < outstr.length()) {
+        outstr.erase(p, s1.length());
+        outstr.insert(p, s2);
+        p = outstr.find(s1, p + s2.length());
+    }
+    outfile << outstr;
     file.close();
-    return (0);
+    outfile.close();
+    return 0;
+}
+
+int main(int argc, char **argv) {
+    if (argc != 4) {
+        std::cout << "Usage: ./mysed <infile> <s1> <s2>" << std::endl;
+        return (1);
+    }
+    return (mysed(argv[1], argv[2], argv[3]));
 }
