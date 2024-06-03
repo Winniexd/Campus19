@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:08:22 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/27 15:19:08 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:50:04 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int main(void) {
     Fixed a;
-    Fixed const b( 10 );
-    Fixed const c( 42.42f );
-    Fixed const d( b );
-    a = Fixed( 1234.4321f );
+    Fixed const b(10);
+    Fixed const c(42.42f);
+    Fixed const d(b);
+    a = Fixed(1234.4321f);
     std::cout << "a is " << a << std::endl;
     std::cout << "b is " << b << std::endl;
     std::cout << "c is " << c << std::endl;

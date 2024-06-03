@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:50:40 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/30 11:40:01 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:49:00 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Fixed::Fixed(void) : fixed(0){
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float fl) : fixed(std::roundf(fl * (1 << bits))) {
+Fixed::Fixed(const float fl) : fixed(roundf(fl * (1 << bits))) {
     std::cout << "Float constructor called" << std::endl;
 }
 
@@ -36,7 +36,7 @@ Fixed &Fixed::operator=(const Fixed &f) {
 }
 
 float Fixed::toFloat(void) const {
-    return static_cast<float>((this->getRawBits()) / (1 << bits));
+    return static_cast<float>(this->getRawBits()) / (1 << bits);
 }
 
 int Fixed::toInt(void) const {
@@ -49,7 +49,6 @@ Fixed::Fixed(const Fixed &f) {
 }
 
 int Fixed::getRawBits(void) const {
-    std::cout << "getRawBits member function called" << std::endl;
     return this->fixed;
 }
 
