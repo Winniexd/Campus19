@@ -10,6 +10,7 @@
 - [X] Push_Swap
 - [X] Philosophers
 - [X] Minishell
+- [X] CPP00
 
 <br>
 <h1><u>Mental Status:</u></h1>
