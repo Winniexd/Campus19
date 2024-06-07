@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:04:45 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/05/27 21:05:59 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/03 15:58:43 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ int mysed(std::string fileName, std::string s1, std::string s2) {
     std::string line;
     std::string outstr;
     
-   file.open(fileName, std::ios::in);
+   file.open(fileName.c_str(), std::ios::in);
     if (!file) {
         std::cout << "Unable to open file" << std::endl;
         return (2);
     }
-    std::ofstream outfile(fileName);
+    std::ofstream outfile;
+    std::string outname = fileName.append(".replace");
+    outfile.open(outname.c_str());
     if (!outfile)
         return 1;
     while (getline(file, line)) {

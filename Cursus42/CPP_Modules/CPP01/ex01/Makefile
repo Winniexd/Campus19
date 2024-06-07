@@ -10,10 +10,15 @@ OBJ=$(SRC:.cpp=.o)
 all: $(OBJ)
 	c++ $(FLAGS) $(OBJ) -o $(NAME)
 
+%.o: %.cpp
+	c++ $(FLAGS) -c $< -o $@
+
 clean:
 	rm $(OBJ)
 
 fclean: clean
 	rm $(NAME)
 
-re: fclean all
+re:
+	make fclean
+	make all

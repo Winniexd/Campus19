@@ -6,13 +6,13 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 14:02:47 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/02/18 14:45:56 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:43:47 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string name, Weapon &weapon) : name(name), weapon(weapon) {
+HumanA::HumanA(std::string name, Weapon &weapon) : weapon(weapon), name(name) {
 }
 
 void HumanA::attack(void) {
