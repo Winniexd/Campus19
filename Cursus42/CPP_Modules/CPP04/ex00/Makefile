@@ -3,7 +3,7 @@ FLAGS= -Wall -Wextra -Werror -std=c++98 -g
 
 SRC= polymorphism.cpp \
 main.cpp \
-#wrongAnimal.cpp
+wrongAnimal.cpp
 
 OBJ=$(SRC:.cpp=.o)
 

@@ -6,12 +6,12 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 14:50:37 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/07 15:42:05 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/07 16:05:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "polymorphism.hpp"
-#include "wrongAnimal.cpp"
+#include "wrongAnimal.hpp"
 
 int main(void) {
 
@@ -31,7 +31,6 @@ int main(void) {
     delete j;
     delete i;
     delete meta;
-    /*
     std::cout << "__________Wrong_animals__________" << std::endl;
     
     const WrongAnimal* wrongd = new WrongDog();
@@ -48,7 +47,7 @@ int main(void) {
     
     delete wrong;
     delete wrongc;
-    delete wrongd;*/
+    delete wrongd;
     
     return 0;
 }
