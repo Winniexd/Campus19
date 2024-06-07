@@ -2,7 +2,8 @@ NAME=polymorphism
 FLAGS= -Wall -Wextra -Werror -std=c++98 -g
 
 SRC= polymorphism.cpp \
-main.cpp
+main.cpp \
+#wrongAnimal.cpp
 
 OBJ=$(SRC:.cpp=.o)
 
@@ -20,4 +21,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re:
+	make fclean
+	make all
