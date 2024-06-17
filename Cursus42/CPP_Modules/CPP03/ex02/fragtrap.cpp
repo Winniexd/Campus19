@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fragtrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 11:40:22 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/05/01 11:52:10 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:32:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,4 @@ FragTrap::~FragTrap() {
 void FragTrap::highFivesGuys(void) {
     std::cout << this->name << " gives you a high five!" << std::endl;
 }
+
