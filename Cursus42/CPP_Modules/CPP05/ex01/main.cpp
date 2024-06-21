@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 12:43:49 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/11 15:50:57 by mdreesen         ###   ########.fr       */
+/*   Created: 2024/06/11 15:57:25 by mdreesen          #+#    #+#             */
+/*   Updated: 2024/06/21 13:15:34 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "Bureaucrat.hpp"
 
-int main(int argc, char **argv) {
-    t_cub3d *c;
-    
-    (void)argv;
-    if (argc != 2)
-        return write_err("Incorrect argument count", 1);
-    c = malloc(sizeof(t_cub3d));
-    if (!c)
-        return write_err("Malloc error", 2);
-    //init_map(c);
-    init_mlx(c);
-    mlx_hook(c->win, 17, 1L << 2, &free_mlx, c);
-    mlx_key_hook(c->win, key_hook, c);
-    mlx_loop(c->mlx);
-    free(c);
+int main() {
+    Bureaucrat b = Bureaucrat("Apple", 11);
+    Bureaucrat c = Bureaucrat();
+    Form f = Form("myForm", false, 10);
+    std::cout << b << std::endl;
+    std::cout << c << std::endl;
+    std::cout << f << std::endl;
+    b.signForm(f);
     return 0;
 }
