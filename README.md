@@ -11,8 +11,4 @@
 - [X] Philosophers
 - [X] Minishell
 - [X] CPP00
-
-<br>
-<h1><u>Mental Status:</u></h1>
-<br>
-<img src="https://github.com/Winniexd/Campus19/blob/master/dead_inside.png?raw=true">
+- [X] CPP01
