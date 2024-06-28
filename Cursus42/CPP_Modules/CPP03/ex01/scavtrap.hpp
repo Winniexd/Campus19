@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:42:52 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/05/01 11:43:18 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:24:10 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class ClapTrap {
         void beRepaired(unsigned int amount);
         ClapTrap(std::string name);
         ~ClapTrap();
+		ClapTrap(ClapTrap& c);
+		ClapTrap& operator=(ClapTrap& c);
 };
 
 class ScavTrap: public ClapTrap {

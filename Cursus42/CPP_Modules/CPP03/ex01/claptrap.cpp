@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 12:27:54 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/04/30 14:00:57 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:25:21 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ ClapTrap::ClapTrap(std::string name) {
 
 ClapTrap::~ClapTrap() {
     std::cout << "Claptrap destructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(ClapTrap& c) {
+	*this = c;
+	std::cout << "Claptrap copy constructor called" << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(ClapTrap& c) {
+	std::cout << "Claptrap copy assignment operator called" << std::endl;
+	this->name = c.name;
+	this->hp = c.hp;
+	this->energy = c.energy;
+	this->damage = c.damage;
+	return *this;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {

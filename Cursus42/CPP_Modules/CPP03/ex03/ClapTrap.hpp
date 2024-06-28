@@ -26,6 +26,8 @@ class ClapTrap {
         void beRepaired(unsigned int amount);
         ClapTrap(std::string name);
         ~ClapTrap();
+		ClapTrap(ClapTrap& c);
+		ClapTrap& operator=(ClapTrap& c);
 };
 
 #endif
