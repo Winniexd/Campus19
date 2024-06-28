@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:34:28 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/12 15:34:29 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:49:01 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	*ft_strncat(char *dest, char *src, int n);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *str);
 void	*ft_calloc(size_t count, size_t size);
-void	ft_free(char **str);
 char	*ft_join(char *ptr, char *start, char *buff);
 char	*ft_parse(char *start);
 char	*ft_move_start(char *start);

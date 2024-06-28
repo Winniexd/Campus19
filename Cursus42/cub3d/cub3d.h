@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:01:36 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/28 13:34:17 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:42:58 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void init_map(t_cub3d *c, char *path);
 int free_mlx(t_cub3d *c);
 int key_hook(int key, t_cub3d *c);
 int ft_suffix(char *path, char *suffix);
+char **ft_split(char const *s, char c);
 
 #endif

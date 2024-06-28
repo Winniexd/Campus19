@@ -1,7 +1,8 @@
 NAME=cub3d
 FLAGS=-Wall -Wextra -Werror -g
 SRC=main.c utils.c init.c freeall.c \
-gnl/get_next_line.c gnl/get_next_line_utils.c
+gnl/get_next_line.c gnl/get_next_line_utils.c \
+ft_split.c
 
 OBJ=$(SRC:.c=.o)
 

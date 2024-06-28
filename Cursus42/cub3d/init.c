@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:27:04 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/28 13:48:34 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:52:37 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	init_mlx(t_cub3d *c)
 
 int find_value(char *line)
 {
-	(void)line;
+	char **str;
+
+	str = ft_split(line, ',');
+	printf("%s", str[0]);
 	return 1;
 }
 
@@ -74,7 +77,7 @@ void	init_map(t_cub3d *c, char *path)
 	while (line)
 	{
 		if (parse_line(line, c))
-			free_mlx(c);
+			return;
 		free(line);
 		line = get_next_line(fd);
 	}
