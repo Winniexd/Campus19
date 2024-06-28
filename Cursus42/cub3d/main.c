@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:43:49 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/28 11:46:53 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:38:12 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char **argv)
 {
 	t_cub3d	*c;
 
-	(void)argv;
 	if (argc != 2)
 		return (write_err("Incorrect argument count", 1));
 	c = malloc(sizeof(t_cub3d));

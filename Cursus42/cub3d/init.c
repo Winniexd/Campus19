@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:27:04 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/28 11:46:07 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:48:34 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,53 @@ void	init_mlx(t_cub3d *c)
 	c->win = mlx_new_window(c->mlx, WIDTH, HEIGHT, "Cub3D");
 }
 
+int find_value(char *line)
+{
+	(void)line;
+	return 1;
+}
+
+void init_config(t_config *config)
+{
+	int i;
+
+	i = 0;
+	while (i < 6)
+		config->data[i++] = 0;
+}
+
+int find_key(char *line)
+{
+	if (line[0] == 'N' && line[1] == 'O')
+		return NO;
+	if (line[0] == 'E' && line[1] == 'E')
+		return EA;
+	if (line[0] == 'S' && line[1] == 'O')
+		return SO;
+	if (line[0] == 'W' && line[1] == 'E')
+		return WE;
+	if (line[0] == 'F' && line[1] == ' ')
+		return F;
+	if (line[0] == 'C' && line[1] == ' ')
+		return C;
+	return 6;
+}
+
+int parse_line(char *line, t_cub3d *c)
+{
+	int key;
+
+	key = find_key(line);
+	c->config.data[key] = find_value(line);
+	return 0;
+}
+
 void	init_map(t_cub3d *c, char *path)
 {
 	int		fd;
-	int		ret;
 	char	*line;
 
+	init_config(&c->config);
 	if (ft_suffix(path, ".cub"))
 		free_mlx(c);
 	fd = open(path, O_RDONLY);
@@ -32,8 +73,9 @@ void	init_map(t_cub3d *c, char *path)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (parse_line)
+		if (parse_line(line, c))
 			free_mlx(c);
+		free(line);
 		line = get_next_line(fd);
 	}
 }
