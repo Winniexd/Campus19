@@ -10,7 +10,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C minilibx-linux
-	gcc $(CFLAGS) $(OBJ) -o $(NAME) -L/usr/lib -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+	gcc $(FLAGS) $(OBJ) -o $(NAME) -L/usr/lib -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 
 %.o: %.c
 	gcc $(FLAGS) -c $< -o $@
