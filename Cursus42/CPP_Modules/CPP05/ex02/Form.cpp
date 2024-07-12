@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:26:15 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/21 14:08:05 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:14:46 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ AForm::AForm(const std::string name, bool is_signed, const int required) : name(
 AForm::~AForm() {
     std::cout << "Default AForm destructor called" << std::endl;
 }
+
+AForm::AForm(const AForm& src): required(src.required), is_signed(src.is_signed),  name(src.name) {
+    *this = src;
+}
+
+AForm& AForm::operator=(const AForm& rhs) {
+    is_signed = rhs.getSigned();
+    return *this;
+}
+
 
 std::string AForm::getName() const {
     return this->name;

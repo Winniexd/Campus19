@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:26:15 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/21 13:17:29 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:13:49 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ Form::Form(const std::string name, bool is_signed, const int required) : name(na
 
 Form::~Form() {
     std::cout << "Default Form destructor called" << std::endl;
+}
+
+Form::Form(const Form& src): required(src.required), is_signed(src.is_signed),  name(src.name) {
+    *this = src;
+}
+
+Form& Form::operator=(const Form& rhs) {
+    is_signed = rhs.getSigned();
+    return *this;
 }
 
 std::string Form::getName() const {

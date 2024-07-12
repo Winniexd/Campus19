@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:21:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/21 14:11:20 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:08:37 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class AForm {
     public:
         AForm(const std::string name, bool is_signed, const int required);
         ~AForm();
+        AForm(const AForm& src);
+        AForm& operator=(const AForm& rhs);
         std::string getName() const;
         bool getSigned() const;
         int getRequired() const;

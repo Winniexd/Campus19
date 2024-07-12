@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:57:12 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/21 14:40:55 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:04:58 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ Bureaucrat::Bureaucrat(const std::string name, const int grade) : name(name), gr
 
 Bureaucrat::~Bureaucrat() {
     std::cout << "Bureaucrat default destructor called" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& src) {
+    *this = src;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
+    this->grade = rhs.grade;
+    return *this;
 }
 
 int Bureaucrat::getGrade() const {
