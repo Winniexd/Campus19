@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   polymorphism.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:06:09 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/07 22:58:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/07/12 12:40:56 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ Animal::Animal(std::string type) {
 
 Animal::~Animal() {
     std::cout << "Animal destructor called" << std::endl;
+}
+
+Animal::Animal(const Animal& a) {
+    std::cout << "Animal copy constructor called" << std::endl;
+    *this = a;
+}
+
+Animal& Animal::operator=(const Animal& a) {
+    std::cout << "Animal copy assignment operator called" << std::endl;
+    this->type = a.type;
+    return *this;
 }
 
 void Animal::makeSound() const {

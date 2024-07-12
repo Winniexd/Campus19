@@ -18,6 +18,8 @@ class WrongAnimal {
     protected:
         std::string type;
     public:
+        WrongAnimal& operator=(const WrongAnimal& a);
+        WrongAnimal(const WrongAnimal& a);
         std::string getType() const;
         WrongAnimal(std::string type);
         WrongAnimal();

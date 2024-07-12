@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   polymorphism.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 12:58:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/07 14:33:16 by marvin           ###   ########.fr       */
+/*   Updated: 2024/07/12 12:41:07 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class Animal {
     protected:
         std::string type;
     public:
+        Animal& operator=(const Animal& a);
+        Animal(const Animal& a);
         std::string getType() const;
         Animal(std::string type);
         Animal();

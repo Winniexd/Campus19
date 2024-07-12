@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 12:58:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/05/03 12:17:50 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:33:57 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ class Animal {
     protected:
         std::string type;
     public:
+        Animal& operator=(const Animal& a);
+        Animal(const Animal& a);
         std::string getType() const;
         Animal(std::string type);
         Animal();
