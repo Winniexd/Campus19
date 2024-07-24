@@ -3,82 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 13:27:04 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/28 15:52:37 by mdreesen         ###   ########.fr       */
+/*   Created: 2024/07/20 19:32:41 by matias            #+#    #+#             */
+/*   Updated: 2024/07/24 15:19:46 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_mlx(t_cub3d *c)
-{
-	c->mlx = mlx_init();
-	c->win = mlx_new_window(c->mlx, WIDTH, HEIGHT, "Cub3D");
+void init_struct(t_cub3d *c) {
+    c->mlx = NULL;
+    c->win = NULL;
+    c->addr = NULL;
+    c->config.map_started = 0;
+    c->config.fd = 0;
+    int i;
+    i = 0;
+    while (i < 3) {
+        c->config.floor[i] = -1;
+        c->config.ceiling[i] = -1;
+        i++;
+    }
 }
 
-int find_value(char *line)
-{
-	char **str;
-
-	str = ft_split(line, ',');
-	printf("%s", str[0]);
-	return 1;
+void init_mlx(t_cub3d *c) {
+    c->mlx = mlx_init();
+    if (!c->mlx)
+        clean_exit(c, 1);
+    c->win = mlx_new_window(c->mlx, WIDTH, HEIGHT, "Cub3d");
+    if (!c->win)
+        clean_exit(c, 1);
 }
 
-void init_config(t_config *config)
+int check_file(char *path, int is_cub)
 {
-	int i;
-
-	i = 0;
-	while (i < 6)
-		config->data[i++] = 0;
+    int fd;
+    
+    fd = open(path, O_RDONLY);
+    if (fd < 0)
+        return (write_err("Error\nInvalid file\n", 1));
+    close(fd);
+    if (is_cub && ft_suffix(path, ".cub"))
+        return (write_err("Error\nInvalid cub file\n", 1));
+    if (!is_cub && ft_suffix(path, ".xpm"))
+        return (write_err("Error\nInvalid xpm file\n", 1));
+    return (0);
 }
 
-int find_key(char *line)
+int copy_file(t_cub3d *c, char *path)
 {
-	if (line[0] == 'N' && line[1] == 'O')
-		return NO;
-	if (line[0] == 'E' && line[1] == 'E')
-		return EA;
-	if (line[0] == 'S' && line[1] == 'O')
-		return SO;
-	if (line[0] == 'W' && line[1] == 'E')
-		return WE;
-	if (line[0] == 'F' && line[1] == ' ')
-		return F;
-	if (line[0] == 'C' && line[1] == ' ')
-		return C;
-	return 6;
+    int line_count;
+    char *line;
+    int i;
+
+    line_count = get_line_count(path);
+    c->map.map = malloc(line_count + 1 * sizeof(char *));
+    if (!(c->map.map))
+        clean_exit(c, 1);
+    c->config.fd = open(path, O_RDONLY);
+    line = get_next_line(c->config.fd);
+    i = 0;
+    while (line)
+    {
+        c->map.map[i] = ft_strdup(line);
+        i++;
+        line = get_next_line(c->config.fd);
+    }
+    close(c->config.fd);
+    printf("%s", c->map.map[1]);
+    return (0);
 }
 
-int parse_line(char *line, t_cub3d *c)
+int init_cub3d(t_cub3d *c, char *path)
 {
-	int key;
-
-	key = find_key(line);
-	c->config.data[key] = find_value(line);
-	return 0;
-}
-
-void	init_map(t_cub3d *c, char *path)
-{
-	int		fd;
-	char	*line;
-
-	init_config(&c->config);
-	if (ft_suffix(path, ".cub"))
-		free_mlx(c);
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		free_mlx(c);
-	line = get_next_line(fd);
-	while (line)
-	{
-		if (parse_line(line, c))
-			return;
-		free(line);
-		line = get_next_line(fd);
-	}
+    if (check_file(path, 1) || copy_file(c, path))
+        clean_exit(c, 1);
+    //init_struct(c);
+    //if (parse_config(&c->config, path))
+        //clean_exit(c, 1);
+    return (0);
 }

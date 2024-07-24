@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeall.c                                          :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 13:36:27 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/28 13:51:35 by mdreesen         ###   ########.fr       */
+/*   Created: 2024/07/20 19:37:14 by matias            #+#    #+#             */
+/*   Updated: 2024/07/23 11:44:18 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	free_mlx(t_cub3d *c)
-{
-	mlx_clear_window(c->mlx, c->win);
-	mlx_destroy_window(c->mlx, c->win);
-	mlx_destroy_display(c->mlx);
-	mlx_loop_end(c->mlx);
-	free(c->mlx);
-	free(c);
-	exit(0);
+int key_hook(int key, t_cub3d *c) {
+    if (key == ESC)
+        clean_exit(c, 0);
+    return (0);
 }

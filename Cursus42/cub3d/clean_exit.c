@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 19:30:43 by matias            #+#    #+#             */
-/*   Updated: 2024/07/24 15:05:55 by matias           ###   ########.fr       */
+/*   Created: 2024/07/20 19:54:32 by matias            #+#    #+#             */
+/*   Updated: 2024/07/20 19:54:51 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main(int argc, char **argv) {
-    t_cub3d c;
-
-    if (argc != 2)
-        return (write_err("Error\nInvalid arguments\n", 1));
-    init_mlx(&c);
-    if (init_cub3d(&c, argv[1]))
-        clean_exit(&c, 1);
-    //mlx_hook(c.win, 2, 1L<<0, key_hook, &c);
-    //mlx_loop(c.mlx);
-    return (0);
+int clean_exit(t_cub3d *c, int code) {
+        if (!c)
+            exit(code);
+        mlx_clear_window(c->mlx, c->win);
+        mlx_destroy_window(c->mlx, c->win);
+        mlx_destroy_display(c->mlx);
+        mlx_loop_end(c->mlx);
+        free(c->mlx);
+        exit(1);
 }
