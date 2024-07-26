@@ -12,26 +12,26 @@
 
 #include "cub3d.h"
 
-int find_key(char *line)
+int	find_key(char *line)
 {
-    (void)line;
-    return 1;
+	(void)line;
+	return (1);
 }
 
-int parse_config(t_config *conf, char *path)
+int	parse_config(t_config *conf, char *path)
 {
-    int fd;
-    char *line;
-    int key;
+	int fd;
+	char *line;
+	int key;
 
-    fd = open(path, O_RDONLY);
-    line = get_next_line(fd);
-    while (line && !(conf->map_started))
-    {
-        key = find_key(line);
-        if (!ft_strcmp(line, "F") && !ft_strcmp(line, "C"))
-            return 0;
-        (void)key;
-    }
-    return 1;
+	fd = open(path, O_RDONLY);
+	line = get_next_line(fd);
+	while (line && !(conf->map_started))
+	{
+		key = find_key(line);
+		if (!ft_strcmp(line, "F") && !ft_strcmp(line, "C"))
+			return (0);
+		(void)key;
+	}
+	return (1);
 }

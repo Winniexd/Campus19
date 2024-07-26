@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:34:28 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/28 15:49:01 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/07/26 14:35:32 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(char *str, int c);
-char	*ft_strdup(char *s1);
+char	*ft_strdup(const char *src);
 char	*ft_strncat(char *dest, char *src, int n);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *str);

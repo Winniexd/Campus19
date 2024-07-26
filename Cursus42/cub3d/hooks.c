@@ -12,8 +12,9 @@
 
 #include "cub3d.h"
 
-int key_hook(int key, t_cub3d *c) {
-    if (key == ESC)
-        clean_exit(c, 0);
-    return (0);
+int	key_hook(int key, t_cub3d *c)
+{
+	if (key == ESC)
+		clean_exit(c, 0);
+	return (0);
 }

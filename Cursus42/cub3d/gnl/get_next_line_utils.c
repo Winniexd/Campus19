@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:33:39 by mdreesen          #+#    #+#             */
-/*   Updated: 2023/04/13 14:58:27 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/07/26 14:33:38 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,20 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup(const char *src)
 {
-	size_t	len;
-	char	*result;
+	char	*str;
+	int		i;
 
-	len = ft_strlen(s1);
-	result = (char *)malloc(len + 1);
-	if (!result)
+	i = 0;
+	str = malloc(ft_strlen(src) + 1);
+	if (!str)
 		return (NULL);
-	ft_memcpy(result, s1, len);
-	result[len] = '\0';
-	return (result);
+	while (src[i] != '\0')
+	{
+		str[i] = src[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
