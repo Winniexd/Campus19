@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 14:50:37 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/07/12 14:44:15 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:58:53 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ int main(void) {
 
     const Animal *dogs[10];
     const Animal *cats[10];
+
+    Cat basic;
+    {
+        Cat tmp = basic;
+    }
 
     std::cout << "__________DOGS__________" << std::endl;
     for (int i = 0; i < 10; i++) {

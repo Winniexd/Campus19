@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 12:58:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/07/12 12:33:57 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:40:53 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Dog: public Animal {
         Dog();
         ~Dog();
         void makeSound(void) const;
+        Dog& operator=(const Dog& src);
 };
 
 class Cat: public Animal {

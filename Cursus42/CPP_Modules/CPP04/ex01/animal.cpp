@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:06:09 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/07/12 14:07:41 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:29:18 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,42 +42,4 @@ void Animal::makeSound() const {
 
 std::string Animal::getType() const {
     return this->type;
-}
-
-Dog::Dog() : Animal("Dog") {
-    try {
-    this->brain = new Brain();
-    }
-    catch (const std::bad_alloc& e) {
-        std::cout << "Dog allocation failed: " << e.what() << std::endl;
-    }
-    std::cout << "Dog constructor called" << std::endl;
-}
-
-Dog::~Dog() {
-    delete this->brain;
-    std::cout << "Dog destructor called" << std::endl;
-}
-
-void Dog::makeSound() const {
-    std::cout << "Woof Woof" << std::endl;
-}
-
-Cat::Cat() : Animal("Cat") {
-    try {
-    this->brain = new Brain();
-    }
-    catch (const std::bad_alloc& e) {
-        std::cout << "Cat allocation failed: " << e.what() << std::endl;
-    }
-    std::cout << "Cat constructor called" << std::endl;
-}
-
-Cat::~Cat() {
-    delete this->brain;
-    std::cout << "Cat destructor called" << std::endl;
-}
-
-void Cat::makeSound() const {
-    std::cout << "Meow" << std::endl;
 }
