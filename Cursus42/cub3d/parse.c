@@ -6,32 +6,56 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:00:13 by matias            #+#    #+#             */
-/*   Updated: 2024/07/24 15:11:07 by matias           ###   ########.fr       */
+/*   Updated: 2024/08/27 10:50:06 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	find_key(char *line)
+int	extract_data(t_cub3d *c, char **map, int i, int j)
 {
-	(void)line;
-	return (1);
+	while (map[i][j] == ' ' || map[i][j] == '\t' || map[i][j] == '\n')
+		j++;
+	if (!ft_ischar(map[i][j]))
+	{
+		if (map[i][j + 1] && !ft_ischar(map[i][j + 1]))
+		{
+			if (fill_directions(c->config, map[i], j))
+				return (KO);
+			return (BREAK);
+		}
+		else
+		{
+			if (fill_colors(c->config, map[i], j))
+				return (KO);
+			return (BREAK);
+		}
+	}
+	return (CONTINUE);
 }
 
-int	parse_config(t_config *conf, char *path)
+int	parse_config(t_cub3d *c, char **map)
 {
-	int fd;
-	char *line;
-	int key;
+	int	i;
+	int	j;
+	int	ret;
 
-	fd = open(path, O_RDONLY);
-	line = get_next_line(fd);
-	while (line && !(conf->map_started))
+	i = 0;
+	while (map[i])
 	{
-		key = find_key(line);
-		if (!ft_strcmp(line, "F") && !ft_strcmp(line, "C"))
-			return (0);
-		(void)key;
+		j = 0;
+		while (map[i][j])
+		{
+			ret = extract_data(c, map, i, j);
+			if (ret == BREAK)
+				break ;
+			else if (ret == KO)
+				return (KO);
+			else if (ret == OK)
+				return (OK);
+			j++;
+		}
+		i++;
 	}
-	return (1);
+	return (OK);
 }

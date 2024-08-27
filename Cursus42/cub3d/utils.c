@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 19:36:42 by matias            #+#    #+#             */
-/*   Updated: 2024/07/26 14:34:04 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/08/27 10:22:13 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,11 @@ int	ft_suffix(char *path, char *suffix)
 		j--;
 	}
 	return (0);
+}
+
+int	ft_ischar(char c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (0);
+	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 19:32:41 by matias            #+#    #+#             */
-/*   Updated: 2024/07/26 14:43:49 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/08/27 10:10:22 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	copy_file(t_cub3d *c, char *path)
 		line = get_next_line(c->config.fd);
 	}
 	close(c->config.fd);
-	printf("%s", c->map.map[0]);
 	return (0);
 }
 
@@ -84,8 +83,7 @@ int	init_cub3d(t_cub3d *c, char *path)
 {
 	if (check_file(path, 1) || copy_file(c, path))
 		clean_exit(c, 1);
-	//init_struct(c);
-	//if (parse_config(&c->config, path))
-	//clean_exit(c, 1);
+	if (parse_config(c, c->map.map))
+		clean_exit(c, 2);
 	return (0);
 }
