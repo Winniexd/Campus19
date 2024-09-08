@@ -6,16 +6,29 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 19:36:42 by matias            #+#    #+#             */
-/*   Updated: 2024/08/27 10:22:13 by matias           ###   ########.fr       */
+/*   Updated: 2024/09/08 15:42:37 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	write_err(char *err, int retval)
 {
 	write(1, err, ft_strlen(err));
 	return (retval);
+}
+
+void	free_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
 
 int	get_line_count(char *path)

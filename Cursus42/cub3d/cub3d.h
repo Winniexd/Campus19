@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:01:36 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/08/27 10:43:06 by matias           ###   ########.fr       */
+/*   Updated: 2024/09/08 21:34:13 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,12 @@ typedef struct s_config
 {
 	int			map_started;
 	int			fd;
-	int			floor[3];
-	int			ceiling[3];
+	char		*north;
+	char		*east;
+	char		*south;
+	char		*west;
+	int			*floor;
+	int			*ceiling;
 	char		xpm_path[4];
 }				t_config;
 
@@ -63,6 +67,7 @@ int				key_hook(int key, t_cub3d *c);
 // Init
 void			init_mlx(t_cub3d *c);
 int				init_cub3d(t_cub3d *c, char *path);
+void			struct_bzero(t_cub3d *c);
 
 // Parsing
 int				parse_config(t_cub3d *c, char **map);
@@ -74,5 +79,9 @@ int				ft_suffix(char *path, char *suffix);
 int				write_err(char *err, int retval);
 int				get_line_count(char *path);
 int             ft_ischar(char c);
+int				ft_strlcpy(char *dst, const char *src, size_t size);
+char			**ft_split(char const *s, char c);
+void			free_arr(char **tab);
+int				ft_atoi(const char *str);
 
 #endif

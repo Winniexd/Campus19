@@ -6,29 +6,11 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 19:32:41 by matias            #+#    #+#             */
-/*   Updated: 2024/08/27 10:10:22 by matias           ###   ########.fr       */
+/*   Updated: 2024/09/07 12:29:27 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	init_struct(t_cub3d *c)
-{
-	int	i;
-
-	c->mlx = NULL;
-	c->win = NULL;
-	c->addr = NULL;
-	c->config.map_started = 0;
-	c->config.fd = 0;
-	i = 0;
-	while (i < 3)
-	{
-		c->config.floor[i] = -1;
-		c->config.ceiling[i] = -1;
-		i++;
-	}
-}
 
 void	init_mlx(t_cub3d *c)
 {
@@ -62,7 +44,7 @@ int	copy_file(t_cub3d *c, char *path)
 	int		i;
 
 	line_count = get_line_count(path);
-	c->map.map = malloc(line_count * sizeof(char *));
+	c->map.map = malloc((line_count + 1) * sizeof(char *));
 	if (!(c->map.map))
 		clean_exit(c, 1);
 	c->config.fd = open(path, O_RDONLY);
@@ -81,6 +63,7 @@ int	copy_file(t_cub3d *c, char *path)
 
 int	init_cub3d(t_cub3d *c, char *path)
 {
+	struct_bzero(c);
 	if (check_file(path, 1) || copy_file(c, path))
 		clean_exit(c, 1);
 	if (parse_config(c, c->map.map))
