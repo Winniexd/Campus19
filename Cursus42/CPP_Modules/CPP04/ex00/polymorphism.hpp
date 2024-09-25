@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 12:58:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/05/03 12:17:50 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:40:53 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ class Animal {
     protected:
         std::string type;
     public:
+        Animal& operator=(const Animal& a);
+        Animal(const Animal& a);
         std::string getType() const;
         Animal(std::string type);
         Animal();
@@ -30,6 +32,7 @@ class Dog: public Animal {
         Dog();
         ~Dog();
         void makeSound(void) const;
+        Dog& operator=(const Dog& src);
 };
 
 class Cat: public Animal {

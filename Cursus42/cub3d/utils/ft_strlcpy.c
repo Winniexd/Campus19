@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 19:30:43 by matias            #+#    #+#             */
-/*   Updated: 2024/08/27 10:41:37 by matias           ###   ########.fr       */
+/*   Created: 2023/04/07 11:27:57 by mdreesen          #+#    #+#             */
+/*   Updated: 2024/09/08 15:42:32 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int	main(int argc, char **argv)
+int	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_cub3d	c;
+	size_t	i;
 
-	if (argc != 2)
-		return (write_err("Error\nInvalid arguments\n", 1));
-	if (init_cub3d(&c, argv[1]))
-		clean_exit(&c, 1);
-	init_mlx(&c);
-	// mlx_hook(c.win, 2, 1L<<0, key_hook, &c);
-	// mlx_loop(c.mlx);
-	clean_exit(&c, 0);
-	return (0);
+	i = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (i < size - 1 && src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

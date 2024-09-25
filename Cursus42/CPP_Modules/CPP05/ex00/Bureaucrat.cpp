@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:57:12 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/16 13:36:39 by marvin           ###   ########.fr       */
+/*   Updated: 2024/07/12 15:04:06 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ Bureaucrat::Bureaucrat(const std::string name, const int grade) : name(name), gr
 
 Bureaucrat::~Bureaucrat() {
     std::cout << "Bureaucrat default destructor called" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& src) {
+    *this = src;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
+    this->grade = rhs.grade;
+    return *this;
 }
 
 int Bureaucrat::getGrade() const {

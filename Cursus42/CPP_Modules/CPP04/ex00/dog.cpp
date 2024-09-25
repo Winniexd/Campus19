@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeall.c                                          :+:      :+:    :+:   */
+/*   dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 13:36:27 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/28 13:51:35 by mdreesen         ###   ########.fr       */
+/*   Created: 2024/08/01 12:24:49 by mdreesen          #+#    #+#             */
+/*   Updated: 2024/08/01 12:40:47 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "polymorphism.hpp"
 
-int	free_mlx(t_cub3d *c)
-{
-	mlx_clear_window(c->mlx, c->win);
-	mlx_destroy_window(c->mlx, c->win);
-	mlx_destroy_display(c->mlx);
-	mlx_loop_end(c->mlx);
-	free(c->mlx);
-	free(c);
-	exit(0);
+Dog::Dog() : Animal("Dog") {
+    std::cout << "Dog constructor called" << std::endl;
+}
+
+Dog::~Dog() {
+    std::cout << "Dog destructor called" << std::endl;
+}
+
+void Dog::makeSound() const {
+    std::cout << "Woof Woof" << std::endl;
 }

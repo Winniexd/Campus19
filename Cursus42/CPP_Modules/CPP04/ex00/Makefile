@@ -1,7 +1,7 @@
 NAME=polymorphism
 FLAGS= -Wall -Wextra -Werror -std=c++98 -g
 
-SRC= polymorphism.cpp \
+SRC= animal.cpp dog.cpp cat.cpp \
 main.cpp \
 wrongAnimal.cpp
 

@@ -6,7 +6,7 @@
 /*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:21:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/21 13:03:07 by mdreesen         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:08:27 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Form {
     public:
         Form(const std::string name, bool is_signed, const int required);
         ~Form();
+        Form(const Form& src);
+        Form& operator=(const Form& rhs);
         std::string getName() const;
         bool getSigned() const;
         int getRequired() const;

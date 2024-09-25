@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:57:15 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/07 23:02:00 by marvin           ###   ########.fr       */
+/*   Updated: 2024/07/12 12:48:08 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ class Brain {
     public:
         Brain();
         ~Brain();
+        Brain(const Brain& src);
+        Brain& operator=(const Brain& rhs);
 };
 
 #endif

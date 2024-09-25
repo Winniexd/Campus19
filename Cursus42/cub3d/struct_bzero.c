@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   struct_bzero.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 19:30:43 by matias            #+#    #+#             */
-/*   Updated: 2024/08/27 10:41:37 by matias           ###   ########.fr       */
+/*   Created: 2024/09/03 14:03:58 by matias            #+#    #+#             */
+/*   Updated: 2024/09/08 21:51:32 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	struct_bzero(t_cub3d *c)
 {
-	t_cub3d	c;
-
-	if (argc != 2)
-		return (write_err("Error\nInvalid arguments\n", 1));
-	if (init_cub3d(&c, argv[1]))
-		clean_exit(&c, 1);
-	init_mlx(&c);
-	// mlx_hook(c.win, 2, 1L<<0, key_hook, &c);
-	// mlx_loop(c.mlx);
-	clean_exit(&c, 0);
-	return (0);
+	c->config.north = NULL;
+	c->config.east = NULL;
+	c->config.south = NULL;
+	c->config.west = NULL;
+	c->config.ceiling = NULL;
+	c->config.floor = NULL;
+	c->map.map = NULL;
 }

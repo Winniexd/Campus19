@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   polymorphism.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 12:58:17 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/07 14:33:16 by marvin           ###   ########.fr       */
+/*   Updated: 2024/08/01 12:55:50 by mdreesen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class Animal {
     protected:
         std::string type;
     public:
+        virtual Animal& operator=(const Animal& a);
+        Animal(const Animal& a);
         std::string getType() const;
         Animal(std::string type);
         Animal();
@@ -33,6 +35,8 @@ class Dog: public Animal {
         Dog();
         ~Dog();
         void makeSound(void) const;
+        Dog& operator=(const Dog& src);
+        Dog(const Dog& rhs);
 };
 
 class Cat: public Animal {
@@ -42,6 +46,8 @@ class Cat: public Animal {
         Cat();
         ~Cat();
         void makeSound(void) const;
+        Cat& operator=(const Cat& src);
+        Cat(const Cat& rhs);
 };
 
 #endif

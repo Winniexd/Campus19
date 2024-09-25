@@ -24,6 +24,17 @@ WrongAnimal::~WrongAnimal() {
     std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
+WrongAnimal::WrongAnimal(const WrongAnimal& a) {
+    std::cout << "WrongAnimal copy constructor called" << std::endl;
+    *this = a;
+}
+
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& a) {
+    std::cout << "WrongAnimal copy assignment operator called" << std::endl;
+    this->type = a.type;
+    return *this;
+}
+
 void WrongAnimal::makeSound() const {
 
     std::cout << "Grrrrrr" << std::endl;
