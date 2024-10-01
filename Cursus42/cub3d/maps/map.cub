@@ -3,8 +3,8 @@ SO ./textures/lego.xpm
 WE ./textures/kandinsky.xpm
 EA ./textures/binary.xpm
 
-F 50,50,50
-C 10,10,10
+F 50,51,52
+C 10,11,12
 
 1111111111111111
 1E00002000000001

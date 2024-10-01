@@ -6,11 +6,11 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 19:36:42 by matias            #+#    #+#             */
-/*   Updated: 2024/09/08 15:42:37 by matias           ###   ########.fr       */
+/*   Updated: 2024/09/30 14:16:11 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 int	write_err(char *err, int retval)
 {
@@ -80,6 +80,20 @@ int	ft_suffix(char *path, char *suffix)
 int	ft_ischar(char c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (0);
+	return (1);
+}
+
+int is_white_char(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\r' || c == '\v' || c == '\f')
+		return (0);
+	return (1);
+}
+
+int ft_isdigit(char c)
+{
+	if (c >= '0' && c <= '9')
 		return (0);
 	return (1);
 }

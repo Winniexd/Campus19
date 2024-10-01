@@ -6,11 +6,11 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 12:44:55 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/09/08 15:42:28 by matias           ###   ########.fr       */
+/*   Updated: 2024/09/09 10:21:45 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 static int	ft_count_words(char const *s, char c)
 {

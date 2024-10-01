@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 11:27:57 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/09/09 10:21:48 by matias           ###   ########.fr       */
+/*   Created: 2024/09/09 10:17:20 by matias            #+#    #+#             */
+/*   Updated: 2024/09/09 10:21:50 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*get_path(char *line, int j)
 {
-	size_t	i;
+	int		len;
+	char	*path;
+	int		i;
 
+	while (line[j] && (line[j] == ' ' || line[j] == '\t'))
+		j++;
+	len = j;
+	while (line[len] && (line[len] != '\n'))
+		len++;
+	path = malloc((len - j + 1) * sizeof(char));
+	if (!path)
+		return (NULL);
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (i < size - 1 && src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	while (j < len)
+		path[i++] = line[j++];
+	path[i] = '\0';
+	return (path);
 }

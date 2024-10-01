@@ -6,7 +6,7 @@
 /*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:01:36 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/09/08 21:34:13 by matias           ###   ########.fr       */
+/*   Updated: 2024/09/30 14:40:22 by matias           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 typedef struct s_map
 {
 	char		**map;
+	int			height;
+	int			width;
 }				t_map;
 
 typedef struct s_config
@@ -50,6 +52,7 @@ typedef struct s_config
 	int			*floor;
 	int			*ceiling;
 	char		xpm_path[4];
+	char		**file;
 }				t_config;
 
 typedef struct s_cub3d
@@ -71,6 +74,9 @@ void			struct_bzero(t_cub3d *c);
 
 // Parsing
 int				parse_config(t_cub3d *c, char **map);
+int				fill_colors(t_config *config, char *line, int j);
+int				fill_directions(t_config *config, char *line, int j);
+int				fill_map(t_map *map, char **buffer, int i);
 
 // Utils
 int				clean_exit(t_cub3d *c, int code);
@@ -83,5 +89,8 @@ int				ft_strlcpy(char *dst, const char *src, size_t size);
 char			**ft_split(char const *s, char c);
 void			free_arr(char **tab);
 int				ft_atoi(const char *str);
+char			*get_path(char *line, int j);
+int				is_white_char(char c);
+int				ft_isdigit(char c);
 
 #endif
