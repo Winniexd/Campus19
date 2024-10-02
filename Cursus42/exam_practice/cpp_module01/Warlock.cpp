@@ -38,3 +38,19 @@ std::string const& Warlock::getTitle() const {
 void Warlock::setTitle(std::string const &title) {
 	this->title = title;
 }
+
+void Warlock::learnSpell(ASpell* spell) {
+	if (spell)
+		if ((spellBook.find(spell->getName()) == spellBook.end()))
+			spellBook[spell->getName()] = spell->clone();
+}
+
+void Warlock::forgetSpell(std::string spell) {
+	if (spellBook.find(spell) != spellBook.end())
+		spellBook.erase(spellBook.find(spell));
+}
+
+void Warlock::launchSpell(std::string spell, const ATarget& target) {
+	if (spellBook.find(spell) != spellBook.end())
+		spellBook[spell]->launch(target);
+}
