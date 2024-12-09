@@ -1,0 +1,21 @@
+NO ./textures/door.xpm
+SO ./textures/gray_wall.xpm
+WE ./textures/wall_3.xpm
+EA ./textures/futuristic_wall.xpm
+
+F 20,20,-20
+C 200,200,200
+
+111111111
+100000001
+10S000001
+100000001
+100010001
+100010001
+110010001
+100010001
+100010001
+100000001
+100000001
+100000001
+111111111
