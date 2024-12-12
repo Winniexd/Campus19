@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:00:13 by matias            #+#    #+#             */
-/*   Updated: 2024/12/02 14:50:36 by winniexd         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:08:04 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ int	extract_data(t_cub3d *c, char **buffer, int i, int j)
 		if (buffer[i][j + 1] && ft_isalpha(buffer[i][j + 1]))
 		{
 			if (ft_fill_directions(&c->config, buffer[i], j))
-				return (KO);
+				return (ft_write_err("Invalid direction or duplicate", buffer[i]));
 			return (BREAK);
 		}
 		else
 		{
 			if (ft_fill_colors(&c->config, buffer[i], j))
-				return (KO);
+				return (ft_write_err("Invalid color", NULL));
 			return (BREAK);
 		}
 	}
 	else if (ft_isdigit(buffer[i][j]))
 	{
-		if (ft_fill_map(&c->config, buffer, i))
+		if (ft_fill_map(c, buffer, i))
 			return (KO);
 		return (OK);
 	}

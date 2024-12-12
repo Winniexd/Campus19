@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_xpm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 09:04:47 by matias            #+#    #+#             */
-/*   Updated: 2024/11/16 13:17:01 by matias           ###   ########.fr       */
+/*   Updated: 2024/12/11 18:42:38 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_parse_xpm(t_img *img, char *path)
 {
+	if (!path)
+		return (KO);
 	img->mlx = mlx_init();
 	if (!img->mlx)
 		return (KO);

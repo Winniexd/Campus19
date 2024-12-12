@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 13:01:36 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/12/04 18:56:04 by winniexd         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:15:41 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int		check_map(t_config *config);
 int		ft_parse_config(t_cub3d *c, char **map);
 int		ft_fill_colors(t_config *config, char *line, int j);
 int		ft_fill_directions(t_config *config, char *line, int j);
-int		ft_fill_map(t_config *config, char **buffer, int i);
+int		ft_fill_map(t_cub3d *c, char **buffer, int i);
 int		ft_parse_xpm(t_img *img, char *path);
+int     check_file(char *path, int is_cub);
 
 // Utils
 int		ft_clean_exit(t_cub3d *c, int code);

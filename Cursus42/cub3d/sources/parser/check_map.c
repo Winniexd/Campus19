@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:05:35 by winniexd          #+#    #+#             */
-/*   Updated: 2024/11/16 13:22:08 by matias           ###   ########.fr       */
+/*   Updated: 2024/12/12 17:05:40 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,14 @@ int	check_borders(t_config *config, char **map)
 int	check_map(t_config *config)
 {
 	if (!config->map)
-		return (ft_write_err(MAP_ERR, "99"));
+		return (ft_write_err(MAP_ERR, "No map allocated"));
 	if (check_borders(config, config->map))
-		return (ft_write_err(MAP_ERR, "101"));
+		return (ft_write_err(MAP_ERR, "Error with borders"));
 	if (config->height < 3)
-		return (ft_write_err(MAP_ERR, "104"));
+		return (ft_write_err(MAP_ERR, "Map too small"));
 	if (check_valid_elements(config->map))
-		return (ft_write_err(MAP_ERR, "105"));
+		return (ft_write_err(MAP_ERR, "Invalid element(s)"));
 	if (other_values_filled(config))
-		return (ft_write_err(MAP_ERR, "107"));
+		return (ft_write_err(MAP_ERR, "Values missing"));
 	return (OK);
 }

@@ -6,17 +6,20 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 19:54:32 by matias            #+#    #+#             */
-/*   Updated: 2024/12/04 18:58:44 by winniexd         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:22:34 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_write_err(char *err, char *line)
+int	ft_write_err(char *err, char *arg)
 {
-	if (!err || !line)
+	if (!err)
 		return (1);
-	printf("Error: %s on line %s\n", err, line);
+	printf("Error: %s", err);
+	if (arg)
+		printf(": %s", arg);
+	printf("\n");
 	return (1);
 }
 
@@ -37,7 +40,7 @@ void	free_config(t_config *c)
 {
 	if (c->file)
 		ft_free_arr(c->file);
-	if (c->fd >= 0)
+	if (c->fd > 0)
 		close(c->fd);
 	if (c->north)
 		free(c->north);

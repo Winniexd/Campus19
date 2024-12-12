@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_directions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 10:23:58 by matias            #+#    #+#             */
-/*   Updated: 2024/11/14 17:07:46 by matias           ###   ########.fr       */
+/*   Updated: 2024/12/12 17:09:12 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,17 @@
 // Copy path strings into the config struct
 int	ft_fill_directions(t_config *config, char *line, int j)
 {
+	char	*path;
+
+	path = ft_get_path(line + 2, j);
 	if (!line[j + 2])
 		return (KO);
+	if (check_file(path, 0))
+	{
+		free(path);
+		return (KO);
+	}
+	free(path);
 	if (line[j] == 'N' && line[j + 1] == 'O' && !config->north)
 		config->north = ft_get_path(line, j + 2);
 	else if (line[j] == 'E' && line[j + 1] == 'A' && !config->east)

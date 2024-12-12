@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:26:57 by matias            #+#    #+#             */
-/*   Updated: 2024/12/05 23:08:48 by winniexd         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:18:54 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ int	get_map_height(char **map, int i)
 		j = 0;
 		while (map[i][j] && ft_is_white_char(map[i][j]))
 			j++;
+		if (map[i][j] == '\n')
+			break;
 		if (map[i][j] != '1')
-			break ;
+			return (ft_write_err("Left wall element is not '1'", NULL));
 		i++;
 	}
 	return (i - tmp);
@@ -82,32 +84,31 @@ void	copy_row(char *dst, char *src)
 	k = 0;
 	while (src[j] && src[j] != '\n')
 	{
-		dst[k++] = src[j];
-		j++;
+		dst[k++] = src[j++];
 	}
 	dst[k] = '\0';
 }
 
-int	ft_fill_map(t_config *config, char **buffer, int i)
+int	ft_fill_map(t_cub3d *c, char **buffer, int i)
 {
 	int	row;
 
-	config->height = get_map_height(buffer, i);
-	config->map = malloc(sizeof(char *) * (config->height + 1));
+	c->config.height = get_map_height(buffer, i);
+	c->config.map = malloc(sizeof(char *) * (c->config.height + 1));
 	row = 0;
-	if (!config->map)
-		return (ft_write_err(MALLOC_ERR, "98"));
-	while (buffer[i])
+	if (!c->config.map)
+		return (ft_write_err(MALLOC_ERR, NULL));
+	while (buffer[i] && row < c->config.height)
 	{
-		config->map[row] = malloc(ft_strlen(buffer[i]) + 1);
-		if (!config->map[row])
-			return (ft_write_err(MALLOC_ERR, "103"));
-		copy_row(config->map[row], buffer[i]);
+		c->config.map[row] = malloc(sizeof(char) * (ft_strlen(buffer[i]) + 1));
+		if (!c->config.map[row])
+			return (ft_write_err(MALLOC_ERR, NULL));
+		copy_row(c->config.map[row], buffer[i]);
 		i++;
 		row++;
 	}
-	config->map[row] = NULL;
-	if (get_player_pos(config))
-		return (KO);
+	c->config.map[row] = NULL;
+	if (get_player_pos(&c->config))
+		return (ft_write_err("No player found", NULL));
 	return (OK);
 }

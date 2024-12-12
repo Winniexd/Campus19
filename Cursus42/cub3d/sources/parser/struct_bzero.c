@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_bzero.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matias <matias@student.42.fr>              +#+  +:+       +#+        */
+/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 14:03:58 by matias            #+#    #+#             */
-/*   Updated: 2024/11/14 17:39:17 by matias           ###   ########.fr       */
+/*   Updated: 2024/12/12 17:22:03 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void	struct_bzero(t_cub3d *c)
 	c->config.dir_xy[0] = 0.00;
 	c->config.dir_xy[1] = 0.00;
 	c->config.height = 0;
+	c->config.width = 0;
+	c->config.fd = 0;
 }

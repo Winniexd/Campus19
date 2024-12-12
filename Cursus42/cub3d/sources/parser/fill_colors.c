@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 10:22:25 by matias            #+#    #+#             */
-/*   Updated: 2024/12/02 14:58:17 by winniexd         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:09:36 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	*cpy_rgb(char **arr)
 		rgb[i] = ft_atoi(arr[i]);
 		if (!rgb[i] || arr_empty(arr[i]) || incorrect_value(rgb[i]))
 		{
+			ft_free_arr(arr);
 			free(rgb);
 			return (NULL);
 		}
