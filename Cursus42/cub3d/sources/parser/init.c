@@ -78,8 +78,7 @@ int	ft_init_cub3d(t_cub3d *c, char *path)
 	if (check_file(path, 1) || copy_file(&c->config, path))
 		ft_clean_exit(c, 1);
 	if (ft_parse_config(c, c->config.file) || check_map(&c->config)
-		|| ft_init_textures(c, &c->config)
-)
+		|| ft_init_textures(c, &c->config))
 		ft_clean_exit(c, 2);
 	return (0);
 }

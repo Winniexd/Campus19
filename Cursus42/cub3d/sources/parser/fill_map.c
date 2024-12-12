@@ -66,7 +66,7 @@ int	get_map_height(char **map, int i)
 		while (map[i][j] && ft_is_white_char(map[i][j]))
 			j++;
 		if (map[i][j] == '\n')
-			break;
+			break ;
 		if (map[i][j] != '1')
 			return (ft_write_err("Left wall element is not '1'", NULL));
 		i++;

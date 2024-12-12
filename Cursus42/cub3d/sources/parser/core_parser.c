@@ -28,7 +28,8 @@ int	extract_data(t_cub3d *c, char **buffer, int i, int j)
 		if (buffer[i][j + 1] && ft_isalpha(buffer[i][j + 1]))
 		{
 			if (ft_fill_directions(&c->config, buffer[i], j))
-				return (ft_write_err("Invalid direction or duplicate", buffer[i]));
+				return (ft_write_err("Invalid direction or duplicate",
+						buffer[i]));
 			return (BREAK);
 		}
 		else

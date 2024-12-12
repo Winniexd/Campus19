@@ -29,11 +29,11 @@ void	ft_display_config(t_config *config)
 	printf("Player Dir X: %f\n\n", config->dir_xy[0]);
 	printf("HEI %d WID %d \n", config->height, config->width);
 	i = -1;
-	printf("Floor RGB: [%d,%d,%d]\n", config->floor[0],
-		config->floor[1], config->floor[2]);
+	printf("Floor RGB: [%d,%d,%d]\n", config->floor[0], config->floor[1],
+		config->floor[2]);
 	printf("Floor trgb: [%d]\n", config->floor_trgb);
-	printf("Ceiling RGB: [%d,%d,%d]\n", config->ceiling[0],
-		config->ceiling[1], config->ceiling[2]);
+	printf("Ceiling RGB: [%d,%d,%d]\n", config->ceiling[0], config->ceiling[1],
+		config->ceiling[2]);
 	printf("Ceiling trgb: [%d]\n", config->ceiling_trgb);
 	while (config->map[++i])
 		ft_printf("config->map[%d] == %s\n", i, config->map[i]);
