@@ -12,3 +12,11 @@
 - [X] Minishell
 - [X] CPP00
 - [X] CPP01
+- [X] CPP02
+- [X] CPP03
+- [X] CPP04
+- [X] CPP05
+- [ ] CPP06
+- [X] Cub3D
+- [ ] Inception
+- [ ] ft_irc
