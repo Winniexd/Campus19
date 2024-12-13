@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 19:02:22 by winniexd          #+#    #+#             */
-/*   Updated: 2024/12/04 19:04:30 by winniexd         ###   ########.fr       */
-/*                                                                            */
+/*																			  */
+/*														:::	  ::::::::        */
+/*   struct.h										   :+:	  :+:	:+:       */
+/*													+:+ +:+		 +:+	      */
+/*   By: jepatern <jepatern@student.42.fr>		  +#+  +:+	   +#+		      */
+/*												+#+#+#+#+#+   +#+		      */
+/*   Created: 2024/12/04 19:02:22 by jepatern		  #+#	#+#			      */
+/*   Updated: 2024/12/04 19:04:30 by jepatern		 ###   ########.fr	      */
+/*																			  */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
@@ -53,12 +53,24 @@ typedef struct s_frame
 	int			endian;
 }				t_frame;
 
+typedef struct s_keys
+{
+	int			forward;
+	int			backward;
+	int			left;
+	int			right;
+	int			rotate_left;
+	int			rotate_right;
+	int			esc;
+}				t_keys;
+
 typedef struct s_cub3d
 {
 	void		*mlx;
 	void		*win;
 	t_config	config;
 	t_img		img[4];
+	t_keys		keys;
 }				t_cub3d;
 
 typedef struct s_ray_data

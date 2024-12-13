@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jepatern <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 19:54:32 by matias            #+#    #+#             */
-/*   Updated: 2024/12/04 11:48:55 by winniexd         ###   ########.fr       */
+/*   Created: 2024/12/13 15:49:24 by jepatern          #+#    #+#             */
+/*   Updated: 2024/12/13 15:49:30 by jepatern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "cub3d.h"
 
 void	ft_cast_ray(double *pxy, t_rc *rc, char **map, t_r *rdata)

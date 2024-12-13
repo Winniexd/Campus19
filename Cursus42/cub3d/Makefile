@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = cub3d
-FLAGS = -O1 -funroll-loops -g -Wall -Wextra -Werror
+FLAGS =  -Ofast -march=native -funroll-loops -flto -ffast-math -Wall -Wextra -Werror
 MINILIBXDIR = includes_library/minilibx-linux
 LIBFT = includes_library/ft_libft/libft.a
 SOURCES = sources
@@ -33,7 +33,6 @@ SRC_CUB3D = \
 	utils/clean_exit.c \
     utils/utils.c \
     utils/get_path.c \
-    utils/display_config.c
 
 SRC = $(addprefix $(SOURCES)/, $(SRC_CUB3D))
 OBJ = $(patsubst $(SOURCES)/%.c, $(OBJECTS)/%.o, $(SRC))

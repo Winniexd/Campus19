@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jepatern <jepatern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:26:57 by matias            #+#    #+#             */
-/*   Updated: 2024/12/12 17:18:54 by winniexd         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:18:54 by jepatern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	get_direction(char c, t_config *config)
 {
 	if (c == 'N')
-		config->dir_xy[1] = 1.00;
+		config->dir_xy[1] = -1.00;
 	if (c == 'E')
 		config->dir_xy[0] = 1.00;
 	if (c == 'S')
-		config->dir_xy[1] = -1.00;
+		config->dir_xy[1] = 1.00;
 	if (c == 'W')
 		config->dir_xy[0] = -1.00;
 }
@@ -40,8 +40,8 @@ int	get_player_pos(t_config *config)
 			if (map[i][j] == 'N' || map[i][j] == 'E' || map[i][j] == 'S'
 				|| map[i][j] == 'W')
 			{
-				config->play_xy[0] = j;
-				config->play_xy[1] = i;
+				config->play_xy[0] = j + 0.50;
+				config->play_xy[1] = i + 0.50;
 				get_direction(map[i][j], config);
 				return (0);
 			}

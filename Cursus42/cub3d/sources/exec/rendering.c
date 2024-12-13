@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jepatern <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 11:43:32 by winniexd          #+#    #+#             */
-/*   Updated: 2024/12/07 14:01:35 by winniexd         ###   ########.fr       */
+/*   Created: 2024/12/13 15:49:38 by jepatern          #+#    #+#             */
+/*   Updated: 2024/12/13 15:49:43 by jepatern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "cub3d.h"
 
 void	ft_gen_frame(t_cub3d *comet)
@@ -37,20 +36,16 @@ void	ft_create_base_image(t_cub3d *c, t_frame *img)
 	img->raw = mlx_get_data_addr(img->addr, &img->bpp, &img->length,
 			&img->endian);
 	half_height = HEIGHT / 2;
-	y = 0;
-	while (y < HEIGHT)
+	y = -1;
+	while (++y < HEIGHT)
 	{
-		x = 0;
+		x = -1;
 		if (y < half_height)
 			color = c->config.ceiling_trgb;
 		else
 			color = c->config.floor_trgb;
-		while (x < WIDTH)
-		{
+		while (++x < WIDTH)
 			ft_px_put(img, x, y, color);
-			x++;
-		}
-		y++;
 	}
 }
 
@@ -73,7 +68,7 @@ void	ft_draw_frame(t_cub3d *c, t_frame *frame, t_r *ray_data, t_rc *rc)
 		ft_cast_ray(config->play_xy, rc, c->config.map, ray_data);
 		ray_data->distance = ray_data->d * cos(ft_degrees_to_radians((i - WIDTH
 						/ 2) * rc->d_angle));
-		selected_texture = &c->img[ft_choose("NSWE", ray_data->wall_dir)];
+		selected_texture = &c->img[ft_choose("NESW", ray_data->wall_dir)];
 		ft_vertical_slice(frame, selected_texture, i, ray_data);
 	}
 }
