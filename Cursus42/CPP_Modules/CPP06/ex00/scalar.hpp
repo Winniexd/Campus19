@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   scalar.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 12:52:43 by mdreesen          #+#    #+#             */
-/*   Updated: 2024/06/24 13:35:44 by mdreesen         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:51:15 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALAR_HPP
 #define SCALAR_HPP
 #include <iostream>
+#include <limits.h>
 
 class ScalarConverter {
+	private:
+		ScalarConverter();
+		~ScalarConverter();
+		ScalarConverter(ScalarConverter const &src);
+		ScalarConverter &operator=(ScalarConverter const &rhs);
 	public:
-		static void convert(char *arg);
+		static void convert(std::string arg);
 };
 
 #endif
