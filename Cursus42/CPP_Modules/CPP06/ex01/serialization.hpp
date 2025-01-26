@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scalar.hpp                                         :+:      :+:    :+:   */
+/*   serialization.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 12:52:43 by mdreesen          #+#    #+#             */
-/*   Updated: 2025/01/25 12:11:40 by winniexd         ###   ########.fr       */
+/*   Created: 2025/01/25 12:16:27 by winniexd          #+#    #+#             */
+/*   Updated: 2025/01/26 11:21:37 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALAR_HPP
-#define SCALAR_HPP
+#ifndef SERIALIZATION_HPP
+#define SERIALIZATION_HPP
+#pragma once
 #include <iostream>
-#include <limits.h>
-#include <cstdlib>
-#include <iomanip>
+#include <stdint.h>
+#include "data.hpp"
 
-class ScalarConverter {
-	private:
-		ScalarConverter();
-		~ScalarConverter();
-		ScalarConverter(ScalarConverter const &src);
-		ScalarConverter &operator=(ScalarConverter const &rhs);
-	public:
-		static void convert(std::string arg);
+class Data;
+
+class Serializer {
+    private:
+        //static Data* deserialize(uintptr_t raw);
+    public:
+        static uintptr_t serialize(Data* ptr);
+        static Data *deserialize(uintptr_t raw);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:00:10 by mdreesen          #+#    #+#             */
-/*   Updated: 2025/01/24 15:01:26 by winniexd         ###   ########.fr       */
+/*   Updated: 2025/01/25 12:15:36 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,47 @@
 void convertChar(std::string arg) {
 	std::cout << "char: " << arg[0] << std::endl;
 	std::cout << "int: " << static_cast<int>(arg[0]) << std::endl;
-	std::cout << "float: " << static_cast<float>(arg[0]) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(arg[0]) << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(arg[0]) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(arg[0]) << std::endl;
 }
 
 void convertInt(std::string arg) {
-	//! TODO
-	std::cout << "1" << std::endl;
-	(void)arg;
+	int val = atoi(arg.c_str());
+	if (val < 0 || val > 127)
+		std::cout << "char: impossible" << std::endl;
+	else if (val <= 32 || val == 127)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << static_cast<char>(val) << std::endl;
+	std::cout << "int: " << val << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(val) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(val) << std::endl;
 }
 
 void convertFloat(std::string arg) {
-	//! TODO
-	std::cout << "2" << std::endl;
-		(void)arg;
+	int val = atof(arg.c_str());
+	if (val < 0 || val > 127)
+		std::cout << "char: impossible" << std::endl;
+	else if (val <= 32 || val == 127)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << static_cast<char>(val) << std::endl;
+	std::cout << "int: " << val << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(val) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(val) << std::endl;
 }
 
 void convertDouble(std::string arg) {
-	//! TODO
-	std::cout << "3" << std::endl;
-		(void)arg;
+	int val = atof(arg.c_str());
+	if (val < 0 || val > 127)
+		std::cout << "char: impossible" << std::endl;
+	else if (val <= 32 || val == 127)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << static_cast<char>(val) << std::endl;
+	std::cout << "int: " << val << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(val) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(val) << std::endl;
 }
 
 void printError() {
@@ -60,9 +81,9 @@ void convertPlusInf() {
 
 void convertNan() {
 	std::cout << "char: impossible" << std::endl;
-	std::cout << "int: 0" << std::endl;
-	std::cout << "float: 0" << std::endl;
-	std::cout << "double: 0" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: nanf" << std::endl;
+	std::cout << "double: nan" << std::endl;
 }
 
 void parseArg(std::string arg) {
