@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdreesen <mdreesen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:28:29 by mdreesen          #+#    #+#             */
-/*   Updated: 2025/02/05 12:16:59 by mdreesen         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:36:34 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 int main(int argc, char **argv) {
     if (argc != 2) {
         std::cout << "Error: Invalid argument count" << std::endl;
-        return 1;
+        return (std::cout << "Invalid argument count." << std::endl ,1);
     }
-    std::ifstream file;
-    std::string fileName = argv[1];
-    file.open(fileName.c_str(), std::ios::in);
-    if (!file) {
-        std::cout << "Error: Unable to open file" << std::endl;
-        return 2;
-    }
+    std::ifstream file(argv[1]);
+    if (!file.is_open())
+        return (std::cout << "Error: Unable to open file" << std::endl, 1);
+    if (file.peek() == std::ifstream::traits_type::eof())
+        return (std::cout << "File is empty." << std::endl, 1);
+    BitcoinExchange btc(file);
     file.close();
     return 0;
 }
