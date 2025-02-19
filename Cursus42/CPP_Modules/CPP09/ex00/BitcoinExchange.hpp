@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:28:45 by mdreesen          #+#    #+#             */
-/*   Updated: 2025/02/18 19:16:35 by winniexd         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:03:15 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <algorithm>
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <cstring>
