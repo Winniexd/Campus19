@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:30:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2025/02/20 18:03:34 by winniexd         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:34:08 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,29 @@ void printData(std::map<std::string, float> keypair) {
     }
 }
 
+BitcoinExchange::BitcoinExchange() {
+    
+}
+
+BitcoinExchange::~BitcoinExchange() {
+    
+}
+
 BitcoinExchange::BitcoinExchange(std::ifstream &file) {
     parseDataBase();
     //printData(this->keypair);
     parseInput(file);
+}
+
+BitcoinExchange& BitcoinExchange::operator=(BitcoinExchange& rhs) {
+    if (this != &rhs) {
+        *this = rhs;
+    }
+    return *this;
+}
+
+BitcoinExchange::BitcoinExchange(BitcoinExchange& src) {
+    *this = src;
 }
 
 const char* BitcoinExchange::MissingDataBase::what() const throw() {
