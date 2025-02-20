@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:28:45 by mdreesen          #+#    #+#             */
-/*   Updated: 2025/02/19 18:03:15 by winniexd         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:36:21 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class BitcoinExchange {
     public:
         void parseDataBase();
         void parseInput(std::ifstream &file);
+        void findValue(std::string date, float value);
         BitcoinExchange();
         BitcoinExchange(std::ifstream &file);
     

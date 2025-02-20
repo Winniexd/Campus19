@@ -6,7 +6,7 @@
 /*   By: winniexd <winniexd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:30:32 by mdreesen          #+#    #+#             */
-/*   Updated: 2025/02/19 18:42:08 by winniexd         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:03:34 by winniexd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,14 @@ void BitcoinExchange::parseDataBase() {
 }
 
 bool checkValue(float value) {
-    if (value < 0 || value > 1000)
+    if (value < 0) {
+        std::cout << "Error: not a positive number." << std::endl;
         return false;
+    }
+    if (value > 1000) {
+        std::cout << "Error: too large a number." << std::endl;
+        return false;
+    }
     return true;
 }
 
@@ -60,20 +66,40 @@ bool checkDate(int year, int month, int day) {
     }
 }
 
+void BitcoinExchange::findValue(std::string date, float value) {
+    std::map<std::string, float>::iterator it = this->keypair.find(date);
+    if (it != this->keypair.end()) {
+        std::cout << date << " => " << value << " = " << value * it->second << std::endl;
+        return ;
+    }
+
+    it = this->keypair.upper_bound(date);
+    if (it != this->keypair.begin()) {
+        --it;
+        std::cout << date << " => " << value << " = " << value * it->second << std::endl;
+        return ;
+    }
+    std::cout << "Couldn't find the correct key." << std::endl;
+}
+
 void BitcoinExchange::parseInput(std::ifstream &file) {
     std::string line;
+    std::string date;
     int year, month, day;
     float value;
     
     while (std::getline(file, line)) {
         std::stringstream ss(line);
+        date = line.substr(0, line.find('|') - 1);
         char delimiter;
         ss >> year >> delimiter >> month >> delimiter >> day >> delimiter >> value;
-        if (!checkValue(value) || !checkDate(year, month, day)) {
+        if (!checkDate(year, month, day)) {
             std::cout << "Error: bad input => " << line << std::endl;
             continue;
         }
-        //findValue(value);
+        if (!checkValue(value))
+            continue;
+        findValue(date, value);
     }
 }
 
